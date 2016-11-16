@@ -41,6 +41,27 @@ if (isset ($_POST ["image"])) {
             font-size:30px;
         }
     </style>
+<nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
+    <a class="navbar-brand" href="#">RestOguru</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="restoDATA.php">< tagasi</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?logout=1">Logi välja</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Kasutajate Tagasiside</a>
+        </li>
+    </ul>
+<div class="collapse navbar-collapse">
+    <form class="form-inline float-xs-right navbar-right">
+        <input class="form-control" style="height: 50px" type="text" placeholder="Search">
+        <button class="btn btn-success" style="height: 50px" type="submit">Search</button>
+    </form>
+</div>
+    <a class="navbar-right"></a>
+</nav>
     <span class='btn-danger btn-sm' style="float: right"><a style="color: white"" href="?logout=1"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a></span>
     <span style="float: left"><a class='btn-info btn-sm' style="color: white" href="restoDATA.php"> < tagasi</a></span>
 
@@ -63,6 +84,7 @@ if (isset ($_POST ["image"])) {
         <a class="text-center"><input class="text-center form-control" style="width: 300px" type="url" name="image" placeholder="Sisesta pildi URL"></a>
     <input class="form-control" type="submit" value="save">
 </fieldset></form>
+
 
 
 
