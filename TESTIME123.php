@@ -1,7 +1,7 @@
 <?php
 //124567589
 
-//jah oled loll
+//ei ma pole loll
 
 
 ?>
