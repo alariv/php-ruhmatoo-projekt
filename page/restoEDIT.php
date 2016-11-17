@@ -6,7 +6,7 @@ if(isset($_GET["delete"])){
 
 
     $Edit->deleteResto(cleanInput($_GET["id"]));
-    header("Location: restoDATA.php");
+    header("Location: restoFEEDBACK.php");
 }
 
 //kas kasutaja uuendab andmeid
@@ -14,9 +14,16 @@ if(isset($_POST["update"])){
 
     $Edit->updateResto(cleanInput($_POST["id"]), cleanInput($_POST["grade"]), cleanInput($_POST["comment"]));
 
-    header("Location: restoDATA.php?id=".$_POST["id"]."&success=true");
+    header("Location: restoFEEDBACK.php?id=".$_POST["id"]."&success=true");
     exit();
 
+}
+if(isset($_GET["logout"])) {
+
+    session_destroy();
+
+    header("Location: restoSISSELOGIMINE.php");
+    exit();
 }
 
 //saadan kaasa id
@@ -49,8 +56,36 @@ $P = $Edit->getSingleRestoData($_GET["id"]);
         height: 50px;
     }
 </style>
-<br><br>
-<a class='btn-info btn-sm' href="restoDATA.php" style="color: white"> < tagasi </a>
+
+    <nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
+        <ul class="nav navbar-nav">
+            <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
+            <li class="nav-item active">
+                <a class="nav-link" href="restoDATA.php"><span class="glyphicon glyphicon-chevron-left"></span> tagasi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?logout=1"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Kasutajate Tagasiside</a>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse">
+
+            <form class="form-inline float-xs-right navbar-right">
+                <input class="form-control" style="height: 50px" type="text" placeholder="Search">
+                <button class="btn btn-success" style="height: 50px" type="submit">Search</button>
+
+
+            </form>
+        </div>
+    </nav>
+
+    <center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
+
 <fieldset style="margin: 0 auto;max-width: 450px">
 <h2 style="color: dodgerblue;font-size: 50px">Muuda sissekannet</h2>
 </fieldset>

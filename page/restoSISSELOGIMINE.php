@@ -207,7 +207,39 @@
 	}
 ?>
 <?php require("../header.php");?>
-<center><img src="../logo.jpg" alt="logo" style="width:750px;height:200px;"></center>
+<style>
+    .account-wall{
+        margin-top: 20px;
+        padding: 40px 40px 20px 40px;
+        background-color: #e4e0e0;
+        -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+<nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
+    <ul class="nav navbar-nav">
+        <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
+        <li class="nav-item active">
+            <a class="nav-link" href="restoDATA.php"><span class="glyphicon glyphicon-user"></span> Registreeru</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Kasutajate Tagasiside</a>
+        </li>
+    </ul>
+    <div class="collapse navbar-collapse">
+
+        <form class="form-inline float-xs-right navbar-right">
+            <input class="form-control" style="height: 50px" type="text" placeholder="Search">
+            <button class="btn btn-success" style="height: 50px" type="submit">Search</button>
+
+
+        </form>
+    </div>
+</nav>
+
+<center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
 
 	<div class="container">
 
@@ -218,28 +250,29 @@
 			<div class="col-sm-6 col-md-3 col-sm-offset-4 col-md-offset-3">
 
 				<h2>Logi sisse</h2>
+                <div class="account-wall">
+                    <p style="color: lightcoral"><?php echo $loginemailError; ?>
+                    <p style="color: lightcoral"><?php echo $loginpasswordError; ?>
+                    <p style="color: lightcoral"><?=$error;?></p>
+                    <form method="POST">
 
-				<p style="color: lightcoral"><?php echo $loginemailError; ?>
-				<p style="color: lightcoral"><?php echo $loginpasswordError; ?>
-				<p style="color: lightcoral"><?=$error;?></p>
-				<form method="POST">
+                            <input class="form-control" placeholder="E-mail" name="loginEmail" type="email">
 
-						<input class="form-control" placeholder="E-mail" name="loginEmail" type="email">
+                            <br><br>
 
-						<br><br>
-
-						<input class="form-control" placeholder="Parool" name="loginPassword" type="password">
+                            <input class="form-control" placeholder="Parool" name="loginPassword" type="password">
 
 
-						<br><br>
+                            <br><br>
 
-					<p class="text-center"><button type="submit" class="btn btn-info">
-							<span class="glyphicon glyphicon-log-in"></span> Logi sisse
-						</button></p>
+                        <p class="text-center"><button type="submit" class="btn btn-info">
+                                <span class="glyphicon glyphicon-log-in"></span> Logi sisse
+                            </button></p>
 
-				</form>
+                    </form>
+                </div>
 				</div>
-					<div class="col-sm-4 col-md-3 col-sm-offset-4 col-md-offset-0">
+					<div class="col-sm-4 col-md-3 col-sm-offset-4 col-md-offset-2">
 
 				<h1>Loo kasutaja</h1>
 
@@ -268,9 +301,10 @@
 
 					<p style="color: lightcoral"><?php echo $signupgenderError; ?></p><a style="color: dodgerblue"><span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span>Sugu</a>
 					<br>
-						<input type="radio" name="signupgender" value="Mees" checked> Mees
+						<input type="radio" name="signupgender" value="Mees"  checked> Mees
 						<input type="radio" name="signupgender" value="Naine"> Naine
 						<br><br>
+
 
 							<a style="color: dodgerblue">Soovin RestoGuru soovitusi e-mailile</a>
 							<br>

@@ -15,7 +15,6 @@ class User
         $this->connection = $mysqli;
 
     }
-
     function signup ($signupEmail, $signupPassword, $signupName, $signupLName, $signupage, $phonenr, $signupgender){
 
 

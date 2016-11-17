@@ -45,7 +45,7 @@ if (isset ($_POST ["image"])) {
     <ul class="nav navbar-nav">
         <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
         <li class="nav-item active">
-            <a class="nav-link" href="restoDATA.php"><span class="glyphicon glyphicon-triangle-left"></span> tagasi</a>
+            <a class="nav-link" href="restoDATA.php"><span class="glyphicon glyphicon-chevron-left"></span> tagasi</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="?logout=1"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
@@ -70,7 +70,7 @@ if (isset ($_POST ["image"])) {
 
 <br><br>
 
-<center><img src="../logo.jpg" alt="logo" style="width:750px;height:200px;"></center>
+<center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
 
 
     <h1 class="text-center" style="font-size: 70px;color: dodgerblue">Sinu profiil</h1>

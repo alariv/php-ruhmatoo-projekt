@@ -16,12 +16,12 @@ class Resto
     }
 
 
-function saverestos($restoName, $grade, $comment, $gender){
+function saverestos($restoName, $grade, $comment, $gender, $customer_name){
 
 
     //yhendus olemas
     //kask
-    $stmt =$this->connection->prepare("INSERT INTO restoranid (restoName,grade,comment,customer_sex) VALUES (?, ?, ?, ?)");
+    $stmt =$this->connection->prepare("INSERT INTO restoranid (restoName,grade,comment,customer_sex, customer_name) VALUES (?, ?, ?, ?, ?)");
 
     echo $this->connection->error;
     //asendan kysimargid vaartustega
@@ -29,7 +29,7 @@ function saverestos($restoName, $grade, $comment, $gender){
     //s tahistab stringi
     //i integer
     //d double/float
-    $stmt->bind_param("ssss", $restoName, $grade, $comment, $gender);
+    $stmt->bind_param("sssss", $restoName, $grade, $comment, $gender, $customer_name);
 
     if($stmt->execute()){
         echo "salvestamine onnestus ";
@@ -59,17 +59,17 @@ function getallrestos($q, $sort, $order){
     //kask
 
     if($q!="") {
-        $stmt = $this->connection->prepare("SELECT id, restoName, grade, comment, customer_sex, created FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
+        $stmt = $this->connection->prepare("SELECT id, restoName, grade, comment, customer_sex, customer_name, created FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
                                             ORDER BY $sort $orderBy");
         $searchWord="%".$q."%";
         $stmt->bind_param("sss", $searchWord, $searchWord, $searchWord);
     }else{
-        $stmt = $this->connection->prepare("SELECT id, restoName, grade, comment, customer_sex, created FROM restoranid WHERE deleted is NULL
+        $stmt = $this->connection->prepare("SELECT id, restoName, grade, comment, customer_sex, customer_name, created FROM restoranid WHERE deleted is NULL
                                             ORDER BY $sort $orderBy");
     }
     echo $this->connection->error;
 
-    $stmt->bind_result($id, $restoName, $grade, $comment, $gender, $created);
+    $stmt->bind_result($id, $restoName, $grade, $comment, $gender, $customer_name, $created);
     $stmt->execute();
 
     $result = array();
@@ -84,6 +84,7 @@ function getallrestos($q, $sort, $order){
         $person->grade = $grade;
         $person->comment = $comment;
         $person->gender = $gender;
+        $person->customer_name = $customer_name;
         $person->created = $created;
 
         //echo $color. "<br>";

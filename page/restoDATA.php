@@ -30,8 +30,8 @@
 		!empty($_POST["comment"])
 	)	{
 
-		$Resto->saverestos($_POST["restoName"],$_POST["grade"],$_POST["comment"],$_SESSION["gender"]);
-		header("Location: restoDATA.php");
+		$Resto->saverestos($_POST["restoName"],$_POST["grade"],$_POST["comment"],$_SESSION["gender"],$_SESSION["name"]);
+		//header("Location: restoFEEDBACK.php");
 		exit();
 	}
 
@@ -113,14 +113,14 @@
 				<a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Kasutajate Tagasiside</a>
+				<a class="nav-link" href="restoFEEDBACK.php"><span class="glyphicon glyphicon-th-list"></span> Kasutajate Tagasiside</a>
 			</li>
 		</ul>
 		<div class="collapse navbar-collapse">
 
 			<form class="form-inline float-xs-right navbar-right">
-				<input class="form-control" style="height: 50px" type="text" placeholder="Search">
-				<button class="btn btn-success" style="height: 50px" type="submit">Search</button>
+				<input class="form-control" style="height: 50px;color: dodgerblue;font-size: 40px" type="text" name="q" placeholder="Search" value="<?=$q;?>">
+				<button class="btn btn-success" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
 
 
 			</form>
@@ -131,7 +131,7 @@
 
 	<br><br>
 
-	<center><img src="../logo.jpg" alt="logo" style="width:750px;height:200px;"></center>
+	<center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
 
 	<br>
 	<p style="color: dodgerblue;font-size: 25px" class="text-center"> Tere <?=$_SESSION["name"];?>!</p>
