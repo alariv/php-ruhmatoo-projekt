@@ -43,7 +43,7 @@ function saverestos($restoName, $grade, $comment, $gender, $customer_name){
 
 function getallrestos($q, $sort, $order){
 
-    $allwoedSort = ["id","restoName","grade","comment","customer_sex","created"];
+    $allwoedSort = ["id","restoName","grade","comment","customer_sex", "customer_name","created"];
 
 
     if(!in_array($sort,$allwoedSort)){
@@ -62,7 +62,7 @@ function getallrestos($q, $sort, $order){
         $stmt = $this->connection->prepare("SELECT id, restoName, grade, comment, customer_sex, customer_name, created FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
                                             ORDER BY $sort $orderBy");
         $searchWord="%".$q."%";
-        $stmt->bind_param("sss", $searchWord, $searchWord, $searchWord);
+        $stmt->bind_param("sssssss", $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord);
     }else{
         $stmt = $this->connection->prepare("SELECT id, restoName, grade, comment, customer_sex, customer_name, created FROM restoranid WHERE deleted is NULL
                                             ORDER BY $sort $orderBy");

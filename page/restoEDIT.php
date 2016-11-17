@@ -2,6 +2,11 @@
 require("../restoFUNCTIONS.php");
 require("../restoEDITFUNCTIONS.php");
 
+if(!isset ($_SESSION["userId"])) {
+
+    header("Location: restoSISSELOGIMINE.php");
+    exit();
+}
 if(isset($_GET["delete"])){
 
 
@@ -70,14 +75,14 @@ $P = $Edit->getSingleRestoData($_GET["id"]);
                 <a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Kasutajate Tagasiside</a>
+                <a class="nav-link" href="restoFEEDBACK.php"><span class="glyphicon glyphicon-th-list"></span> Kasutajate Tagasiside</a>
             </li>
         </ul>
         <div class="collapse navbar-collapse">
 
             <form class="form-inline float-xs-right navbar-right">
-                <input class="form-control" style="height: 50px" type="text" placeholder="Search">
-                <button class="btn btn-success" style="height: 50px" type="submit">Search</button>
+                <input class="form-control" style="height: 50px" type="text" placeholder="Otsing">
+                <button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
 
 
             </form>

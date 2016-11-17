@@ -81,12 +81,12 @@ class User
 
 
             }else {
-                $error = "parool vale";
+                $error = "Parool vale";
             }
 
         }else {
             //ei olnud
-            $error = "sellise emailiga ".$email." kasutajat ei olnud";
+            $error = "Sellise emailiga ".$email." kasutajat ei ole";
 
         }
 

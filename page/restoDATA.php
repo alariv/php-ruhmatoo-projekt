@@ -119,8 +119,8 @@
 		<div class="collapse navbar-collapse">
 
 			<form class="form-inline float-xs-right navbar-right">
-				<input class="form-control" style="height: 50px;color: dodgerblue;font-size: 40px" type="text" name="q" placeholder="Search" value="<?=$q;?>">
-				<button class="btn btn-success" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+				<input class="form-control" style="height: 50px;color: dodgerblue;" type="text" name="q" placeholder="Otsing" value="<?=$q;?>">
+				<button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
 
 
 			</form>
@@ -132,6 +132,8 @@
 	<br><br>
 
 	<center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
+	<span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
+	<span style="float: right"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
 
 	<br>
 	<p style="color: dodgerblue;font-size: 25px" class="text-center"> Tere <?=$_SESSION["name"];?>!</p>
@@ -197,72 +199,7 @@
 		}
 		
 	}
-?></fieldset><br><br><br><br><br><br>
-<fieldset style="max-width: 450px;margin: 0 auto">
-<h1 class="text-center" style="color: dodgerblue">Kasutajate tagasiside tabel</h1>
-</fieldset>
-<?php
-
-	$html = "<table style='width: auto'>";
-		$html .= "<tr>";
-
-			$idOrder= "ASC";
-			if(isset($_GET["order"]) && $_GET["order"] == "ASC"){
-					$idOrder = "DESC";
-			}
-			$restoNameOrder= "ASC";
-			if(isset($_GET["order"]) && $_GET["order"] == "ASC"){
-				$restoNameOrder = "DESC";
-			}
-			$gradeOrder= "ASC";
-			if(isset($_GET["order"]) && $_GET["order"] == "ASC"){
-				$gradeOrder = "DESC";
-			}
-			$commentOrder= "ASC";
-			if(isset($_GET["order"]) && $_GET["order"] == "ASC"){
-				$commentOrder = "DESC";
-			}
-			$genderOrder= "ASC";
-			if(isset($_GET["order"]) && $_GET["order"] == "ASC"){
-				$genderOrder = "DESC";
-			}
-			$createdOrder= "ASC";
-			if(isset($_GET["order"]) && $_GET["order"] == "ASC"){
-				$createdOrder = "DESC";
-			}
-
-			$html .= "<th style=\"background-color: lightskyblue\">
-						<a href='?q=".$q."&sort=id&order=".$idOrder."'>id</a></th>";
-			$html .= "<th style=\"background-color: lightblue\">
-						<a href='?q=".$q."&sort=restoName&order=".$restoNameOrder."'>restorani nimi</th>";
-			$html .= "<th style=\"background-color: lightskyblue\">
-						<a href='?q=".$q."&sort=grade&order=".$gradeOrder."'>hinne</th>";
-			$html .= "<th style=\"background-color: lightblue\">
-						<a href='?q=".$q."&sort=comment&order=".$commentOrder."'>kommentaar</th>";
-			$html .= "<th style=\"background-color: lightskyblue\">
-						<a href='?q=".$q."&sort=gender&order=".$genderOrder."'>kliendi sugu</th>";
-			$html .= "<th style=\"background-color: lightblue\">
-						<a href='?q=".$q."&sort=created&order=".$createdOrder."'>loodud</th>";
-			$html .= "<th style='background-color: lightskyblue'></th>";
-		$html .= "</tr>";
-
-	foreach($person as $P){
-		$html .= "<tr>";
-			$html .= '<td style="background-color: lightblue">'.$P->id."</td>";
-			$html .= '<td style="background-color: lightskyblue">'.$P->restoName."</td>";
-			$html .= '<td style="background-color: lightblue">'.$P->grade."</td>";
-			$html .= '<td style="background-color: lightskyblue">'.$P->comment."</td>";
-			$html .= '<td style="background-color: lightblue">'.$P->gender."</td>";
-			$html .= '<td style="background-color: lightskyblue">'.$P->created."</td>";
-        $html .= "<td style='background-color: lightblue;padding: 0px'><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$P->id."'>
-        <span style='color:red;' class='glyphicon glyphicon-edit'></span></a></td>";
-		$html .= "</tr>";
-		
-	}
-	$html .= "<?Table>";
-	echo $html;
-	
-?>
+?></fieldset><br><br><br><br><br><br><br><br><br><br><br><br>
 <!--<audio controls autoplay loop >
     <source src="firstrain.mp3" type="audio/mpeg"  >;
 </audio>-->
