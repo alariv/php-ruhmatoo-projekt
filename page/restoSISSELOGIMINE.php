@@ -207,9 +207,8 @@
 	}
 ?>
 <?php require("../header.php");?>
-<fieldset style="margin: 0 auto;width: 360px;">
-<h1 style="color: dodgerblue;"><b style="font-size: 70px;">RestoGuru</b></h1>
-</fieldset>
+<center><img src="../logo.jpg" alt="logo" style="width:750px;height:200px;"></center>
+
 	<div class="container">
 
 		<div class="row">

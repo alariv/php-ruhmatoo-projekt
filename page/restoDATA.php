@@ -80,7 +80,6 @@
 
 ?>
 	<?php require("../header.php");?>
-		
 			
 			<style>
                 .errors {
@@ -104,15 +103,38 @@
 				}
 
 			</style>
-			<br>
+	<nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
+		<ul class="nav navbar-nav">
+			<a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
+			<li class="nav-item">
+				<a class="nav-link" href="?logout=1"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Kasutajate Tagasiside</a>
+			</li>
+		</ul>
+		<div class="collapse navbar-collapse">
 
-		<span style="float: right"><a class='btn-danger	 btn-sm' href="?logout=1" style="color: white"><span class="glyphicon glyphicon-log-out"></span>  Logi välja</a></span><br><br>
-		<span style="float: right"><a class='btn-warning btn-sm' href="restoUSER.php" style="color: white"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></span></a>
+			<form class="form-inline float-xs-right navbar-right">
+				<input class="form-control" style="height: 50px" type="text" placeholder="Search">
+				<button class="btn btn-success" style="height: 50px" type="submit">Search</button>
 
-	
-	<h1 style="color: dodgerblue;font-size: 70px" class="text-center"><b>RestoGuru</b></h1>
 
-		<p style="color: dodgerblue;font-size: 25px" class="text-center"> Tere <?=$_SESSION["name"];?>!</p>
+			</form>
+		</div>
+	</nav>
+
+	<span class='btn-danger btn-sm' style="float: right"><a style="color: white" href="?logout=1"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a></span>
+
+	<br><br>
+
+	<center><img src="../logo.jpg" alt="logo" style="width:750px;height:200px;"></center>
+
+	<br>
+	<p style="color: dodgerblue;font-size: 25px" class="text-center"> Tere <?=$_SESSION["name"];?>!</p>
 
 	<br><br>
 		<fieldset style="border-bottom-width: 5px;border-top-width: 5px;border-right-width: 0;border-left-width: 0px" class="center">
