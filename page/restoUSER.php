@@ -1,107 +1,103 @@
 <?php
-require("../restoFUNCTIONS.php");
 
-if(!isset ($_SESSION["userId"])) {
+class User
+{
 
-    header("Location: restoSISSELOGIMINE.php");
-    exit();
-}
-if (isset($_GET["logout"])) {
+//klassi sees saab kasutada
+    private $connection;
 
-    session_destroy();
-    header("Location: restoSISSELOGIMINE.php");
-    exit();
-}
+//$user=new user(see); jouab siia sulgude vahele
+    function __construct($mysqli)
+    {
 
+//klassi sees muutujua kasutamiseks $this->
+//this viitab sellele klassile
+        $this->connection = $mysqli;
 
-if (isset ($_POST ["image"])) {
-    // oli olemas, ehk keegi vajutas nuppu
-    if (empty($_POST ["image"])) {
-        //oli tõesti tühi
-        $imageError = "pead sisestama URL-i!";
-    } else {
-        $image = $_POST ["image"];
     }
-}
+    function signup ($signupEmail, $signupPassword, $signupName, $signupLName, $signupage, $phonenr, $signupgender){
 
 
-?>
 
-<?php require("../header.php");?>
-    <style>
-        .red {
-            max-width: 500px;
-            color: red;
-            margin: 0 auto;
-        }.green{
-             max-width: 500px;
-             color: green;
-             margin: 0 auto;
-        }.title{
-             font-size: 70px;
-             max-width: 500px;
-             color: green;
-             margin: 0 auto;
-        }.backout{
-            font-size:30px;
+        //yhendus olemas
+        $this->connection = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"],$GLOBALS["serverPassword"],$GLOBALS["database"]);
+
+        //kask
+        $stmt = $this->connection->prepare("INSERT INTO user_sample (email,password, name, lastname, age, phonenr, gender) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+        echo $this->connection->error;
+        //asendan kysimargid vaartustega
+        //iga muutuja kohta 1 taht
+        //s tahistab stringi
+        //i integer
+        //d double/float
+        $stmt->bind_param("sssssis", $signupEmail, $signupPassword, $signupName, $signupLName, $signupage, $phonenr, $signupgender);
+
+        if($stmt->execute()){
+            echo "kasutaja loomine õnnestus";
+        }else {
+            echo"ERROR ".$stmt->error;
         }
-    </style>
-<nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
-    <ul class="nav navbar-nav">
-        <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
-        <li class="nav-item active">
-            <a class="nav-link" href="restoDATA.php"><span class="glyphicon glyphicon-chevron-left"></span> tagasi</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="?logout=1"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="restoFEEDBACK.php"><span class="glyphicon glyphicon-th-list"></span> Kasutajate Tagasiside</a>
-        </li>
-    </ul>
-<div class="collapse navbar-collapse">
+    }
+    function login($email, $password){
 
-    <form class="form-inline float-xs-right navbar-right">
-        <input class="form-control" style="height: 50px" type="text" placeholder="Otsing">
-        <button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
+        $error = "";
 
+        $this->connection = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"],$GLOBALS["serverPassword"],$GLOBALS["database"]);
 
-    </form>
-</div>
-</nav>
+        //kask
+        $stmt = $this->connection->prepare("
+			SELECT id, email, password, gender, name, lastname, age, phonenr, created
+			FROM user_sample
+			WHERE email=? 
+		");
 
+        echo $this->connection->error;
 
-        <span class='btn-danger btn-sm' style="float: right"><a style="color: white" href="?logout=1"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a></span>
+        //asendan kysimargid
+        $stmt->bind_param("s", $email);
 
-<br><br>
+        //maaran tulpadele muutujad
+        $stmt->bind_result($id, $emailfromdatabase, $passwordfromdatabase, $genderfromdb, $namefromdb, $lastnamefromdb, $agefromdb, $phonenrfromdb, $created);
+        $stmt->execute();
 
-<center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
-<span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
-<span style="float: right"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
+        if($stmt->fetch()) {
+            //oli rida
 
+            //vordlen paroole
+            $hash = hash("sha512", $password);
+            if($hash == $passwordfromdatabase){
 
-    <h1 class="text-center" style="font-size: 70px;color: dodgerblue">Sinu profiil</h1>
-    <br><br>
-    <h1 class="text-center" style="color: maroon">Vabandame!</h1>
-    <br><br>
-    <p class="text-center" style="color: maroon;font-size: large;;">Hetkel käivad arendustööd Teie profiili paremaks muutmiseks.</p>
+                echo "kasutaja ".$id."logis sisse";
 
-    <br><br><br><br><br><br><br><br><br><br>
-
-    <h2 class="text-center" style="color: maroon">TÄNAME KANNATLIKKUSE EEST!</h2>
-
-<br><br><br>
+                $_SESSION["userId"]= $id;
+                $_SESSION["email"]=$emailfromdatabase;
+                $_SESSION["gender"]=$genderfromdb;
+                $_SESSION["name"]=$namefromdb;
+                $_SESSION["lname"]=$lastnamefromdb;
+                $_SESSION["age"]=$agefromdb;
+                $_SESSION["phonenr"]=$phonenrfromdb;
 
 
-<form>
-        <h2 class="text-center">Pildi aadress</h2>
-<fieldset style="width: 300px; margin: 0 auto">
-        <a class="text-center"><input class="text-center form-control" style="width: 300px" type="url" name="image" placeholder="Sisesta pildi URL"></a>
-    <input class="form-control" type="submit" value="save">
-</fieldset></form>
+                //suunan uuele lehele
+                header("location: restoDATA.php");
+
+
+            }else {
+                $error = "Parool vale";
+            }
+
+        }else {
+            //ei olnud
+            $error = "Sellise emailiga ".$email." kasutajat ei ole";
+
+        }
+
+        return $error;
+    }
 
 
 
 
-<?php require("../footer.php");?>
-
+}
+?>

@@ -19,26 +19,26 @@ class User
 
 
 
-    //yhendus olemas
-    $this->connection = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"],$GLOBALS["serverPassword"],$GLOBALS["database"]);
+        //yhendus olemas
+        $this->connection = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"],$GLOBALS["serverPassword"],$GLOBALS["database"]);
 
-    //kask
-    $stmt = $this->connection->prepare("INSERT INTO user_sample (email,password, name, lastname, age, phonenr, gender) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        //kask
+        $stmt = $this->connection->prepare("INSERT INTO user_sample (email,password, name, lastname, age, phonenr, gender) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-    echo $this->connection->error;
-    //asendan kysimargid vaartustega
-    //iga muutuja kohta 1 taht
-    //s tahistab stringi
-    //i integer
-    //d double/float
-    $stmt->bind_param("sssssis", $signupEmail, $signupPassword, $signupName, $signupLName, $signupage, $phonenr, $signupgender);
+        echo $this->connection->error;
+        //asendan kysimargid vaartustega
+        //iga muutuja kohta 1 taht
+        //s tahistab stringi
+        //i integer
+        //d double/float
+        $stmt->bind_param("sssssis", $signupEmail, $signupPassword, $signupName, $signupLName, $signupage, $phonenr, $signupgender);
 
-    if($stmt->execute()){
-        echo "kasutaja loomine õnnestus";
-    }else {
-        echo"ERROR ".$stmt->error;
+        if($stmt->execute()){
+            echo "kasutaja loomine õnnestus";
+        }else {
+            echo"ERROR ".$stmt->error;
+        }
     }
-}
     function login($email, $password){
 
         $error = "";
@@ -47,7 +47,7 @@ class User
 
         //kask
         $stmt = $this->connection->prepare("
-			SELECT id, email, password, gender, name, created
+			SELECT id, email, password, gender, name, lastname, age, phonenr, created
 			FROM user_sample
 			WHERE email=? 
 		");
@@ -58,7 +58,7 @@ class User
         $stmt->bind_param("s", $email);
 
         //maaran tulpadele muutujad
-        $stmt->bind_result($id, $emailfromdatabase, $passwordfromdatabase, $genderfromdb, $namefromdb, $created);
+        $stmt->bind_result($id, $emailfromdatabase, $passwordfromdatabase, $genderfromdb, $namefromdb, $lastnamefromdb, $agefromdb, $phonenrfromdb, $created);
         $stmt->execute();
 
         if($stmt->fetch()) {
@@ -74,6 +74,9 @@ class User
                 $_SESSION["email"]=$emailfromdatabase;
                 $_SESSION["gender"]=$genderfromdb;
                 $_SESSION["name"]=$namefromdb;
+                $_SESSION["lname"]=$lastnamefromdb;
+                $_SESSION["age"]=$agefromdb;
+                $_SESSION["phonenr"]=$phonenrfromdb;
 
 
                 //suunan uuele lehele
