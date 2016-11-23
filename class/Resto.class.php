@@ -16,12 +16,12 @@ class Resto
     }
 
 
-function saverestos($restoName, $grade, $comment, $gender, $customer_name){
+function saverestos($restoName, $grade, $comment, $gender, $customerName, $food, $foodRating, $serviceRating){
 
 
     //yhendus olemas
     //kask
-    $stmt =$this->connection->prepare("INSERT INTO restoranid (restoName,grade,comment,customer_sex, customer_name) VALUES (?, ?, ?, ?, ?)");
+    $stmt =$this->connection->prepare("INSERT INTO restoranid (restoName,grade,food,food_rating,service_rating,comment,customer_sex, customer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
     echo $this->connection->error;
     //asendan kysimargid vaartustega
@@ -29,7 +29,7 @@ function saverestos($restoName, $grade, $comment, $gender, $customer_name){
     //s tahistab stringi
     //i integer
     //d double/float
-    $stmt->bind_param("sssss", $restoName, $grade, $comment, $gender, $customer_name);
+    $stmt->bind_param("ssssssss", $restoName, $grade, $food, $foodRating, $serviceRating, $comment, $gender, $customerName);
 
     if($stmt->execute()){
         echo "salvestamine onnestus ";
@@ -59,17 +59,18 @@ function getallrestos($q, $sort, $order){
     //kask
 
     if($q!="") {
-        $stmt = $this->connection->prepare("SELECT id, restoName, grade, comment, customer_sex, customer_name, created FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
+        $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created 
+                                            FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
                                             ORDER BY $sort $orderBy");
         $searchWord="%".$q."%";
-        $stmt->bind_param("sssssss", $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord);
+        $stmt->bind_param("ssssssssss", $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord);
     }else{
-        $stmt = $this->connection->prepare("SELECT id, restoName, grade, comment, customer_sex, customer_name, created FROM restoranid WHERE deleted is NULL
+        $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created  FROM restoranid WHERE deleted is NULL
                                             ORDER BY $sort $orderBy");
     }
     echo $this->connection->error;
 
-    $stmt->bind_result($id, $restoName, $grade, $comment, $gender, $customer_name, $created);
+    $stmt->bind_result($id, $restoName, $grade, $food, $foodRating, $serviceRating, $comment, $gender, $customer_name, $created);
     $stmt->execute();
 
     $result = array();
@@ -84,8 +85,12 @@ function getallrestos($q, $sort, $order){
         $person->grade = $grade;
         $person->comment = $comment;
         $person->gender = $gender;
-        $person->customer_name = $customer_name;
+        $person->customerName = $customer_name;
         $person->created = $created;
+        $person->food = $food;
+        $person->foodRating = $foodRating;
+        $person->serviceRating = $serviceRating;
+
 
         //echo $color. "<br>";
         array_push($result, $person);

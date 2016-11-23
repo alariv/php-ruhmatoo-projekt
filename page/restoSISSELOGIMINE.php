@@ -68,7 +68,7 @@
     <ul class="nav navbar-nav">
         <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
         <li class="nav-item active">
-            <a class="nav-link" href="restoSIGNUP.php"><span class="glyphicon glyphicon-user"></span> Registreeru</a>
+            <a class="nav-link" href="restoSIGNUP.php" style="color: maroon"><span class="glyphicon glyphicon-user"></span> Registreeru</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="restoFEEDBACKnologin.php"><span class="glyphicon glyphicon-th-list"></span> Kasutajate Tagasiside</a>

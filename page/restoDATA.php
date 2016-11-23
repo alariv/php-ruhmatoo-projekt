@@ -23,6 +23,12 @@
 	$person = "";
     $restoNameError = "";
     $commentError = "";
+    $foodRating = "";
+    $foodRatingError = "";
+    $serviceRating = "";
+    $serviceRatingError = "";
+	$food = "";
+	$foodError = "";
 	//kontrollin et valjad poleks tyhjad
 	if( isset($_POST["restoName"]) &&
 		isset($_POST["comment"]) &&
@@ -30,7 +36,7 @@
 		!empty($_POST["comment"])
 	)	{
 
-		$Resto->saverestos($_POST["restoName"],$_POST["grade"],$_POST["comment"],$_SESSION["gender"],$_SESSION["name"]);
+		$Resto->saverestos($_POST["restoName"],$_POST["grade"],$_POST["comment"],$_SESSION["gender"],$_SESSION["name"],$_POST["food"],$_POST["foodRating"],$_POST["serviceRating"]);
 		header("Location: restoFEEDBACK.php");
 		exit();
 	}
@@ -70,6 +76,33 @@
             $comment = $_POST ["comment"];
         }
     }
+	if (isset ($_POST ["serviceRating"])) {
+		// oli olemas, ehk keegi vajutas nuppu
+		if (empty($_POST ["serviceRating"])) {
+			//oli tõesti tühi
+			$serviceRatingError = "Vali hinne!";
+		} else {
+			$serviceRating = $_POST ["serviceRating"];
+		}
+	}
+	if (isset ($_POST ["foodRating"])) {
+		// oli olemas, ehk keegi vajutas nuppu
+		if (empty($_POST ["foodRating"])) {
+			//oli tõesti tühi
+			$foodRatingError = "Vali hinne!";
+		} else {
+			$foodRating = $_POST ["foodRating"];
+		}
+	}
+	if (isset ($_POST ["food"])) {
+		// oli olemas, ehk keegi vajutas nuppu
+		if (empty($_POST ["food"])) {
+			//oli tõesti tühi
+			$foodError = "Sisesta toit!";
+		} else {
+			$food = $_POST ["food"];
+		}
+	}
 
 
 
@@ -110,7 +143,7 @@
 		<ul class="nav navbar-nav">
 			<a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
 			<li class="nav-item">
-				<a class="nav-link" href="?logout=1"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
+				<a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
@@ -150,33 +183,33 @@
 			<a style="color: dodgerblue"> Üldine hinnang restoranile:</a><br>
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6 col-md-4 col-sm-offset-4 col-md-offset-1">
+					<div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1">
 
-							<input type="radio" name="grade" value="1">väga halb</input><br>
-							<input type="radio" name="grade" value="2">halb</input><br>
-							<input type="radio" name="grade" value="3">keskpärane</input><br>
-							<input type="radio" name="grade" value="4">hea</input><br>
-							<input type="radio" name="grade" value="5" checked>väga hea</input><br>
+						<text style="color: maroon"><input type="radio" name="grade" value="1"><b> 1</b> - väga halb</input></text><br>
+						<text style="color: maroon"><input type="radio" name="grade" value="2"><b> 2</b> - halb</input></text><br>
+						<text style="color: maroon"><input type="radio" name="grade" value="3"><b> 3</b> - keskpärane</input></text><br>
+						<text style="color: maroon"><input type="radio" name="grade" value="4"><b> 4</b> - hea</input></text><br>
+						<text style="color: maroon"><input type="radio" name="grade" value="5" checked><b> 5</b> - väga hea</input></text><br>
 						<br>
 					</div>
 				</div>
 			</div>
 
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Mida sõin?</a>
-			<input class="form-control" placeholder="Toit" name="foodname" type="text">
+			<input class="form-control" placeholder="Toit" name="food" type="text">
 			<br>
 
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
 			<a style="color: dodgerblue"> Hinnang teenindusele:</a><br>
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6 col-md-4 col-sm-offset-4 col-md-offset-1">
+					<div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1">
 
-						<input type="radio" name="grade" value="1">väga halb</input><br>
-						<input type="radio" name="grade" value="2">halb</input><br>
-						<input type="radio" name="grade" value="3">keskpärane</input><br>
-						<input type="radio" name="grade" value="4">hea</input><br>
-						<input type="radio" name="grade" value="5" checked>väga hea</input><br>
+						<text style="color: maroon"><input type="radio" name="serviceRating" value="1"><b> 1</b> - väga halb</input></text><br>
+						<text style="color: maroon"><input type="radio" name="serviceRating" value="2"><b> 2</b> - halb</input></text><br>
+						<text style="color: maroon"><input type="radio" name="serviceRating" value="3"><b> 3</b> - keskpärane</input></text><br>
+						<text style="color: maroon"><input type="radio" name="serviceRating" value="4"><b> 4</b> - hea</input></text><br>
+						<text style="color: maroon"><input type="radio" name="serviceRating" value="5" checked><b> 5</b> - väga hea</input></text><br>
 						<br>
 					</div>
 				</div>
@@ -186,13 +219,13 @@
 			<a style="color: dodgerblue"> Hinnang toidule:</a><br>
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6 col-md-4 col-sm-offset-4 col-md-offset-1">
+					<div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1">
 
-						<input type="radio" name="grade" value="1">väga halb</input><br>
-						<input type="radio" name="grade" value="2">halb</input><br>
-						<input type="radio" name="grade" value="3">keskpärane</input><br>
-						<input type="radio" name="grade" value="4">hea</input><br>
-						<input type="radio" name="grade" value="5" checked>väga hea</input><br>
+						<text style="color: maroon"><input type="radio" name="foodRating" value="1"><b> 1</b> - väga halb</input></text><br>
+						<text style="color: maroon"><input type="radio" name="foodRating" value="2"><b> 2</b> - halb</input></text><br>
+						<text style="color: maroon"><input type="radio" name="foodRating" value="3"><b> 3</b> - keskpärane</input></text><br>
+						<text style="color: maroon"><input type="radio" name="foodRating" value="4"><b> 4</b> - hea</input></text><br>
+						<text style="color: maroon"><input type="radio" name="foodRating" value="5" checked><b> 5</b> - väga hea</input></text><br>
 						<br>
 					</div>
 				</div>
