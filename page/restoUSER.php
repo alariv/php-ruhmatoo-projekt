@@ -39,7 +39,7 @@ if (isset ($_POST ["image"])) {
         border-radius: 30px;
     }
 </style>
-<nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
+<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
     <ul class="nav navbar-nav">
         <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
         <li class="nav-item active">
@@ -57,7 +57,7 @@ if (isset ($_POST ["image"])) {
     </ul>
     <div class="collapse navbar-collapse">
 
-        <form class="form-inline float-xs-right navbar-right">
+        <form class="form-inline float-xs-right pull-right">
             <input class="form-control" style="height: 50px" type="text" placeholder="Otsing">
             <button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
 
@@ -84,12 +84,12 @@ if (isset ($_POST ["image"])) {
 
                 <h2>Profiil</h2>
 
-                <a> Sinu unikaalne id : </a><?=$_SESSION["userId"];?><br>
-                <a> Email : </a><?=$_SESSION["email"];?><br>
-                <a> Nimi : </a><?=$_SESSION["name"];?><br>
-                <a> Perekonnanimi : </a><?=$_SESSION["lname"];?><br>
-                <a> Vanus : </a><?=$_SESSION["age"];?><br>
-                <a> Telefoni number : </a><?=$_SESSION["phonenr"];?><br>
+                <h3 style="color: dodgerblue"> #<?=$_SESSION["userId"];?></h3><br>
+                <text style="color: dodgerblue"> Email :</text><?=$_SESSION["email"];?> <br>
+                <text style="color: dodgerblue"> Nimi :</text> <?=$_SESSION["name"];?><br>
+                <text style="color: dodgerblue"> Perekonnanimi :</text> <?=$_SESSION["lname"];?><br>
+                <text style="color: dodgerblue"> Vanus :</text> <?=$_SESSION["age"];?><br>
+                <text style="color: dodgerblue"> Telefoni number :</text> <?=$_SESSION["phonenr"];?><br>
 
             </div>
         </div>

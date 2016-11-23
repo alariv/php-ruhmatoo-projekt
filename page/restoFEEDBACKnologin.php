@@ -55,7 +55,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
         </ul>
         <div class="collapse navbar-collapse">
 
-            <form class="form-inline float-xs-right navbar-right">
+            <form class="form-inline float-xs-right pull-right">
                 <input class="form-control disabled" disabled="disabled" style="height: 50px;width: 250px" type="text" placeholder="Pead olema sisselogitud, et otsida">
                 <button class="btn btn-primary disabled" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
 

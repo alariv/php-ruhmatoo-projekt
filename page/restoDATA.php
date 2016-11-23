@@ -31,7 +31,7 @@
 	)	{
 
 		$Resto->saverestos($_POST["restoName"],$_POST["grade"],$_POST["comment"],$_SESSION["gender"],$_SESSION["name"]);
-		//header("Location: restoFEEDBACK.php");
+		header("Location: restoFEEDBACK.php");
 		exit();
 	}
 
@@ -103,7 +103,7 @@
 				}
 
 			</style>
-	<nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
+	<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
 		<ul class="nav navbar-nav">
 			<a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
 			<li class="nav-item">
@@ -118,7 +118,7 @@
 		</ul>
 		<div class="collapse navbar-collapse">
 
-			<form class="form-inline float-xs-right navbar-right">
+			<form class="form-inline float-xs-right pull-right">
 				<input class="form-control" style="height: 50px;color: dodgerblue;" type="text" name="q" placeholder="Otsing" value="<?=$q;?>">
 				<button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
 
@@ -126,9 +126,6 @@
 			</form>
 		</div>
 	</nav>
-
-	<span class='btn-danger btn-sm' style="float: right"><a style="color: white" href="?logout=1"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a></span>
-
 	<br><br>
 
 	<center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>

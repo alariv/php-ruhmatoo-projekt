@@ -41,7 +41,7 @@ class Edit
             // sellist id'd ei ole olemas
             // see rida võib olla kustutatud
             echo "Midagi laks valesti:/";
-            header("Location: restoDATA.php");
+           header("Location: restoDATA.php");
             exit();
         }
 
