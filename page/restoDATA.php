@@ -144,16 +144,60 @@
             <p class="errors"><?php echo $restoNameError; ?></p>
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Nimi</a>
 			<input class="form-control" placeholder="Restorani nimi" name="restoName" type="text">
-			
-			<br><span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
-			<a style="color: dodgerblue"> Hinnang:</a>
-					<input type="radio" name="grade" value="1">1</input>
-					<input type="radio" name="grade" value="2">2</input>
-					<input type="radio" name="grade" value="3">3</input>
-					<input type="radio" name="grade" value="4">4</input>
-					<input type="radio" name="grade" value="5" checked>5</input>
-			
 			<br>
+
+			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
+			<a style="color: dodgerblue"> Üldine hinnang restoranile:</a><br>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-4 col-sm-offset-4 col-md-offset-1">
+
+							<input type="radio" name="grade" value="1">väga halb</input><br>
+							<input type="radio" name="grade" value="2">halb</input><br>
+							<input type="radio" name="grade" value="3">keskpärane</input><br>
+							<input type="radio" name="grade" value="4">hea</input><br>
+							<input type="radio" name="grade" value="5" checked>väga hea</input><br>
+						<br>
+					</div>
+				</div>
+			</div>
+
+			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Mida sõin?</a>
+			<input class="form-control" placeholder="Toit" name="foodname" type="text">
+			<br>
+
+			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
+			<a style="color: dodgerblue"> Hinnang teenindusele:</a><br>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-4 col-sm-offset-4 col-md-offset-1">
+
+						<input type="radio" name="grade" value="1">väga halb</input><br>
+						<input type="radio" name="grade" value="2">halb</input><br>
+						<input type="radio" name="grade" value="3">keskpärane</input><br>
+						<input type="radio" name="grade" value="4">hea</input><br>
+						<input type="radio" name="grade" value="5" checked>väga hea</input><br>
+						<br>
+					</div>
+				</div>
+			</div>
+
+			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
+			<a style="color: dodgerblue"> Hinnang toidule:</a><br>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-4 col-sm-offset-4 col-md-offset-1">
+
+						<input type="radio" name="grade" value="1">väga halb</input><br>
+						<input type="radio" name="grade" value="2">halb</input><br>
+						<input type="radio" name="grade" value="3">keskpärane</input><br>
+						<input type="radio" name="grade" value="4">hea</input><br>
+						<input type="radio" name="grade" value="5" checked>väga hea</input><br>
+						<br>
+					</div>
+				</div>
+			</div>
+
             <p class="errors"><?php echo $commentError; ?></p>
 			<div class="form-group">
 				<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span>
