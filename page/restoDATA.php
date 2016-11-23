@@ -101,6 +101,9 @@
 				.feedback{
 					float:left;
 				}
+				.img{
+					position:fixed right;
+				}
 
 			</style>
 	<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
@@ -130,7 +133,7 @@
 
 	<center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
 	<span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
-	<span style="float: right"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
+	<span style="float: right" class="img"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
 
 	<br>
 	<p style="color: dodgerblue;font-size: 25px" class="text-center"> Tere <?=$_SESSION["name"];?>!</p>

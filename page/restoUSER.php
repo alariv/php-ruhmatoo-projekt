@@ -85,11 +85,11 @@ if (isset ($_POST ["image"])) {
                 <h2>Profiil</h2>
 
                 <h3 style="color: dodgerblue"> #<?=$_SESSION["userId"];?></h3><br>
-                <text style="color: dodgerblue"> Email :</text><?=$_SESSION["email"];?> <br>
-                <text style="color: dodgerblue"> Nimi :</text> <?=$_SESSION["name"];?><br>
-                <text style="color: dodgerblue"> Perekonnanimi :</text> <?=$_SESSION["lname"];?><br>
-                <text style="color: dodgerblue"> Vanus :</text> <?=$_SESSION["age"];?><br>
-                <text style="color: dodgerblue"> Telefoni number :</text> <?=$_SESSION["phonenr"];?><br>
+                <text style="color: dodgerblue"> Email :</text><text style="float: right"><?=$_SESSION["email"];?></text><br>
+                <text style="color: dodgerblue"> Eesnimi :</text><text style="float: right"> <?=$_SESSION["name"];?></text><br>
+                <text style="color: dodgerblue"> Perekonnanimi :</text><text style="float: right"> <?=$_SESSION["lname"];?></text><br>
+                <text style="color: dodgerblue"> Vanus :</text><text style="float: right"> <?=$_SESSION["age"];?></text><br>
+                <text style="color: dodgerblue"> Telefoni number :</text><text style="float: right"> <?=$_SESSION["phonenr"];?></text><br>
 
             </div>
         </div>
