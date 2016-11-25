@@ -62,6 +62,58 @@
         box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.3);
         border-radius: 30px;
     }
+    body { margin: 30px; }
+    h1 { font-size: 1.5em; }
+    label { font-size: 24px; }
+    container {
+        width: 175px;
+        margin-left: 20px;
+    }
+
+    input[type=radio].with-font,
+    input[type=checkbox].with-font {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    input[type=radio].with-font ~ label:before,
+    input[type=checkbox].with-font ~ label:before {
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f1db";
+        letter-spacing: 10px;
+        font-size: 1.2em;
+        color: #535353;
+        width: 1.4em;
+    }
+
+    input[type=radio].with-font:checked ~ label:before,
+    input[type=checkbox].with-font:checked ~ label:before  {
+        content: "\f00c";
+        font-size: 1.2em;
+        color: dodgerblue;
+        letter-spacing: 5px;
+    }
+    input[type=checkbox].with-font ~ label:before {
+        content: "\f096";
+    }
+    input[type=checkbox].with-font:checked ~ label:before {
+        content: "\f046";
+        color: dodgerblue;
+    }
+    input[type=radio].with-font:focus ~ label:before,
+    input[type=checkbox].with-font:focus ~ label:before,
+    input[type=radio].with-font:focus ~ label,
+    input[type=checkbox].with-font:focus ~ label
+    {
+        color: dodgerblue;
+    }
 </style>
 
 <nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
@@ -91,24 +143,30 @@
 
 	<div class="container">
 		<div class="row">
-
-
-
 			<div class="col-sm-6 col-md-4 col-sm-offset-4 col-md-offset-4">
 
 				<center><h2><b>Logi sisse</b></h2></center>
                 <div class="account-wall">
                     <p style="color: lightcoral"><?=$error;?></p>
                     <form method="POST">
-                        <p style="color: lightcoral"><?php echo $loginemailError; ?></p><a style="color: dodgerblue">E-mail</a><br>
+                        <p style="color: lightcoral"><?php echo $loginemailError; ?></p>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-envelope"></span>
+                            </span>
                             <input class="form-control" placeholder="E-mail" name="loginEmail" type="email">
+                        </div>
 
-                            <br><br>
-                        <p style="color: lightcoral"><?php echo $loginpasswordError; ?></p><a style="color: dodgerblue">Parool</a><br>
+                            <br>
+                        <p style="color: lightcoral"><?php echo $loginpasswordError; ?></p>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </span>
                             <input class="form-control" placeholder="Parool" name="loginPassword" type="password">
+                        </div>
 
-
-                            <br><br>
+                        <br><br>
 
                         <p class="text-center"><button type="submit" class="btn btn-info">
                                 <span class="glyphicon glyphicon-log-in"></span> Logi sisse
@@ -122,6 +180,23 @@
 				</div>
 			</div>
 		</div>
+
+<h1>Custom Radio Buttons</h1>
+<div class=".container">
+    <div>
+        <input id="question1" name="question" type="radio" class="with-font" value="sel" />
+        <label for="question1">Radio 1</label>
+    </div>
+    <div>
+        <input id="question2" name="question"type="radio" class="with-font" value="sel"/>
+        <label for="question2">Radio 2</label>
+        <div>
+            <div>
+                <input id="question3" name="question" type="radio" class="with-font" value="sel"/>
+                <label for="question3">Radio 3</label>
+            </div>
+        </div>
+
 <!--<audio controls autoplay loop >
 						<source src="intro.mp3" type="audio/mpeg"  >;
 					</audio>-->
