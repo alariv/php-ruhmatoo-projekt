@@ -137,6 +137,37 @@
 				.img{
 					position:fixed right;
 				}
+				div.stars {
+					width: 270px;
+					display: inline-block;
+				}
+				input.star { display: none; }
+				label.star {
+					float: right;
+					padding: 10px;
+					font-size: 36px;
+					color: #444;
+					transition: all .2s;
+				}
+				input.star:checked ~ label.star:before {
+					content: '\f005';
+					color: #FD4;
+					transition: all .25s;
+				}
+				input.star-5:checked ~ label.star:before {
+					color: #FE7;
+					text-shadow: 0 0 20px #952;
+				}
+				input.star-1:checked ~ label.star:before { color: #ff0008; }
+				input.star-2:checked ~ label.star:before { color: #ff5200; }
+				input.star-3:checked ~ label.star:before { color: #ff9007; }
+				input.star-4:checked ~ label.star:before { color: #ffc533; }
+				label.star:hover { transform: rotate(-72deg) scale(1.2); }
+				label.star:before {
+					content: '\f006';
+					font-family: FontAwesome;
+				}
+
 
 			</style>
 	<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
@@ -181,19 +212,21 @@
 
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
 			<a style="color: dodgerblue"> Üldine hinnang restoranile:</a><br>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1">
+			<div class="stars">
 
-						<text style="color: maroon"><input type="radio" name="grade" value="1"><b> 1</b> - väga halb</input></text><br>
-						<text style="color: maroon"><input type="radio" name="grade" value="2"><b> 2</b> - halb</input></text><br>
-						<text style="color: maroon"><input type="radio" name="grade" value="3"><b> 3</b> - keskpärane</input></text><br>
-						<text style="color: maroon"><input type="radio" name="grade" value="4"><b> 4</b> - hea</input></text><br>
-						<text style="color: maroon"><input type="radio" name="grade" value="5" checked><b> 5</b> - väga hea</input></text><br>
-						<br>
-					</div>
-				</div>
-			</div>
+					<input class="star star-5" id="grade-5" type="radio" value="5" name="grade">
+					<label class="star star-5" for="grade-5"></label>
+					<input class="star star-4" id="grade-4" type="radio" value="4" name="grade">
+					<label class="star star-4" for="grade-4"></label>
+					<input class="star star-3" id="grade-3" type="radio" value="3" name="grade">
+					<label class="star star-3" for="grade-3"></label>
+					<input class="star star-2" id="grade-2" type="radio" value="2" name="grade">
+					<label class="star star-2" for="grade-2"></label>
+					<input class="star star-1" id="grade-1" type="radio" value="1" name="grade">
+					<label class="star star-1" for="grade-1"></label>
+
+			</div><br>
+
 
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Mida sõin?</a>
 			<input class="form-control" placeholder="Toit" name="food" type="text">
@@ -201,35 +234,37 @@
 
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
 			<a style="color: dodgerblue"> Hinnang teenindusele:</a><br>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1">
+			<div class="stars">
 
-						<text style="color: maroon"><input type="radio" name="serviceRating" value="1"><b> 1</b> - väga halb</input></text><br>
-						<text style="color: maroon"><input type="radio" name="serviceRating" value="2"><b> 2</b> - halb</input></text><br>
-						<text style="color: maroon"><input type="radio" name="serviceRating" value="3"><b> 3</b> - keskpärane</input></text><br>
-						<text style="color: maroon"><input type="radio" name="serviceRating" value="4"><b> 4</b> - hea</input></text><br>
-						<text style="color: maroon"><input type="radio" name="serviceRating" value="5" checked><b> 5</b> - väga hea</input></text><br>
-						<br>
-					</div>
-				</div>
-			</div>
+					<input class="star star-5" id="serviceRating-5" type="radio" value="5" name="serviceRating">
+					<label class="star star-5" for="serviceRating-5"></label>
+					<input class="star star-4" id="serviceRating-4" type="radio" value="4" name="serviceRating">
+					<label class="star star-4" for="serviceRating-4"></label>
+					<input class="star star-3" id="serviceRating-3" type="radio" value="3" name="serviceRating">
+					<label class="star star-3" for="serviceRating-3"></label>
+					<input class="star star-2" id="serviceRating-2" type="radio" value="2" name="serviceRating">
+					<label class="star star-2" for="serviceRating-2"></label>
+					<input class="star star-1" id="serviceRating-1" type="radio" value="1" name="serviceRating">
+					<label class="star star-1" for="serviceRating-1"></label>
+
+			</div><br>
 
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
 			<a style="color: dodgerblue"> Hinnang toidule:</a><br>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1">
+			<div class="stars">
 
-						<text style="color: maroon"><input type="radio" name="foodRating" value="1"><b> 1</b> - väga halb</input></text><br>
-						<text style="color: maroon"><input type="radio" name="foodRating" value="2"><b> 2</b> - halb</input></text><br>
-						<text style="color: maroon"><input type="radio" name="foodRating" value="3"><b> 3</b> - keskpärane</input></text><br>
-						<text style="color: maroon"><input type="radio" name="foodRating" value="4"><b> 4</b> - hea</input></text><br>
-						<text style="color: maroon"><input type="radio" name="foodRating" value="5" checked><b> 5</b> - väga hea</input></text><br>
-						<br>
-					</div>
-				</div>
-			</div>
+					<input class="star star-5" id="foodRating-5" type="radio" value="5" name="foodRating">
+					<label class="star star-5" for="foodRating-5"></label>
+					<input class="star star-4" id="foodRating-4" type="radio" value="4" name="foodRating">
+					<label class="star star-4" for="foodRating-4"></label>
+					<input class="star star-3" id="foodRating-3" type="radio" value="3" name="foodRating">
+					<label class="star star-3" for="foodRating-3"></label>
+					<input class="star star-2" id="foodRating-2" type="radio" value="2" name="foodRating">
+					<label class="star star-2" for="foodRating-2"></label>
+					<input class="star star-1" id="foodRating-1" type="radio" value="1" name="foodRating">
+					<label class="star star-1" for="foodRating-1"></label>
+
+			</div><br>
 
             <p class="errors"><?php echo $commentError; ?></p>
 			<div class="form-group">
@@ -241,7 +276,8 @@
 			<br>
 			
 			<input class='btn-success btn-lg' style="width: 300px;height: 50px" type="submit">
-		
+			<button type="button" class='btn btn-elegant btn-lg'>
+
 		</form>
 
 		</fieldset><br>
