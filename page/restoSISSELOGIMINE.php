@@ -181,21 +181,6 @@
 			</div>
 		</div>
 
-<h1>Custom Radio Buttons</h1>
-<div class=".container">
-    <div>
-        <input id="question1" name="question" type="radio" class="with-font" value="sel" />
-        <label for="question1">Radio 1</label>
-    </div>
-    <div>
-        <input id="question2" name="question"type="radio" class="with-font" value="sel"/>
-        <label for="question2">Radio 2</label>
-        <div>
-            <div>
-                <input id="question3" name="question" type="radio" class="with-font" value="sel"/>
-                <label for="question3">Radio 3</label>
-            </div>
-        </div>
 
 <!--<audio controls autoplay loop >
 						<source src="intro.mp3" type="audio/mpeg"  >;
