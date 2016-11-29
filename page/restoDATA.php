@@ -276,7 +276,6 @@
 			<br>
 			
 			<input class='btn-success btn-lg' style="width: 300px;height: 50px" type="submit">
-			<button type="button" class='btn btn-elegant btn-lg'>
 
 		</form>
 
