@@ -12,8 +12,6 @@ if (isset($_GET["logout"])) {
     header("Location: restoSISSELOGIMINE.php");
     exit();
 }
-
-
 if (isset ($_POST ["image"])) {
     // oli olemas, ehk keegi vajutas nuppu
     if (empty($_POST ["image"])) {
@@ -106,7 +104,7 @@ if (isset ($_POST ["image"])) {
                 foreach($restos as $r){
 
 
-                    $listHtml .= "<li>".$r->interest."</li>";
+                    $listHtml .= "<li>".$r->restoName."</li>";
                 }
 
                 $listHtml .= "</ul>";

@@ -147,8 +147,8 @@ if( empty($signupEmailError)&&
     //echo "sugu: ".$signupgender."<br>";
     //echo "telefoni number: ".$phonenr."<br>";
 
-    $signupEmail = cleanInput($signupEmail);
-    $password = cleanInput($password);
+    $signupEmail = $Helper->cleanInput($signupEmail);
+    $password = $Helper->cleanInput($password);
     $User->signup($signupEmail, $password, $signupName, $signupLName, $signupage, $phonenr, $signupgender);
 
 }

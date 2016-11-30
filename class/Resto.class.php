@@ -100,5 +100,40 @@ function getallrestos($q, $sort, $order){
     return $result;
 }
 
+function getUserRestos($r){
+        if($r!="") {
+            $stmt = $this->connection->prepare("SELECT id, restoName, food, created 
+                                                FROM restoranid WHERE deleted is NULL AND id=?)");
+            $stmt->bind_param("ssss");
+        }else{
+            $stmt = $this->connection->prepare("SELECT id, restoName, food, created 
+                                                FROM restoranid WHERE deleted is NULL");
+        }
+        echo $this->connection->error;
+
+        $stmt->bind_result($id, $restoName, $food, $created);
+        $stmt->execute();
+
+        $result = array();
+
+
+        //seni kuni on 1 rida andmeid saada(10rida=10korda)
+        while($stmt->fetch()){
+
+            $restos = new StdClass();
+            $restos->id = $id;
+            $restos->restoName = $restoName;
+            $restos->created = $created;
+            $restos->food = $food;
+
+
+            //echo $color. "<br>";
+            array_push($result, $restos);
+
+        }
+        $stmt->close();
+        return $result;
+    }
+
 }
 ?>

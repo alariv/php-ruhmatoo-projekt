@@ -7,6 +7,7 @@ class User
     private $connection;
 
 //$user=new user(see); jouab siia sulgude vahele
+
     function __construct($mysqli)
     {
 
@@ -15,6 +16,7 @@ class User
         $this->connection = $mysqli;
 
     }
+
     function signup ($signupEmail, $signupPassword, $signupName, $signupLName, $signupage, $phonenr, $signupgender){
 
 
@@ -39,6 +41,7 @@ class User
             echo"ERROR ".$stmt->error;
         }
     }
+
     function login($email, $password){
 
         $error = "";
