@@ -21,6 +21,15 @@ if (isset ($_POST ["image"])) {
         $image = $_POST ["image"];
     }
 }
+if(isset($_GET["r"])){
+    //kui otsib siis votame otsisona aadressirealt
+    $r = $_GET["r"];
+}else {
+    //otsisona tyhi
+    $r="";
+}
+$restos = $Resto->getUserRestos($r);
+
 
 //$Resto->getUserRestos($restos);
 ?>
@@ -101,10 +110,10 @@ if (isset ($_POST ["image"])) {
 
                 $listHtml = "<ul>";
 
-                foreach($restos as $r){
+                foreach($restos as $R){
 
 
-                    $listHtml .= "<li>".$r->restoName."</li>";
+                    $listHtml .= "<li>".$R->restoName."</li>";
                 }
 
                 $listHtml .= "</ul>";

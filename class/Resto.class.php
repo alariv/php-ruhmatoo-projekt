@@ -101,39 +101,51 @@ function getallrestos($q, $sort, $order){
 }
 
 function getUserRestos($r){
-        if($r!="") {
-            $stmt = $this->connection->prepare("SELECT id, restoName, food, created 
-                                                FROM restoranid WHERE deleted is NULL AND id=?)");
-            $stmt->bind_param("ssss");
-        }else{
-            $stmt = $this->connection->prepare("SELECT id, restoName, food, created 
-                                                FROM restoranid WHERE deleted is NULL");
-        }
-        echo $this->connection->error;
 
-        $stmt->bind_result($id, $restoName, $food, $created);
-        $stmt->execute();
-
-        $result = array();
+    $allwoedSort = ["restoName","created"];
 
 
-        //seni kuni on 1 rida andmeid saada(10rida=10korda)
-        while($stmt->fetch()){
+    if(!in_array($sort,$allwoedSort)){
+        //ei ole lubatud tulp
+        $sort="id";
 
-            $restos = new StdClass();
-            $restos->id = $id;
-            $restos->restoName = $restoName;
-            $restos->created = $created;
-            $restos->food = $food;
-
-
-            //echo $color. "<br>";
-            array_push($result, $restos);
-
-        }
-        $stmt->close();
-        return $result;
+    }
+    $orderBy = "ASC";
+    if($order == "DESC"){
+        $orderBy = "DESC";
     }
 
+
+    $stmt = $this->connection->prepare("
+			SELECT restoName, food, created
+            FROM restoranid
+            JOIN user_restos ON restoranid.id = user_restos.resto_id
+            WHERE user_restos.user_id=?
+		");
+    echo $this->connection->error;
+
+    $stmt->bind_param("i", $_SESSION["userId"]);
+
+    $stmt->bind_result($restoName, $created);
+    $stmt->execute();
+
+
+    //tekitan massiivi
+    $result = array();
+
+    // tee seda seni, kuni on rida andmeid
+    // mis vastab select lausele
+    while ($stmt->fetch()) {
+
+        //tekitan objekti
+        $i = new StdClass();
+        $i->interest = $interest;
+
+        array_push($result, $i);
+    }
+
+    $stmt->close();
+
+    return $result;
 }
 ?>
