@@ -83,7 +83,7 @@ class User
 
 
                 //suunan uuele lehele
-                header("location: restoDATA.php");
+                header("location: restoWELCOME.php");
 
 
             }else {

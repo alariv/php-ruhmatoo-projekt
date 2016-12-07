@@ -121,7 +121,7 @@ foreach($person as $P){
     $html .= '<td style="background-color: lightblue">'.$P->grade."</td>";
     $html .= '<td style="background-color: lightskyblue">'.$P->comment."</td>";
     $html .= '<td style="background-color: lightblue">'.$P->gender."</td>";
-    $html .= '<td style="background-color: lightskyblue">'.$P->customer_name."</td>";
+    $html .= '<td style="background-color: lightskyblue">'.$P->customerName."</td>";
     $html .= '<td style="background-color: lightblue">'.$P->created."</td>";
     $html .= "<td style='background-color: lightskyblue;padding: 0px'><a class='btn btn-outline-danger disabled btn-md' href='restoEDIT.php?id=".$P->id."'>
         <span style='color:red;' class='glyphicon glyphicon-edit'></span></a></td>";

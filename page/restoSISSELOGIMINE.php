@@ -6,7 +6,7 @@
 	//kas kasutaja on sisse loginud
 	if(isset ($_SESSION["userId"])) {
 		
-		header ("Location: restoDATA.php");
+		header ("Location: restoWELCOME.php");
 		exit();
 		
 	}

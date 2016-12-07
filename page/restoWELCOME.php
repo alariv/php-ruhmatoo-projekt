@@ -1,5 +1,13 @@
 <?php
 
+require("../restoFUNCTIONS.php");
+
+if(!isset ($_SESSION["userId"])) {
+
+    //header("Location: restoSISSELOGIMINE.php");
+    exit();
+}
+
 if(isset($_GET["logout"])) {
 
     session_destroy();
@@ -43,12 +51,10 @@ if(isset($_GET["logout"])) {
 
                 <div class="account-wall">
 
-                   <a class="btn btn-elegant btn-lg btn-block" href="restoFEEDBACK.php">Kasutajate tagasisise</a>
-                    <a class="btn btn-elegant btn-md btn-block" href="restoUSER.php">Sinu profiil</a>
-                    <a class="btn btn-elegant btn-sm btn-block" href="?logout=1.php">Logi välja</a><br>
-                    <button type="button" class="btn btn-elegant">Elegant</button>
-                    <button type="button" class="btn btn-outline-primary waves-effect">Primary</button>
-                    <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+                   <a class="btn btn-primary btn-lg btn-block" href="restoFEEDBACK.php">Kasutajate tagasisise</a>
+                    <a class="btn btn-primary btn-md btn-block" href="restoUSER.php">Sinu profiil</a>
+                    <a class="btn btn-default btn-sm btn-block" style="color: #ff684b" href="?logout=1">Logi välja</a><br>
+
 
 
 
