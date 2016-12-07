@@ -16,14 +16,14 @@ class Resto
 
     }
 
-
     function saverestos($restoName, $grade, $comment, $gender, $customerName, $food, $foodRating, $serviceRating)
     {
 
 
         //yhendus olemas
         //kask
-        $stmt = $this->connection->prepare("INSERT INTO restoranid (restoName,grade,food,food_rating,service_rating,comment,customer_sex, customer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->connection->prepare("INSERT INTO restoranid (restoName,grade,food,food_rating,service_rating,comment,customer_sex, customer_name) 
+                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
         echo $this->connection->error;
         //asendan kysimargid vaartustega
@@ -62,12 +62,13 @@ class Resto
 
         if ($q != "") {
             $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created 
-                                            FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
-                                            ORDER BY $sort $orderBy");
+                                                FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
+                                                ORDER BY $sort $orderBy");
             $searchWord = "%" . $q . "%";
             $stmt->bind_param("ssssssssss", $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord);
         } else {
-            $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created  FROM restoranid WHERE deleted is NULL
+            $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created  
+                                                FROM restoranid WHERE deleted is NULL
                                             ORDER BY $sort $orderBy");
         }
         echo $this->connection->error;
@@ -102,34 +103,60 @@ class Resto
         return $result;
     }
 
-    function getUserRestos($r)
+    function saveUserRestos($userId, $restoId)
     {
 
-        $allwoedSort = ["restoName", "created"];
 
+        //yhendus olemas
+        //kask
+        $stmt = $this->connection->prepare("INSERT INTO user_restos (user_id, resto_id) 
+                                            VALUES (?, ?)");
 
-        if (!in_array($sort, $allwoedSort)) {
-            //ei ole lubatud tulp
-            $sort = "id";
+        echo $this->connection->error;
+        //asendan kysimargid vaartustega
+        //iga muutuja kohta 1 taht
+        //s tahistab stringi
+        //i integer
+        //d double/float
+        $stmt->bind_param("ii", $userId, $restoId);
 
+        if ($stmt->execute()) {
+            echo "salvestamine onnestus ";
+        } else {
+            echo "ERROR " . $stmt->error;
         }
-        $orderBy = "ASC";
-        if ($order == "DESC") {
-            $orderBy = "DESC";
-        }
+
+
+    }
+
+    function getUserRestos()
+    {
+
+        /*       $allwoedSort = ["restoId", "created"];
+
+
+            if (!in_array($sort, $allwoedSort)) {
+                  //ei ole lubatud tulp
+                  $sort = "id";
+
+              }
+              $orderBy = "ASC";
+              if ($order == "DESC") {
+                  $orderBy = "DESC";
+              } */
 
 
         $stmt = $this->connection->prepare("
-			SELECT restoName, food, created
+			SELECT user_id, resto_id, restoName
             FROM restoranid
             JOIN user_restos ON restoranid.id = user_restos.resto_id
-            WHERE user_restos.user_id=?
+            WHERE user_restos.user_id=? 
 		");
         echo $this->connection->error;
 
-        $stmt->bind_param("i", $_SESSION["userId"]);
+        $stmt->bind_param("i",  $_SESSION["userId"]);
 
-        $stmt->bind_result($restoName, $created);
+        $stmt->bind_result($userId, $restoId, $restoName);
         $stmt->execute();
 
 
@@ -141,10 +168,12 @@ class Resto
         while ($stmt->fetch()) {
 
             //tekitan objekti
-            $i = new StdClass();
-            $i->interest = $interest;
+            $r = new StdClass();
+            $r->userId = $userId;
+            $r->restoId = $restoId;
+            $r->restoName = $restoName;
 
-            array_push($result, $i);
+            array_push($result, $r);
         }
 
         $stmt->close();

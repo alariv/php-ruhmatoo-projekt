@@ -107,20 +107,25 @@ $restos = $Resto->getUserRestos($r);
 
                 <h2>Sinu postitused</h2>
                 <?php
+                $html = "<table>";
 
-                $listHtml = "<ul>";
+                $html .= "<tr>";
+                    //$html .= "<th>restoid</th>";
+                    $html .= "<th>Restorani nimi</th>";
+                $html .= "</tr>";
+
 
                 foreach($restos as $R){
 
-
-                    $listHtml .= "<li>".$R->restoName."</li>";
+                    $html .= "<tr>";
+                        //$html .= "<td>".$R->restoId."</td>";
+                        $html .= "<td>".$R->restoName."</td>";
+                    $html .= "</tr>";
                 }
 
-                $listHtml .= "</ul>";
+                $html .= "</table>";
 
-                echo $listHtml;
-
-                ?>
+                echo $html;?>
 
             </div>
         </div>
