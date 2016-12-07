@@ -103,7 +103,7 @@ class Resto
         return $result;
     }
 
-    function saveUserRestos($userId, $restoId)
+    function saveUserRestos($restoId)
     {
 
 
@@ -118,7 +118,7 @@ class Resto
         //s tahistab stringi
         //i integer
         //d double/float
-        $stmt->bind_param("ii", $userId, $restoId);
+        $stmt->bind_param("ii", $_SESSION["userId"], $restoId);
 
         if ($stmt->execute()) {
             echo "salvestamine onnestus ";

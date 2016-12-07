@@ -41,6 +41,12 @@
 		exit();
 	}
 
+	{
+		$Resto->saveUserRestos();
+
+	}
+
+
 		if(isset($_GET["q"])){
 			//kui otsib siis votame otsisona aadressirealt
 			$q = $_GET["q"];
