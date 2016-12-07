@@ -91,7 +91,7 @@ $restos = $Resto->getUserRestos($r);
 
                 <h2>Profiil</h2>
 
-                <h3 style="color: dodgerblue"> #<?=$_SESSION["userId"];?></h3><br>
+                <center><h3 style="color: dodgerblue"> #<?=$_SESSION["userId"];?></h3></center><br>
                 <text style="color: dodgerblue"> Email :</text><text style="float: right"><?=$_SESSION["email"];?></text><br>
                 <text style="color: dodgerblue"> Eesnimi :</text><text style="float: right"> <?=$_SESSION["name"];?></text><br>
                 <text style="color: dodgerblue"> Perekonnanimi :</text><text style="float: right"> <?=$_SESSION["lname"];?></text><br>
@@ -111,7 +111,7 @@ $restos = $Resto->getUserRestos($r);
 
                 $html .= "<tr>";
                     //$html .= "<th>restoid</th>";
-                    $html .= "<th>Restorani nimi</th>";
+                    $html .= "<th style='color: dodgerblue'>Restorani nimi</th>";
                 $html .= "</tr>";
 
 
