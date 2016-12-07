@@ -21,7 +21,7 @@ if(isset($_POST["update"])){
 
     $Edit->updateResto(cleanInput($_POST["id"]), cleanInput($_POST["grade"]), cleanInput($_POST["comment"]));
 
-   // header("Location: restoFEEDBACK.php?id=".$_POST["id"]."&success=true");
+   header("Location: restoFEEDBACK.php?id=".$_POST["id"]."&success=true");
     exit();
 
 }

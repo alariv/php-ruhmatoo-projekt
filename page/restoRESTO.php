@@ -21,6 +21,8 @@ if(isset($_GET["sort"]) && isset($_GET["order"])){
 
 
 $person = $Resto->getallrestos($q, $sort, $order);
+
+$P = $Edit->getSingleRestoData($_GET["id"]);
 ?>
 <?php require("../header.php"); ?>
 
@@ -29,6 +31,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
         border: 2px solid dodgerblue;
         border-collapse: collapse;
         margin: 0 auto;
+        max-width: 1300px;
     }
     th, td{
         padding: 10px;
@@ -65,6 +68,15 @@ $person = $Resto->getallrestos($q, $sort, $order);
         </form>
     </div>
     </nav>
+
+    <center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center><br>
+   <span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
+    <span style="float: right" class="img"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
+
+
+    <br>
+    <p style="color: dodgerblue;font-size: 25px" class="text-center"> Tere <?=$_SESSION["name"];?>!</p>
+    <p style="color: dodgerblue;font-size: 25px" class="text-center"> Oled <b style="color: #1c63ba;font-size: 30px"><?php echo $P->restoName;?></b> tagasiside lehel</p>
 
 
 <?php
