@@ -266,7 +266,7 @@ if( empty($signupEmailError)&&
                                 <span style="color: lightcoral" class="fa fa-quote-left" ></span>
                             </span>
                     <input class="form-control" placeholder="Eesnimi" name="signupName" type="text"  value = "<?=$signupName;?>">
-                </div><br>
+                </div>
 
                 <p style="color: lightcoral"><?php echo $signupLNameError; ?></p>
                 <div class="input-group input-group-md">
@@ -285,18 +285,19 @@ if( empty($signupEmailError)&&
                 </div>
 
                 <p style="color: lightcoral"><?php echo $signupPasswordError; ?></p>
-                <div class="input-group input-group-md">
-                            <span class="input-group-addon">
-                                <span style="color: lightcoral" class="glyphicon glyphicon-lock"></span>
-                            </span>
-                    <input class="form-control" placeholder="Parool" name="signupPassword" type="password">
-                </div><br>
-                <div class="input-group input-group-md">
-                            <span class="input-group-addon">
-                                <span style="color: lightcoral" class="glyphicon glyphicon-lock"></span>
-                            </span>
-                    <input class="form-control" placeholder="Korda parooli" name="signupPassword2" type="password">
-                </div>
+
+                <div class="input-group-vertical">
+                    <div class="input-group input-group-md">
+                                <span class="input-group-addon">
+                                    <span style="color: lightcoral" class="glyphicon glyphicon-lock"></span>
+                                </span>
+                        <input class="form-control" placeholder="Parool" name="signupPassword" type="password">
+                        <span class="input-group-addon">
+                                    <span style="color: lightcoral" class="glyphicon glyphicon-lock"></span>
+                                </span>
+                        <input class="form-control" placeholder="Korda parooli" name="signupPassword2" type="password">
+                    </div>
+                   
 
                 <p style="color: lightcoral"><?php echo $signupageError; ?></p>
                 <div class="input-group input-group-md">
@@ -329,18 +330,17 @@ if( empty($signupEmailError)&&
                 </div>
 
 
-                <a style="color: dodgerblue">Soovin RestoGuru soovitusi e-mailile</a>
-                <br>
+                <p style="color: dodgerblue">Soovin RestoGuru soovitusi e-mailile</p>
 
 
                 <div class="container">
                     <div>
                         <input id="jah" name="Olen RestoGuru" type="radio" class="with-font" checked>
-                        <label for="jah">Jah</label>
+                        <label for="jah" style="color: #333333">Jah</label>
                     </div>
                     <div>
                         <input id="ei" name="Olen RestoGuru"type="radio" class="with-font">
-                        <label for="ei">Ei</label>
+                        <label for="ei" style="color: #333333">Ei</label>
                     </div>
                 </div>
 
