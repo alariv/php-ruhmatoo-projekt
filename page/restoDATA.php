@@ -41,10 +41,10 @@
 		exit();
 	}
 
-	{
+	/* {
 		$Resto->saveUserRestos();
 
-	}
+	} */
 
 
 		if(isset($_GET["q"])){

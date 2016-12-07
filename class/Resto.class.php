@@ -103,13 +103,13 @@ class Resto
         return $result;
     }
 
-    function saveUserRestos($restoId)
+   /* function saveUserRestos($restoId)
     {
 
 
         //yhendus olemas
         //kask
-        $stmt = $this->connection->prepare("INSERT INTO user_restos (user_id, resto_id) 
+        $stmt = $this->connection->prepare("INSERT INTO user_restos (user_id, resto_id)
                                             VALUES (?, ?)");
 
         echo $this->connection->error;
@@ -126,25 +126,11 @@ class Resto
             echo "ERROR " . $stmt->error;
         }
 
-
+        //$stmt->close();
     }
-
+*/
     function getUserRestos()
     {
-
-        /*       $allwoedSort = ["restoId", "created"];
-
-
-            if (!in_array($sort, $allwoedSort)) {
-                  //ei ole lubatud tulp
-                  $sort = "id";
-
-              }
-              $orderBy = "ASC";
-              if ($order == "DESC") {
-                  $orderBy = "DESC";
-              } */
-
 
         $stmt = $this->connection->prepare("
 			SELECT user_id, resto_id, restoName
