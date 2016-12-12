@@ -155,102 +155,40 @@ if( empty($signupEmailError)&&
 
 ?>
 <?php require("../header.php");?>
+<?php require("../CSS.php");?>
+	
 
-    <style>
-        .account-wall{
-            margin-top: 20px;
-            padding: 40px 40px 20px 40px;
-            background-color: #e4e0e0;
-            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.3);
-            border-radius: 30px;
-        }
-        body { margin: 30px; }
-        h1 { font-size: 1.5em; }
-        label { font-size: 24px; }
-        container {
-            width: 175px;
-            margin-left: 20px;
-        }
+<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
+	<ul class="nav navbar-nav">
+		<a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
+		<li class="nav-item active">
+			<a class="nav-link" href="restoSISSELOGIMINE.php" style="color: maroon"><span class="glyphicon glyphicon-log-in"></span> Logi sisse</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="restoFEEDBACKnologin.php"><span class="glyphicon glyphicon-th-list"></span> Kasutajate Tagasiside</a>
+		</li>
+	</ul>
+	<div class="collapse navbar-collapse">
 
-        input[type=radio].with-font,
-        input[type=checkbox].with-font {
-            border: 0;
-            clip: rect(0 0 0 0);
-            height: 1px;
-            margin: -1px;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            width: 1px;
-        }
-
-        input[type=radio].with-font ~ label:before,
-        input[type=checkbox].with-font ~ label:before {
-            font-family: FontAwesome;
-            display: inline-block;
-            content: "\f1db";
-            letter-spacing: 10px;
-            font-size: 1.2em;
-            color: lightcoral;
-            width: 1.4em;
-        }
-
-        input[type=radio].with-font:checked ~ label:before,
-        input[type=checkbox].with-font:checked ~ label:before  {
-            content: "\f00c";
-            font-size: 1.2em;
-            color: dodgerblue;
-            letter-spacing: 5px;
-        }
-        input[type=checkbox].with-font ~ label:before {
-            content: "\f096";
-        }
-        input[type=checkbox].with-font:checked ~ label:before {
-            content: "\f046";
-            color: dodgerblue;
-        }
-        input[type=radio].with-font:focus ~ label:before,
-        input[type=checkbox].with-font:focus ~ label:before,
-        input[type=radio].with-font:focus ~ label,
-        input[type=checkbox].with-font:focus ~ label
-        {
-            color: dodgerblue;
-        }
-    </style>
-
-    <nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
-        <ul class="nav navbar-nav">
-            <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
-            <li class="nav-item active">
-                <a class="nav-link" href="restoSISSELOGIMINE.php" style="color: maroon"><span class="glyphicon glyphicon-log-in"></span> Logi sisse</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="restoFEEDBACKnologin.php"><span class="glyphicon glyphicon-th-list"></span> Kasutajate Tagasiside</a>
-            </li>
-        </ul>
-        <div class="collapse navbar-collapse">
-
-            <form class="form-inline float-xs-right pull-right">
-                <input class="form-control" style="height: 50px" type="text" placeholder="Otsing">
-                <button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
+		<form class="form-inline float-xs-right pull-right">
+			<input class="form-control" style="height: 50px" type="text" placeholder="Otsing">
+			<button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
 
 
-            </form>
-        </div>
-    </nav>
+		</form>
+	</div>
+</nav>
 
-    <center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
-    <span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
-    <span style="float: right"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
+<center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
+<span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
+<span style="float: right"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
 
 
 <div class="container">
 
     <div class="row">
 
-        <div class="col-sm-6 col-md-5 col-sm-offset-4 col-md-offset-4">
+        <div class="col-sm-6 col-md-5 col-sm-offset-2 col-md-offset-3">
 
         <center><h1><b>Loo kasutaja</b></h1></center>
 

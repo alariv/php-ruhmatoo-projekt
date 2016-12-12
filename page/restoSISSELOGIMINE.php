@@ -52,17 +52,8 @@
 	}
 ?>
 <?php require("../header.php");?>
-<style>
-    .account-wall {
-        margin-top: 20px;
-        padding: 40px 40px 20px 40px;
-        background-color: #e4e0e0;
-        -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.3);
-        border-radius: 30px;
-    }
-</style>
+<?php require("../CSS.php");?>
+
 
 <nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
     <ul class="nav navbar-nav">
