@@ -113,6 +113,7 @@
 
                     </form>
                 </div>
+				<center>Pole kasutajat? <a href="restoSIGNUP.php">Registreeru</a></center>
             </div>
             <div class="col-sm-4 col-md-3 col-sm-offset-4 col-md-offset-2">
 

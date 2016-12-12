@@ -288,6 +288,8 @@ if( empty($signupEmailError)&&
                         <span class="glyphicon glyphicon-check"></span>
                     </button></p>
 
+
+
                 <br>
 
 
