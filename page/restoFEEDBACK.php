@@ -34,15 +34,13 @@ $person = $Resto->getallrestos($q, $sort, $order);
 
 ?>
 <?php require("../header.php");?>
+<?php require("../CSS.php");?>
 <style>
     table, th, td{
         border: 2px solid dodgerblue;
         border-collapse: collapse;
         margin: 0 auto;
         max-width: 200px;
-    }
-    th, td{
-        padding: 10px;
     }
 </style>
 

@@ -35,17 +35,19 @@ $restos = $Resto->getUserRestos($r);
 ?>
 
 <?php require("../header.php");?>
+<?php require("../CSS.php");?>
+
 <style>
-    .account-wall{
-        margin-top: 20px;
-        padding: 40px 40px 20px 40px;
-        background-color: #e4e0e0;
-        -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        box-shadow: 2px 2px 100px rgba(0, 0, 0, 0.3);
-        border-radius: 30px;
-    }
+table, th, td{
+		border: 0px solid dodgerblue;
+		border-collapse: collapse;
+		margin-left: -0%;
+	}
+	th, td{
+		padding: 5px;
+	}
 </style>
+
 <nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
     <ul class="nav navbar-nav">
         <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
@@ -97,7 +99,6 @@ $restos = $Resto->getUserRestos($r);
                 <text style="color: dodgerblue"> Perekonnanimi :</text><text style="float: right"> <?=$_SESSION["lname"];?></text><br>
                 <text style="color: dodgerblue"> Vanus :</text><text style="float: right"> <?=$_SESSION["age"];?></text><br>
                 <text style="color: dodgerblue"> Telefoni number :</text><text style="float: right"> <?=$_SESSION["phonenr"];?></text><br>
-
             </div>
         </div>
 

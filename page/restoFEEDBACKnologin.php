@@ -29,16 +29,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
 
 ?>
 <?php require("../header.php");?>
-    <style>
-        table, th, td{
-            border: 2px solid dodgerblue;
-            border-collapse: collapse;
-            margin: 0 auto;
-        }
-        th, td{
-            padding: 10px;
-        }
-    </style>
+<?php require("../CSS.php");?>
 
     <nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
         <ul class="nav navbar-nav">

@@ -119,63 +119,8 @@
 
 ?>
 	<?php require("../header.php");?>
-			
-			<style>
-                .errors {
-                    max-width: 150px;
-                    color:red;
-                }
-				table, th, td{
-					border: 2px solid dodgerblue;
-					border-collapse: collapse;
-					margin: 0 auto;
-				}
-				th, td{
-					padding: 10px;
-				}
-				.center{
-					margin: 0 auto;
-					max-width: 300px;
-				}
-				.feedback{
-					float:left;
-				}
-				.img{
-					position:fixed right;
-				}
-				div.stars {
-					width: 270px;
-					display: inline-block;
-				}
-				input.star { display: none; }
-				label.star {
-					float: right;
-					padding: 10px;
-					font-size: 36px;
-					color: #444;
-					transition: all .2s;
-				}
-				input.star:checked ~ label.star:before {
-					content: '\f005';
-					color: #FD4;
-					transition: all .25s;
-				}
-				input.star-5:checked ~ label.star:before {
-					color: #FE7;
-					text-shadow: 0 0 20px #952;
-				}
-				input.star-1:checked ~ label.star:before { color: #ff0008; }
-				input.star-2:checked ~ label.star:before { color: #ff5200; }
-				input.star-3:checked ~ label.star:before { color: #ff9007; }
-				input.star-4:checked ~ label.star:before { color: #ffc533; }
-				label.star:hover { transform: rotate(-72deg) scale(1.2); }
-				label.star:before {
-					content: '\f006';
-					font-family: FontAwesome;
-				}
-
-
-			</style>
+	<?php require("../CSS.php");?>
+	
 	<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
 		<ul class="nav navbar-nav">
 			<a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
@@ -281,7 +226,7 @@
 			
 			<br>
 			
-			<input class='btn-success btn-lg' style="width: 300px;height: 50px" type="submit">
+			<input class='btn btn-success btn-lg' style="width: 300px;height: 50px" type="submit">
 
 		</form>
 

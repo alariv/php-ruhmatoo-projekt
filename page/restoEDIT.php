@@ -39,30 +39,7 @@ $P = $Edit->getSingleRestoData($_GET["id"]);
 
 ?>
 <?php require("../header.php");?>
-<style>
-    .heading {
-        width: 410px;;
-        color:dodgerblue;
-        font-size: 50px;
-        margin: 0 auto;
-    }
-    .center{
-        width: 300px;
-        margin: 0 auto;
-    }
-    .delete{
-        width: 105px;
-        margin: 0 auto;
-    }
-    .backout{
-        font-size:30px;
-    }
-    .buttons{
-        width: 300px;
-        margin: 0 auto;
-        height: 50px;
-    }
-</style>
+<?php require("../CSS.php");?>
 
     <nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
         <ul class="nav navbar-nav">
@@ -96,7 +73,7 @@ $P = $Edit->getSingleRestoData($_GET["id"]);
 <fieldset style="margin: 0 auto;max-width: 450px">
 <h2 style="color: dodgerblue;font-size: 50px">Muuda sissekannet</h2>
 </fieldset>
-<form class="center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
+<form class="ccenter" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
     <input type="hidden" name="id" value="<?=$_GET["id"];?>" >
     <label for="restoName" >Restorani nimi:    </label><?php echo $P->restoName;?><br><br>
 
