@@ -44,11 +44,12 @@ $person = $Resto->getallrestos($q, $sort, $order);
     }
 </style>
 
+
     <nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
         <ul class="nav navbar-nav">
             <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
             <li class="nav-item active">
-                <a class="nav-link" href="restoDATA.php"><span class="glyphicon glyphicon-chevron-left"></span> tagasi</a>
+                <a class="nav-link" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> tagasi</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>

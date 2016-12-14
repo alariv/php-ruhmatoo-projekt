@@ -35,7 +35,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
         <ul class="nav navbar-nav">
             <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
             <li class="nav-item active">
-                <a class="nav-link" href="restoDATA.php" style="color: maroon"><span class="glyphicon glyphicon-chevron-left"></span> Tagasi</a>
+                <a class="nav-link" onclick="goBack()" style="color: maroon"><span class="glyphicon glyphicon-chevron-left"></span> Tagasi</a>
             </li>
             <li class="disabled">
                 <a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> Sa pole sisse logitud</a>
