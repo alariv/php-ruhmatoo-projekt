@@ -1,4 +1,4 @@
-# PHP rühmatöö projekt
+# RestoGuru
 **Rühmatööde demo päev** on valitud eksamipäev jaanuaris, kuhu tullakse terve rühmaga koos!
 
 ## Tööjuhend

@@ -103,7 +103,7 @@ class Resto
         return $result;
     }
 
-   /* function saveUserRestos($restoId)
+    function saveUserRestos($restoId)
     {
 
 
@@ -128,7 +128,8 @@ class Resto
 
         //$stmt->close();
     }
-*/
+
+
     function getUserRestos()
     {
 
