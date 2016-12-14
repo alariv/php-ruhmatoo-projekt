@@ -16,8 +16,7 @@ class Resto
 
     }
 
-    function saverestos($restoName, $grade, $comment, $gender, $customerName, $food, $foodRating, $serviceRating)
-    {
+    function saverestos($restoName, $grade, $comment, $gender, $customerName, $food, $foodRating, $serviceRating){
 
 
         //yhendus olemas
@@ -41,9 +40,7 @@ class Resto
 
 
     }
-
-    function getallrestos($q, $sort, $order)
-    {
+    function getallrestos($q, $sort, $order){
 
         $allwoedSort = ["id", "restoName", "grade", "comment", "customer_sex", "customer_name", "created"];
 
@@ -102,9 +99,7 @@ class Resto
         $stmt->close();
         return $result;
     }
-
-    function saveUserRestos($restoId)
-    {
+    function saveUserRestos($restoId){
 
 
         //yhendus olemas
@@ -128,10 +123,7 @@ class Resto
 
         //$stmt->close();
     }
-
-
-    function getUserRestos()
-    {
+    function getUserRestos(){
 
         $stmt = $this->connection->prepare("
 			SELECT user_id, resto_id, restoName
@@ -165,6 +157,65 @@ class Resto
 
         $stmt->close();
 
+        return $result;
+    }
+	function getSpecificresto($s, $sort, $order){
+
+        $allwoedSort = ["id", "restoName", "grade", "comment", "customer_sex", "customer_name", "created"];
+
+
+        if (!in_array($sort, $allwoedSort)) {
+            //ei ole lubatud tulp
+            $sort = "id";
+
+        }
+        $orderBy = "ASC";
+        if ($order == "DESC") {
+            $orderBy = "DESC";
+        }
+        //echo "sorteerin: ".$sort." ".$orderBy." ";
+        //kask
+
+        if ($s != "") {
+            $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created 
+                                                FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
+                                                ORDER BY $sort $orderBy");
+            $searchWord = "%" . $s . "%";
+            $stmt->bind_param("ssssssssss", $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord);
+        } else {
+            $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created  
+                                                FROM restoranid WHERE deleted is NULL AND id=?
+                                            ORDER BY $sort $orderBy");
+        }
+        echo $this->connection->error;
+
+        $stmt->bind_result($id, $restoName, $grade, $food, $foodRating, $serviceRating, $comment, $gender, $customer_name, $created);
+        $stmt->execute();
+
+        $result = array();
+
+
+        //seni kuni on 1 rida andmeid saada(10rida=10korda)
+        while ($stmt->fetch()) {
+
+            $specificresto = new StdClass();
+            $specificresto->id = $id;
+            $specificresto->restoName = $restoName;
+            $specificresto->grade = $grade;
+            $specificresto->comment = $comment;
+            $specificresto->gender = $gender;
+            $specificresto->customerName = $customer_name;
+            $specificresto->created = $created;
+            $specificresto->food = $food;
+            $specificresto->foodRating = $foodRating;
+            $specificresto->serviceRating = $serviceRating;
+
+
+            //echo $color. "<br>";
+            array_push($result, $specificresto);
+
+        }
+        $stmt->close();
         return $result;
     }
 }

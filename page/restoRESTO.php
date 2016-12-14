@@ -12,6 +12,14 @@ if(isset($_GET["q"])){
     $q="";
 }
 
+if(isset($_GET["s"])){
+    //kui otsib siis votame otsisona aadressirealt
+    $s = $_GET["s"];
+}else {
+    //otsisona tyhi
+    $s="";
+}
+
 $sort="id";
 $order="ASC";
 if(isset($_GET["sort"]) && isset($_GET["order"])){
@@ -23,6 +31,8 @@ if(isset($_GET["sort"]) && isset($_GET["order"])){
 $person = $Resto->getallrestos($q, $sort, $order);
 
 $P = $Edit->getSingleRestoData($_GET["id"]);
+
+$specificresto = $Resto->getSpecificresto($s, $sort, $order);
 ?>
 <?php require("../header.php"); ?>
 <?php require("../CSS.php"); ?>
@@ -129,18 +139,18 @@ $P = $Edit->getSingleRestoData($_GET["id"]);
 										<a href='?q=".$q."&sort=created&order=".$createdOrder."'>loodud</th>";
 				$html .= "</tr>";
 
-				foreach($person as $P){
+				foreach($person as $p){
 					$html .= "<tr>";
-					$html .= '<td style="background-color: lightblue">'.$P->id."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->restoName."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->grade."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->comment."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->food."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->foodRating."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->serviceRating."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->gender."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->customerName."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.date('Y', strtotime($P->created))."</td>";
+					$html .= '<td style="background-color: lightblue">'.$p->id."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$p->restoName."</td>";
+					$html .= '<td style="background-color: lightblue">'.$p->grade."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$p->comment."</td>";
+					$html .= '<td style="background-color: lightblue">'.$p->food."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$p->foodRating."</td>";
+					$html .= '<td style="background-color: lightblue">'.$p->serviceRating."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$p->gender."</td>";
+					$html .= '<td style="background-color: lightblue">'.$p->customerName."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.date('Y', strtotime($p->created))."</td>";
 					$html .= "</tr>";
 
 				}
