@@ -34,6 +34,12 @@
     <style type="text/css">
         body { background: rgba(0, 36, 255, 0.10) !important; }
     </style>
+	
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 
 
 
