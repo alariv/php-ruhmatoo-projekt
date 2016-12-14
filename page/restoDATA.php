@@ -41,10 +41,10 @@
 		exit();
 	}
 
-	/* {
-		$Resto->saveUserRestos();
+ 	{
+		//$Resto->saveUserRestos($_SESSION["userId"], $_POST["restoId"]);
 
-	} */
+	}
 
 
 		if(isset($_GET["q"])){
