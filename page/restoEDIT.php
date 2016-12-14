@@ -19,9 +19,9 @@ if(isset($_GET["delete"])){
 //kas kasutaja uuendab andmeid
 if(isset($_POST["update"])){
 
-    $Edit->updateResto(cleanInput($_POST["id"]), cleanInput($_POST["grade"]), cleanInput($_POST["comment"]));
+    $Edit->updateResto($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["grade"]), $Helper->cleanInput($_POST["comment"]));
 
-   header("Location: restoFEEDBACK.php?id=".$_POST["id"]."&success=true");
+   header("Location: restoUSER.php?id=".$_POST["id"]."&success=true");
     exit();
 
 }

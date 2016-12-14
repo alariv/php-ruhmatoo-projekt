@@ -127,7 +127,6 @@ $P = $Edit->getSingleRestoData($_GET["id"]);
 										<a href='?q=".$q."&sort=created&order=".$customer_nameOrder."'>Kliendi nimi</th>";
 				$html .= "<th style=\"background-color: lightblue\">
 										<a href='?q=".$q."&sort=created&order=".$createdOrder."'>loodud</th>";
-				$html .= "<th style='background-color: lightskyblue'></th>";
 				$html .= "</tr>";
 
 				foreach($person as $P){
@@ -142,8 +141,6 @@ $P = $Edit->getSingleRestoData($_GET["id"]);
 					$html .= '<td style="background-color: lightskyblue">'.$P->gender."</td>";
 					$html .= '<td style="background-color: lightblue">'.$P->customerName."</td>";
 					$html .= '<td style="background-color: lightskyblue">'.date('Y', strtotime($P->created))."</td>";
-					$html .= "<td style='background-color: lightblue;padding: 0px'><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$P->id."'>
-						<span style='color:red;' class='glyphicon glyphicon-edit'></span></a></td>";
 					$html .= "</tr>";
 
 				}

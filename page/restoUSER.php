@@ -121,9 +121,10 @@ table, th, td{
                     $html .= "<tr>";
                         //$html .= "<td>".$R->restoId."</td>";
                         $html .= "<td>".$R->restoName."</td>";
+						$html .= "<td style=padding: 0px'><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$R->restoId."'>
+						<span style='color:red;' class='glyphicon glyphicon-edit'></span></a></td>";
                     $html .= "</tr>";
-                }
-
+				}
                 $html .= "</table>";
 
                 echo $html;?>
