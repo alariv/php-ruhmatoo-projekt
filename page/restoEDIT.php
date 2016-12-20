@@ -10,8 +10,8 @@ if(!isset ($_SESSION["userId"])) {
 if(isset($_GET["delete"])){
 
 
-    $Edit->deleteResto(cleanInput($_GET["id"]));
-    header("Location: restoFEEDBACK.php");
+    $Edit->deleteResto($Helper->cleanInput($_GET["id"]));
+    header("Location: restoUSER.php");
 
     exit();
 }

@@ -16,13 +16,13 @@ class Resto
 
     }
 
-    function saverestos($restoName, $grade, $comment, $gender, $customerName, $food, $foodRating, $serviceRating){
+    function saverestos($restoName, $grade, $comment, $gender, $customerName, $food, $foodRating, $serviceRating, $customerId){
 
 
         //yhendus olemas
         //kask
-        $stmt = $this->connection->prepare("INSERT INTO restoranid (restoName,grade,food,food_rating,service_rating,comment,customer_sex, customer_name) 
-                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->connection->prepare("INSERT INTO restoranid (restoName,grade,food,food_rating,service_rating,comment,customer_sex, customer_id, customer_name) 
+                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         echo $this->connection->error;
         //asendan kysimargid vaartustega
@@ -30,16 +30,14 @@ class Resto
         //s tahistab stringi
         //i integer
         //d double/float
-        $stmt->bind_param("ssssssss", $restoName, $grade, $food, $foodRating, $serviceRating, $comment, $gender, $customerName);
+        $stmt->bind_param("sssssssis", $restoName, $grade, $food, $foodRating, $serviceRating, $comment, $gender, $customerId, $customerName);
 
         if ($stmt->execute()) {
             echo "salvestamine onnestus ";
         } else {
             echo "ERROR " . $stmt->error;
         }
-
-
-    }
+	}
     function getallrestos($q, $sort, $order){
 
         $allwoedSort = ["id", "restoName", "grade", "comment", "customer_sex", "customer_name", "created"];
@@ -99,43 +97,36 @@ class Resto
         $stmt->close();
         return $result;
     }
-    function saveUserRestos($restoId){
+    function saveUserRestos($userId,$restoId){
 
 
         //yhendus olemas
         //kask
-        $stmt = $this->connection->prepare("INSERT INTO user_restos (user_id, resto_id)
+        $stmt = $this->connection->prepare("INSERT INTO user_restos (user_id, resto_id) 
                                             VALUES (?, ?)");
-
-        echo $this->connection->error;
-        //asendan kysimargid vaartustega
-        //iga muutuja kohta 1 taht
-        //s tahistab stringi
-        //i integer
-        //d double/float
-        $stmt->bind_param("ii", $_SESSION["userId"], $restoId);
-
-        if ($stmt->execute()) {
+		
+		echo $this->connection->error;
+		$stmt->bind_param("ii", $userId, $restoId);
+		
+		if ($stmt->execute()) {
             echo "salvestamine onnestus ";
         } else {
             echo "ERROR " . $stmt->error;
         }
-
-        //$stmt->close();
+		
     }
     function getUserRestos(){
 
         $stmt = $this->connection->prepare("
-			SELECT user_id, resto_id, restoName
+			SELECT id,restoName
             FROM restoranid
-            JOIN user_restos ON restoranid.id = user_restos.resto_id
-            WHERE user_restos.user_id=? 
+            WHERE customer_id=? AND deleted is NULL
 		");
         echo $this->connection->error;
 
-        $stmt->bind_param("i",  $_SESSION["userId"]);
+        $stmt->bind_param("i",$_SESSION["userId"]);
 
-        $stmt->bind_result($userId, $restoId, $restoName);
+        $stmt->bind_result($restoId,$restoName);
         $stmt->execute();
 
 
@@ -148,7 +139,6 @@ class Resto
 
             //tekitan objekti
             $r = new StdClass();
-            $r->userId = $userId;
             $r->restoId = $restoId;
             $r->restoName = $restoName;
 

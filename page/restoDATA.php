@@ -32,7 +32,7 @@
 		!empty($_POST["restoName"]) &&
 		!empty($_POST["comment"])
 	)	{
-		$Resto->saverestos($_POST["restoName"],$_POST["grade"],$_POST["comment"],$_SESSION["gender"],$_SESSION["name"],$_POST["food"],$_POST["foodRating"],$_POST["serviceRating"]);
+		$Resto->saverestos($_POST["restoName"],$_POST["grade"],$_POST["comment"],$_SESSION["gender"],$_SESSION["name"],$_POST["food"],$_POST["foodRating"],$_POST["serviceRating"], $_SESSION["userId"]);
 		header("Location: restoFEEDBACK.php");
 		exit();
 	}
@@ -105,7 +105,7 @@
 	<?php require("../header.php");?>
 	<?php require("../CSS.php");?>
 	
-	<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
+	<!--<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
 		<ul class="nav navbar-nav">
 			<a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
 			<li class="nav-item">
@@ -127,7 +127,7 @@
 
 			</form>
 		</div>
-	</nav>
+	</nav>-->
 	<br><br><br>
 
 	<center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>

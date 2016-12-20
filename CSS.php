@@ -141,8 +141,8 @@
     position: absolute;
 	}	
 	<!--nav > li > a:hover, .nav > li > a:focus {
-	  background-color: #EF92A5;
-	  text-decoration: none;
+	  sbackground-color: #EF92A5;
+	  stext-decoration: none;
 	}-->
 	::-moz-selection {
     color: lightcoral;
