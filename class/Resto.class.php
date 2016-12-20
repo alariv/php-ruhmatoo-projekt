@@ -62,7 +62,7 @@ class Resto
                                                 FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
                                                 ORDER BY $sort $orderBy");
             $searchWord = "%" . $q . "%";
-            $stmt->bind_param("ssssssssss", $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord);
+            $stmt->bind_param("ssssssssss", $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord);
         } else {
             $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created  
                                                 FROM restoranid WHERE deleted is NULL
@@ -159,64 +159,107 @@ class Resto
 
         return $result;
     }
-	function getSpecificresto($s, $sort, $order){
+	
+	function getSpecificResto($g){}
+	function getSpecificRestoData($RestoName){
 
-        $allwoedSort = ["id", "restoName", "grade", "comment", "customer_sex", "customer_name", "created"];
+		$stmt = $this->connection->prepare("SELECT restoName FROM restoranid WHERE id=? and deleted is NULL");
+				$stmt->bind_param("i", $EditId);
+				$stmt->bind_result($RestoName);
+				$stmt->execute();
 
+				//tekitan objekti
+				$resto = new Stdclass();
 
-        if (!in_array($sort, $allwoedSort)) {
-            //ei ole lubatud tulp
-            $sort = "id";
+				//saime ühe rea andmeid
+				if ($stmt->fetch()) {
+					// saan siin alles kasutada bind_result muutujaid
+					$resto->restoName = $RestoName;
+					
+				} else {
+					// ei saanud rida andmeid kätte
+					// sellist id'd ei ole olemas
+					// see rida võib olla kustutatud
+					echo "Midagi laks valesti:/";
+				   //header("Location: restoFEEDBACK.php");
+					exit();
+				}
 
-        }
-        $orderBy = "ASC";
-        if ($order == "DESC") {
-            $orderBy = "DESC";
-        }
-        //echo "sorteerin: ".$sort." ".$orderBy." ";
-        //kask
-
-        if ($s != "") {
-            $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created 
-                                                FROM restoranid WHERE deleted is NULL AND (restoName LIKE? OR comment LIKE? OR grade LIKE?)
-                                                ORDER BY $sort $orderBy");
-            $searchWord = "%" . $s . "%";
-            $stmt->bind_param("ssssssssss", $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord);
-        } else {
-            $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created  
-                                                FROM restoranid WHERE deleted is NULL AND id=?
-                                            ORDER BY $sort $orderBy");
-        }
-        echo $this->connection->error;
-
-        $stmt->bind_result($id, $restoName, $grade, $food, $foodRating, $serviceRating, $comment, $gender, $customer_name, $created);
+				$stmt->close();
+			
+        $stmt = $this->connection->prepare("SELECT grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created FROM restoranid WHERE restoName=? and deleted is NULL");
+        $stmt->bind_param("s", $RestoName);
+        $stmt->bind_result($grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
         $stmt->execute();
 
-        $result = array();
+        //tekitan objekti
+        $resto = new Stdclass();
 
+        //saime ühe rea andmeid
+        if ($stmt->fetch()) {
+            // saan siin alles kasutada bind_result muutujaid
+            $resto->restoName = $grade;
+            $resto->grade = $food;
+            $resto->food_rating = $food_rating;
+            $resto->service_rating = $service_rating;
+            $resto->comment = $comment;
+            $resto->customer_sex = $customer_sex;
+            $resto->customer_name = $customer_name;
+            $resto->created = $created;
+			var_dump($grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
 
-        //seni kuni on 1 rida andmeid saada(10rida=10korda)
-        while ($stmt->fetch()) {
-
-            $specificresto = new StdClass();
-            $specificresto->id = $id;
-            $specificresto->restoName = $restoName;
-            $specificresto->grade = $grade;
-            $specificresto->comment = $comment;
-            $specificresto->gender = $gender;
-            $specificresto->customerName = $customer_name;
-            $specificresto->created = $created;
-            $specificresto->food = $food;
-            $specificresto->foodRating = $foodRating;
-            $specificresto->serviceRating = $serviceRating;
-
-
-            //echo $color. "<br>";
-            array_push($result, $specificresto);
-
+        } else {
+			var_dump($grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
+            // ei saanud rida andmeid kätte
+            // sellist id'd ei ole olemas
+            // see rida võib olla kustutatud
+            echo "Midagi laks valesti:/";
+           //header("Location: restoFEEDBACK.php");
+            exit();
         }
+
         $stmt->close();
-        return $result;
+
+        return $resto;
+	}
+	function getSingleRestoData($edit_id){
+
+
+        $stmt = $this->connection->prepare("SELECT restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created FROM restoranid WHERE id=? and deleted is NULL");
+        $stmt->bind_param("i", $edit_id);
+        $stmt->bind_result($restoName, $grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
+        $stmt->execute();
+
+        //tekitan objekti
+        $resto = new Stdclass();
+
+        //saime ühe rea andmeid
+        if ($stmt->fetch()) {
+            // saan siin alles kasutada bind_result muutujaid
+            $resto->restoName = $restoName;
+            $resto->grade = $grade;
+            $resto->food = $food;
+            $resto->food_rating = $food_rating;
+            $resto->service_rating = $service_rating;
+            $resto->comment = $comment;
+            $resto->customer_sex = $customer_sex;
+            $resto->customer_name = $customer_name;
+            $resto->created = $created;
+
+
+        } else {
+            // ei saanud rida andmeid kätte
+            // sellist id'd ei ole olemas
+            // see rida võib olla kustutatud
+            echo "Midagi laks valesti:/";
+           header("Location: restoFEEDBACK.php");
+            exit();
+        }
+
+        $stmt->close();
+
+        return $resto;
+
     }
 }
 ?>

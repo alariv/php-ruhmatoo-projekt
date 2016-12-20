@@ -41,7 +41,6 @@ class User
             echo"ERROR ".$stmt->error;
         }
     }
-
     function login($email, $password){
 
         $error = "";

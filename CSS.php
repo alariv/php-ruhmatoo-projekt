@@ -140,5 +140,18 @@
 	.absolute{
     position: absolute;
 	}	
+	<!--nav > li > a:hover, .nav > li > a:focus {
+	  background-color: #EF92A5;
+	  text-decoration: none;
+	}-->
+	::-moz-selection {
+    color: lightcoral;
+    background: maroon;
+	}
+
+	::selection {
+		color: lightcoral;
+		background: maroon;
+	}
 	
 </style>

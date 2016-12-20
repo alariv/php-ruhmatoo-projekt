@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require("../restoFUNCTIONS.php");
 
 if(!isset ($_SESSION["userId"])) {
@@ -12,15 +12,7 @@ if (isset($_GET["logout"])) {
     header("Location: restoSISSELOGIMINE.php");
     exit();
 }
-if (isset ($_POST ["image"])) {
-    // oli olemas, ehk keegi vajutas nuppu
-    if (empty($_POST ["image"])) {
-        //oli tõesti tühi
-        $imageError = "pead sisestama URL-i!";
-    } else {
-        $image = $_POST ["image"];
-    }
-}
+
 if(isset($_GET["r"])){
     //kui otsib siis votame otsisona aadressirealt
     $r = $_GET["r"];
@@ -44,7 +36,7 @@ table, th, td{
 		margin-left: -0%;
 	}
 	th, td{
-		padding: 5px;
+		padding: 2px;
 	}
 </style>
 
@@ -121,8 +113,10 @@ table, th, td{
                     $html .= "<tr>";
                         //$html .= "<td>".$R->restoId."</td>";
                         $html .= "<td>".$R->restoName."</td>";
-						$html .= "<td style=padding: 0px'><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$R->restoId."'>
+						$html .= "<td style='padding: 0px'><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$R->restoId."'>
 						<span style='color:red;' class='glyphicon glyphicon-edit'></span></a></td>";
+					
+						
                     $html .= "</tr>";
 				}
                 $html .= "</table>";
@@ -133,17 +127,7 @@ table, th, td{
         </div>
     </div>
 </div>
-
-
-
-
-
-<!--<form>
-        <h2 class="text-center">Pildi aadress</h2>
-<fieldset style="width: 300px; margin: 0 auto">
-        <a class="text-center"><input class="text-center form-control" style="width: 300px" type="url" name="image" placeholder="Sisesta pildi URL"></a>
-    <input class="form-control" type="submit" value="save">
-</fieldset></form>
+	
 
 
 

@@ -265,20 +265,16 @@ if( empty($signupEmailError)&&
                         <input id="naine" name="signupgender" type="radio" class="with-font" value="Naine">
                         <label for="naine" style="color: #333333">Olen naine</label>
                     </div>
-                </div>
-
-
-                <p style="color: dodgerblue">Soovin RestoGuru soovitusi e-mailile</p>
-
+                </div><br>
 
                 <div class="container">
                     <div>
                         <input id="jah" name="Olen RestoGuru" type="radio" class="with-font" checked>
-                        <label for="jah" style="color: #333333">Jah</label>
+                        <label for="jah" style="color: #333333">Soovin meilile soovitusi</label>
                     </div>
                     <div>
                         <input id="ei" name="Olen RestoGuru"type="radio" class="with-font">
-                        <label for="ei" style="color: #333333">Ei</label>
+                        <label for="ei" style="color: #333333">Ei soovi</label>
                     </div>
                 </div>
 

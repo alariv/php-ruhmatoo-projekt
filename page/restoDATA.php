@@ -1,6 +1,5 @@
 <?php
 	require("../restoFUNCTIONS.php");
-
 	if(!isset ($_SESSION["userId"])) {
 		
 		header("Location: restoSISSELOGIMINE.php");
@@ -13,8 +12,6 @@
 		header("Location: restoSISSELOGIMINE.php");
 		exit();
 	}
-
-
 	
 	$restoName = "";
 	$grade = "";
@@ -35,18 +32,13 @@
 		!empty($_POST["restoName"]) &&
 		!empty($_POST["comment"])
 	)	{
-
 		$Resto->saverestos($_POST["restoName"],$_POST["grade"],$_POST["comment"],$_SESSION["gender"],$_SESSION["name"],$_POST["food"],$_POST["foodRating"],$_POST["serviceRating"]);
 		header("Location: restoFEEDBACK.php");
 		exit();
 	}
-
  	{
 		//$Resto->saveUserRestos($_SESSION["userId"], $_POST["restoId"]);
-
 	}
-
-
 		if(isset($_GET["q"])){
 			//kui otsib siis votame otsisona aadressirealt
 			$q = $_GET["q"];
@@ -54,20 +46,17 @@
 			//otsisona tyhi
 			$q="";
 		}
-
 		$sort="id";
 		$order="ASC";
 		if(isset($_GET["sort"]) && isset($_GET["order"])){
 			$sort = $_GET["sort"];
 			$order = $_GET["order"];
 		}
-
 		$person = $Resto->getallrestos($q, $sort, $order);
-
     if (isset ($_POST ["restoName"])) {
         // oli olemas, ehk keegi vajutas nuppu
         if (empty($_POST ["restoName"])) {
-            //oli t√µesti t√ºhi
+            //oli tıesti t¸hi
             $restoNameError = "Sisesta restorani nimi!";
         } else {
             $restoName = $_POST ["restoName"];
@@ -76,7 +65,7 @@
     if (isset ($_POST ["comment"])) {
         // oli olemas, ehk keegi vajutas nuppu
         if (empty($_POST ["comment"])) {
-            //oli t√µesti t√ºhi
+            //oli tıesti t¸hi
             $commentError = "Sisesta kommentaar!";
         } else {
             $comment = $_POST ["comment"];
@@ -85,7 +74,7 @@
 	if (isset ($_POST ["serviceRating"])) {
 		// oli olemas, ehk keegi vajutas nuppu
 		if (empty($_POST ["serviceRating"])) {
-			//oli t√µesti t√ºhi
+			//oli tıesti t¸hi
 			$serviceRatingError = "Vali hinne!";
 		} else {
 			$serviceRating = $_POST ["serviceRating"];
@@ -94,7 +83,7 @@
 	if (isset ($_POST ["foodRating"])) {
 		// oli olemas, ehk keegi vajutas nuppu
 		if (empty($_POST ["foodRating"])) {
-			//oli t√µesti t√ºhi
+			//oli tıesti t¸hi
 			$foodRatingError = "Vali hinne!";
 		} else {
 			$foodRating = $_POST ["foodRating"];
@@ -103,20 +92,15 @@
 	if (isset ($_POST ["food"])) {
 		// oli olemas, ehk keegi vajutas nuppu
 		if (empty($_POST ["food"])) {
-			//oli t√µesti t√ºhi
+			//oli tıesti t¸hi
 			$foodError = "Sisesta toit!";
 		} else {
 			$food = $_POST ["food"];
 		}
 	}
-
-
-
 //echo"<pre>";
 		//var_dump($person);
 		//echo"</pre>";
-
-
 ?>
 	<?php require("../header.php");?>
 	<?php require("../CSS.php");?>
@@ -125,7 +109,7 @@
 		<ul class="nav navbar-nav">
 			<a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
 			<li class="nav-item">
-				<a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi v√§lja</a>
+				<a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi v‰lja</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
@@ -162,9 +146,8 @@
 			<br>
 
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
-			<a style="color: dodgerblue"> √úldine hinnang restoranile:</a><br>
+			<a style="color: dodgerblue"> ‹ldine hinnang restoranile:</a><br>
 			<div class="stars">
-
 					<input class="star star-5" id="grade-5" type="radio" value="5" name="grade">
 					<label class="star star-5" for="grade-5"></label>
 					<input class="star star-4" id="grade-4" type="radio" value="4" name="grade">
@@ -175,14 +158,10 @@
 					<label class="star star-2" for="grade-2"></label>
 					<input class="star star-1" id="grade-1" type="radio" value="1" name="grade">
 					<label class="star star-1" for="grade-1"></label>
-
 			</div><br>
-
-
-			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Mida s√µin?</a>
+			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Mida sıin?</a>
 			<input class="form-control" placeholder="Toit" name="food" type="text">
 			<br>
-
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
 			<a style="color: dodgerblue"> Hinnang teenindusele:</a><br>
 			<div class="stars">
@@ -203,7 +182,6 @@
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
 			<a style="color: dodgerblue"> Hinnang toidule:</a><br>
 			<div class="stars">
-
 					<input class="star star-5" id="foodRating-5" type="radio" value="5" name="foodRating">
 					<label class="star star-5" for="foodRating-5"></label>
 					<input class="star star-4" id="foodRating-4" type="radio" value="4" name="foodRating">
@@ -214,9 +192,7 @@
 					<label class="star star-2" for="foodRating-2"></label>
 					<input class="star star-1" id="foodRating-1" type="radio" value="1" name="foodRating">
 					<label class="star star-1" for="foodRating-1"></label>
-
 			</div><br>
-
             <p class="errors"><?php echo $commentError; ?></p>
 			<div class="form-group">
 				<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span>
@@ -227,15 +203,12 @@
 			<br>
 			
 			<input class='btn btn-success btn-lg' style="width: 300px;height: 50px" type="submit">
-
 		</form>
-
 		</fieldset><br>
-
 <h1 style="color: dodgerblue;margin: 0 auto;max-width: 370px;font-size: 38px">Kasutajate tagasiside</h1><br>
 	<fieldset style="border-width: 0px;margin: 0 auto;max-width: 370px">
 	<form>
-		<input class="form-control" style="color: dodgerblue" name="q"  placeholder="Otsi restoranide, hinnete v√µi kommentaari j√§rgi" value="<?=$q;?>"><br>
+		<input class="form-control" style="color: dodgerblue" name="q"  placeholder="Otsi restoranide, hinnete vıi kommentaari j‰rgi" value="<?=$q;?>"><br>
 		<p class="text-center"><button type="submit" class="btn btn-info" style="width: 370px">
 			<span class="glyphicon glyphicon-search"></span> Search
 		</button></p>

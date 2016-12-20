@@ -48,7 +48,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
     <nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
         <ul class="nav navbar-nav">
             <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> tagasi</a>
             </li>
             <li class="nav-item">
@@ -74,6 +74,14 @@ $person = $Resto->getallrestos($q, $sort, $order);
             </form>
         </div>
     </nav>
+	<p style="max-width: 230px" class="center-block">
+	<select class="selectpicker form-control" data-style="btn-danger"  data-live-search="true">
+  <option data="McDonalds">McDonalds</option>
+  <option data="City Marina">City Marina</option>
+  <option href="restoRESTO.php?id=.$P->id">Noa</option>
+  <option data="Noa"><? foreach($person as $P){$html .= "<a href=restoRESTO.php?id=".$P->id.">$P->restoName</a>";?></option>
+</select></p>
+
 <?php
 
 $html = "<table style='width: 100%'>";

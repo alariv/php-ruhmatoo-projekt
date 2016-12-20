@@ -3,21 +3,18 @@
 require("../restoFUNCTIONS.php");
 require("../restoEDITFUNCTIONS.php");
 
+if (isset($_GET["logout"])) {
 
+    session_destroy();
+    header("Location: restoSISSELOGIMINE.php");
+    exit();
+}
 if(isset($_GET["q"])){
     //kui otsib siis votame otsisona aadressirealt
     $q = $_GET["q"];
 }else {
     //otsisona tyhi
     $q="";
-}
-
-if(isset($_GET["s"])){
-    //kui otsib siis votame otsisona aadressirealt
-    $s = $_GET["s"];
-}else {
-    //otsisona tyhi
-    $s="";
 }
 
 $sort="id";
@@ -29,10 +26,7 @@ if(isset($_GET["sort"]) && isset($_GET["order"])){
 
 
 $person = $Resto->getallrestos($q, $sort, $order);
-
-$P = $Edit->getSingleRestoData($_GET["id"]);
-
-$specificresto = $Resto->getSpecificresto($s, $sort, $order);
+$restos = $Resto->getSingleRestoData($_GET["id"]);
 ?>
 <?php require("../header.php"); ?>
 <?php require("../CSS.php"); ?>
@@ -80,7 +74,7 @@ $specificresto = $Resto->getSpecificresto($s, $sort, $order);
 
     <br>
     <p style="color: dodgerblue;font-size: 25px" class="text-center"> Tere <?=$_SESSION["name"];?>!</p>
-    <p style="color: dodgerblue;font-size: 25px" class="text-center"> Oled <b style="color: #1c63ba;font-size: 30px"><?php echo $P->restoName;?></b> tagasiside lehel</p>
+    <p style="color: dodgerblue;font-size: 25px" class="text-center"> Oled <b style="color: #1c63ba;font-size: 30px"><?php echo $restos->restoName;?></b> tagasiside lehel</p>
 
 	
 <?php
@@ -139,18 +133,18 @@ $specificresto = $Resto->getSpecificresto($s, $sort, $order);
 										<a href='?q=".$q."&sort=created&order=".$createdOrder."'>loodud</th>";
 				$html .= "</tr>";
 
-				foreach($person as $p){
+				foreach($restos as $P){
 					$html .= "<tr>";
-					$html .= '<td style="background-color: lightblue">'.$p->id."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$p->restoName."</td>";
-					$html .= '<td style="background-color: lightblue">'.$p->grade."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$p->comment."</td>";
-					$html .= '<td style="background-color: lightblue">'.$p->food."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$p->foodRating."</td>";
-					$html .= '<td style="background-color: lightblue">'.$p->serviceRating."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$p->gender."</td>";
-					$html .= '<td style="background-color: lightblue">'.$p->customerName."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.date('Y', strtotime($p->created))."</td>";
+					$html .= '<td style="background-color: lightblue">'.$P->id."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$P->restoName."</td>";
+					$html .= '<td style="background-color: lightblue">'.$P->grade."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$P->comment."</td>";
+					$html .= '<td style="background-color: lightblue">'.$P->food."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$P->foodRating."</td>";
+					$html .= '<td style="background-color: lightblue">'.$P->serviceRating."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$P->gender."</td>";
+					$html .= '<td style="background-color: lightblue">'.$P->customerName."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.date('Y', strtotime($P->created))."</td>";
 					$html .= "</tr>";
 
 				}
