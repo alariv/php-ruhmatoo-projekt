@@ -167,6 +167,7 @@ if( empty($signupEmailError)&&
 		<li class="nav-item">
 			<a class="nav-link" href="restoFEEDBACKnologin.php"><span class="glyphicon glyphicon-th-list"></span> Kasutajate Tagasiside</a>
 		</li>
+
 	</ul>
 	<div class="collapse navbar-collapse">
 

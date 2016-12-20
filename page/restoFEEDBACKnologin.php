@@ -56,7 +56,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
     </nav>
 <?php
 
-				$html = "<table style='width: 100%' class='table table-striped>";
+				$html = "<table style='width: 100%' class='table table-striped'>";
 				$html .= "<tr>";
 
 				$idOrder= "ASC";
@@ -108,7 +108,6 @@ $person = $Resto->getallrestos($q, $sort, $order);
 										<a href='?q=".$q."&sort=created&order=".$customer_nameOrder."'>Kliendi nimi</th>";
 				$html .= "<th style=\"background-color: lightblue\">
 										<a href='?q=".$q."&sort=created&order=".$createdOrder."'>loodud</th>";
-				$html .= "<th style=\"background-color: lightskyblue\"></th>";
 				$html .= "</tr>";
 
 				foreach($person as $p){

@@ -31,13 +31,19 @@ $restos = $Resto->getUserRestos($r);
 
 <style>
 table, th, td{
-		border: 0px solid dodgerblue;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-left-width: 0px;
+		border-bottom-width: 1px;
 		border-collapse: collapse;
-		margin-left: -0%;
+		margin-left: -5%;
+        border-color: #b2aeae;
 	}
 	th, td{
-		padding: 2px;
-	}
+		padding: 15px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
 </style>
 
 <nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
@@ -104,7 +110,9 @@ table, th, td{
 
                 $html .= "<tr>";
                     //$html .= "<th>restoid</th>";
-                    $html .= "<th style='color: dodgerblue'>Restorani nimi</th>";
+                    $html .= "<th style='color: dodgerblue'>Restoran</th>";
+                    $html .= "<th style='color: dodgerblue'>Loodud</th>";
+                    $html .= "<th style='color: #b60000'>Muuda</th>";
                 $html .= "</tr>";
 
 
@@ -113,8 +121,9 @@ table, th, td{
                     $html .= "<tr>";
                         //$html .= "<td>".$R->restoId."</td>";
                         $html .= "<td>".$R->restoName."</td>";
-						$html .= "<td style='padding: 0px'><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$R->restoId."'>
-						<span style='color:red;' class='glyphicon glyphicon-edit'></span></a></td>";
+                        $html .= "<td>".date('M Y', strtotime($R->created))."</td>";
+						$html .= "<td style='padding: 0px'><center><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$R->restoId. "'>
+						<span style='color:#b60000;' class='glyphicon glyphicon-edit'></span></a></center></td>";
 					
 						
                     $html .= "</tr>";

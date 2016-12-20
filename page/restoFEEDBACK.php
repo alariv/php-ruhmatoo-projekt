@@ -42,6 +42,10 @@ $person = $Resto->getallrestos($q, $sort, $order);
         margin: 0 auto;
         max-width: 200px;
     }
+	.table-striped>tbody>tr:nth-child(odd)>td, 
+	.table-striped>tbody>tr:nth-child(odd)>th {
+	background-color: lightskyblue; // Choose your own color here
+ }
 </style>
 
 
@@ -60,31 +64,31 @@ $person = $Resto->getallrestos($q, $sort, $order);
             <li class="nav-item">
                 <a class="nav-link" href="restoDATA">Loo uus sissekanne</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="restoRESTO">(lisasin prgu et saaks restoranide lehele)</a>
-            </li>
         </ul>
         <div class="collapse navbar-collapse">
 
             <form class="form-inline float-xs-right pull-right">
-                <input class="form-control" style="height: 50px" type="text" placeholder="Otsing">
+                <input class="form-control" style="height: 50px" type="text" placeholder="Otsing" name="q" value="<?=$q;?>">
                 <button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
 
 
             </form>
         </div>
     </nav>
+	<br><br><br><br><br><br>
+	<span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
+	<span style="float: right" class="img"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
+	
 	<p style="max-width: 230px" class="center-block">
 	<select class="selectpicker form-control" data-style="btn-danger"  data-live-search="true">
   <option data="McDonalds">McDonalds</option>
   <option data="City Marina">City Marina</option>
-  <option href="restoRESTO.php?id=.$P->id">Noa</option>
-  <option data="Noa"><? foreach($person as $P){$html .= "<a href=restoRESTO.php?id=".$P->id.">$P->restoName</a>";?></option>
+  <option data="Noa"">Noa</option>
+  <option data="Noa"> bleh</option>
 </select></p>
-
 <?php
 
-$html = "<table style='width: 100%'>";
+$html = "<table style='width: 20%' class='table table-striped'>";
 $html .= "<tr>";
 
 //$idOrder= "ASC";
@@ -118,7 +122,7 @@ if(isset($_GET["order"]) && $_GET["order"] == "ASC"){
 
 //$html .= "<th style=\"background-color: lightskyblue\">
 //						<a href='?q=".$q."&sort=id&order=".$idOrder."'>id</a></th>";
-$html .= "<th style=\"background-color: lightblue\">
+$html .= "<th>
 						<center><a href='?q=".$q."&sort=restoName&order=".$restoNameOrder."'>restorani nimi</center></th>";
 //$html .= "<th style=\"background-color: lightskyblue\">
 //						<a href='?q=".$q."&sort=grade&order=".$gradeOrder."'>hinne</th>";
@@ -136,7 +140,7 @@ $html .= "<th style=\"background-color: lightblue\">
 foreach($person as $P){
     $html .= "<tr>";
     //$html .= '<td style="background-color: lightblue">'.$P->id."</td>";
-    $html .= "<td style='background-color: lightskyblue'><center><a href=restoRESTO.php?id=".$P->id.">$P->restoName</a></center></td>";
+    $html .= "<td><center><a href=restoRESTO.php?id=".$P->id.">$P->restoName</a></center></td>";
     //$html .= '<td style="background-color: lightblue">'.$P->grade."</td>";
     //$html .= '<td style="background-color: lightskyblue">'.$P->comment."</td>";
     //$html .= '<td style="background-color: lightblue">'.$P->gender."</td>";

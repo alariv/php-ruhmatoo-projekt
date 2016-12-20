@@ -79,7 +79,7 @@ $restos = $Resto->getSingleRestoData($_GET["id"]);
 	
 <?php
 
-				$html = "<table style='width: 100%'>";
+				$html = "<table style='width: 80%' class='table table-striped'>";
 				$html .= "<tr>";
 
 				$idOrder= "ASC";
@@ -112,28 +112,28 @@ $restos = $Resto->getSingleRestoData($_GET["id"]);
 				}
 
 				$html .= "<th style=\"background-color: lightskyblue\">
-										<a href='?q=".$q."&sort=id&order=".$idOrder."'>id</a></th>";
+										<center><a href='?q=".$q."&sort=id&order=".$idOrder."'>id</a></center></th>";
 				$html .= "<th style=\"background-color: lightblue\">
-										<a href='?q=".$q."&sort=restoName&order=".$restoNameOrder."'>restorani nimi</th>";
+										<center><a href='?q=".$q."&sort=restoName&order=".$restoNameOrder."'>restorani nimi</a></center></th>";
+				$html .= "<th style='background-color: lightskyblue'>
+										<center><a href='?q=".$q."&sort=grade&order=".$gradeOrder."'>hinne</a></center></th>";
+				$html .= "<th style=\"background-color: lightblue\">
+										<center><a href='?q=".$q."&sort=comment&order=".$commentOrder."'>kommentaar</a></center></th>";
 				$html .= "<th style=\"background-color: lightskyblue\">
-										<a href='?q=".$q."&sort=grade&order=".$gradeOrder."'>hinne</th>";
+										<center><a href='?q=".$q."&sort=id&order=".$idOrder."'>toit</a></center></th>";
 				$html .= "<th style=\"background-color: lightblue\">
-										<a href='?q=".$q."&sort=comment&order=".$commentOrder."'>kommentaar</th>";
+										<center><a href='?q=".$q."&sort=id&order=".$idOrder."'>hinnang toidule</a></center></th>";
 				$html .= "<th style=\"background-color: lightskyblue\">
-										<a href='?q=".$q."&sort=id&order=".$idOrder."'>toit</a></th>";
+										<center><a href='?q=".$q."&sort=id&order=".$idOrder."'>hinnang teenindusele</a></center></th>";
 				$html .= "<th style=\"background-color: lightblue\">
-										<a href='?q=".$q."&sort=id&order=".$idOrder."'>hinnang toidule</a></th>";
+										<center><a href='?q=".$q."&sort=gender&order=".$genderOrder."'>kliendi sugu</a></center></th>";
 				$html .= "<th style=\"background-color: lightskyblue\">
-										<a href='?q=".$q."&sort=id&order=".$idOrder."'>hinnang teenindusele</a></th>";
+										<center><a href='?q=".$q."&sort=created&order=".$customer_nameOrder."'>Kliendi nimi</a></center></th>";
 				$html .= "<th style=\"background-color: lightblue\">
-										<a href='?q=".$q."&sort=gender&order=".$genderOrder."'>kliendi sugu</th>";
-				$html .= "<th style=\"background-color: lightskyblue\">
-										<a href='?q=".$q."&sort=created&order=".$customer_nameOrder."'>Kliendi nimi</th>";
-				$html .= "<th style=\"background-color: lightblue\">
-										<a href='?q=".$q."&sort=created&order=".$createdOrder."'>loodud</th>";
+										<center><a href='?q=".$q."&sort=created&order=".$createdOrder."'>loodud</a></center></th>";
 				$html .= "</tr>";
 
-				foreach($restos as $P){
+				foreach($person as $P){
 					$html .= "<tr>";
 					$html .= '<td style="background-color: lightblue">'.$P->id."</td>";
 					$html .= '<td style="background-color: lightskyblue">'.$P->restoName."</td>";

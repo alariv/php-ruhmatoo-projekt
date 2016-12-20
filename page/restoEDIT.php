@@ -68,7 +68,10 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
         </div>
     </nav>
 
+	<br><br><br>
     <center><img src="../logo.jpg" alt="logo" style="width:500px;height:140px;"></center>
+	<span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
+	<span style="float: right" class="img"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
 
 <fieldset style="margin: 0 auto;max-width: 450px">
 <h2 style="color: dodgerblue;font-size: 50px">Muuda sissekannet</h2>
