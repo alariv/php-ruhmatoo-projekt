@@ -19,7 +19,9 @@ if(isset($_GET["delete"])){
 //kas kasutaja uuendab andmeid
 if(isset($_POST["update"])){
 
-    $Edit->updateResto($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["grade"]), $Helper->cleanInput($_POST["comment"]));
+    $Edit->updateResto($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["grade"]),
+                        $Helper->cleanInput($_POST["food_rating"]), $Helper->cleanInput($_POST["service_rating"]),
+                        $Helper->cleanInput($_POST["comment"]));
 
    header("Location: restoUSER.php?id=".$_POST["id"]."&success=true");
     exit();
@@ -73,9 +75,9 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
 	<span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
 	<span style="float: right" class="img"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
 
-<fieldset style="margin: 0 auto;max-width: 450px">
-<h2 style="color: dodgerblue;font-size: 50px">Muuda sissekannet</h2>
-</fieldset>
+
+<center><h2 style="color: dodgerblue;font-size: 50px">Sinu sissekanne</h2></center>
+
 
 
 
@@ -83,7 +85,62 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
 					
 <form class="ccenter" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
     <input type="hidden" name="id" value="<?=$_GET["id"];?>" >
-    <center><label for="restoName" >Restorani nimi:    </label><b style="font-size:30px;color:dodgerblue"><?php echo $P->restoName;?></b><center><br><br>
+    <center><label for="restoName" >Restorani nimi:    </label><br>
+    <b style="font-size:30px;color:dodgerblue"><?php echo $P->restoName;?></b><center><br>
+
+    <label>Hinne restoranile:</label><br>
+    <?php if($P->grade=="1"){
+        echo '<b style="color: #9c9898;font-size: 25px"><b style="color:red;font-size:40px">'.$P->grade.'</b> 2 3 4 5</b>';
+    }
+    if($P->grade=="2"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 <b style="color:#dc36c1;font-size:40px">'.$P->grade.'</b> 3 4 5</b>';
+    }
+    if($P->grade=="3"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 2 <b style="color:blueviolet;font-size:40px">'.$P->grade.'</b> 4 5</b>';
+    }
+    if($P->grade=="4"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 2 3 <b style="color:#4972cb;font-size:40px">' .$P->grade.'</b> 5</b>';
+    }
+    if($P->grade=="5"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 2 3 4 <b style="color:dodgerblue;font-size:40px">'.$P->grade.'</b></b>';
+    }?>
+    <br><br>
+
+    <label>Hinne toidule:</label><br>
+    <?php if($P->food_rating=="1"){
+        echo '<b style="color: #9c9898;font-size: 25px"><b style="color:red;font-size:40px">'.$P->food_rating.'</b> 2 3 4 5</b>';
+    }
+    if($P->food_rating=="2"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 <b style="color:#dc36c1;font-size:40px">' .$P->food_rating.'</b> 3 4 5</b>';
+    }
+    if($P->food_rating=="3"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 2 <b style="color:blueviolet;font-size:40px">'.$P->food_rating.'</b> 4 5</b>';
+    }
+    if($P->food_rating=="4"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 2 3 <b style="color:#4972cb;font-size:40px">' .$P->food_rating.'</b> 5</b>';
+    }
+    if($P->food_rating=="5"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 2 3 4 <b style="color:dodgerblue;font-size:40px">'.$P->food_rating.'</b></b>';
+    }?>
+    <br><br>
+
+    <label>Hinne teenindusele:</label><br>
+    <?php if($P->service_rating=="1"){
+        echo '<b style="color: #9c9898;font-size: 25px"><b style="color:red;font-size:40px">'.$P->service_rating.'</b> 2 3 4 5</b>';
+    }
+    if($P->service_rating=="2"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 <b style="color:#dc36c1;font-size:40px">'.$P->service_rating.'</b> 3 4 5</b>';
+    }
+    if($P->service_rating=="3"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 2 <b style="color:blueviolet;font-size:40px">'.$P->service_rating.'</b> 4 5</b>';
+    }
+    if($P->service_rating=="4"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 2 3 <b style="color:#4972cb;font-size:40px">' .$P->service_rating.'</b> 5</b>';
+    }
+    if($P->service_rating=="5"){
+        echo '<b style="color: #9c9898;font-size: 25px">1 2 3 4 <b style="color:dodgerblue;font-size:40px">'.$P->service_rating.'</b></b>';
+    }?>
+
 
 <!-- Button trigger modal -->
 					<button type="button" class="btn btn-warning btn-lg btn-block" data-toggle="modal" data-target="#myModal">
@@ -104,66 +161,176 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
 						  <div class="modal-body">
 							<form class="ccenter" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
 							<input type="hidden" name="id" value="<?=$_GET["id"];?>" >
-							<label>Senine hinne:</label>
-								<?php if($P->grade=="1"){
-								echo '<b style="color:red;font-size:30px">'.$P->grade.'</b>';
-								}
-								if($P->grade=="2"){
-								echo '<b style="color:crimson;font-size:30px">'.$P->grade.'</b>';
-								}
-								if($P->grade=="3"){
-								echo '<b style="color:blueviolet;font-size:30px">'.$P->grade.'</b>';
-								}
-								if($P->grade=="4"){
-								echo '<b style="color:slateblue;font-size:30px">'.$P->grade.'</b>';
-								}
-								if($P->grade=="5"){
-								echo '<b style="color:dodgerblue;font-size:30px">'.$P->grade.'</b>';
-								}?>
-								<br><br>
+							<label style="color: rgb(118,118,118)">Senised hinded:</label><br>
+                                <label style="font-size: 18px;color: rgb(118,118,118)">Restoranile:</label>
+                                <?php if($P->grade=="1"){
+                                    echo '<b style="color: #9c9898;font-size: 25px"><b style="color:red;font-size:40px">'.$P->grade.'</b> 2 3 4 5</b>';
+                                }
+                                if($P->grade=="2"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 <b style="color:#dc36c1;font-size:40px">'.$P->grade.'</b> 3 4 5</b>';
+                                }
+                                if($P->grade=="3"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 2 <b style="color:blueviolet;font-size:40px">'.$P->grade.'</b> 4 5</b>';
+                                }
+                                if($P->grade=="4"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 2 3 <b style="color:#4972cb;font-size:40px">' .$P->grade.'</b> 5</b>';
+                                }
+                                if($P->grade=="5"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 2 3 4 <b style="color:dodgerblue;font-size:40px">'.$P->grade.'</b></b>';
+                                }?>
+                                <br>
+                                <label style="font-size: 18px;color: rgb(118,118,118)">Toidule:</label>
+                                <?php if($P->food_rating=="1"){
+                                    echo '<b style="color: #9c9898;font-size: 25px"><b style="color:red;font-size:40px">'.$P->food_rating.'</b> 2 3 4 5</b>';
+                                }
+                                if($P->food_rating=="2"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 <b style="color:#dc36c1;font-size:40px">' .$P->food_rating.'</b> 3 4 5</b>';
+                                }
+                                if($P->food_rating=="3"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 2 <b style="color:blueviolet;font-size:40px">'.$P->food_rating.'</b> 4 5</b>';
+                                }
+                                if($P->food_rating=="4"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 2 3 <b style="color:#4972cb;font-size:40px">' .$P->food_rating.'</b> 5</b>';
+                                }
+                                if($P->food_rating=="5"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 2 3 4 <b style="color:dodgerblue;font-size:40px">'.$P->food_rating.'</b></b>';
+                                }?>
+                                <br>
+                                <label style="font-size: 18px;color: rgb(118,118,118)">Teenindusele:</label>
+                                <?php if($P->service_rating=="1"){
+                                    echo '<b style="color: #9c9898;font-size: 25px"><b style="color:red;font-size:40px">'.$P->service_rating.'</b> 2 3 4 5</b>';
+                                }
+                                if($P->service_rating=="2"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 <b style="color:#dc36c1;font-size:40px">'.$P->service_rating.'</b> 3 4 5</b>';
+                                }
+                                if($P->service_rating=="3"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 2 <b style="color:blueviolet;font-size:40px">'.$P->service_rating.'</b> 4 5</b>';
+                                }
+                                if($P->service_rating=="4"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 2 3 <b style="color:#4972cb;font-size:40px">' .$P->service_rating.'</b> 5</b>';
+                                }
+                                if($P->service_rating=="5"){
+                                    echo '<b style="color: #9c9898;font-size: 25px">1 2 3 4 <b style="color:dodgerblue;font-size:40px">'.$P->service_rating.'</b></b>';
+                                }?>
+								<br><br><br>
 
-								<label>Uus hinne:</label>
+								<label style="color: dodgerblue">Uued hinded:</label><br>
+                                <label style="font-size: 18px;color: rgb(118,118,118)">Restoranile:</label>
 								<?php if($P->grade=="1"){
-									echo '<input type="radio" name="grade" value="1" checked><b style="color: red;font-size:24px">1</b>';
-									echo '<input type="radio" name="grade" value="2" ><b style="color: crimson;font-size:24px">2</b>';
-									echo '<input type="radio" name="grade" value="3" ><b style="color: blueviolet;font-size:24px">3</b>';
-									echo '<input type="radio" name="grade" value="4" ><b style="color: slateblue;font-size:24px">4</b>';
-									echo '<input type="radio" name="grade" value="5" ><b style="color: dodgerblue;font-size:24px">5</b>';
+									echo '<input type="radio" name="grade" value="1" checked><b style="color: red;font-size:24px">1 </b>';
+									echo '<input type="radio" name="grade" value="2" ><b style="color: #dc36c1;font-size:24px">2 </b>';
+									echo '<input type="radio" name="grade" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+									echo '<input type="radio" name="grade" value="4" ><b style="color: #4972cb;font-size:24px">4 </b>';
+									echo '<input type="radio" name="grade" value="5" ><b style="color: dodgerblue;font-size:24px">5 </b>';
 								}
 								if($P->grade=="2"){
-									echo '<input type="radio" name="grade" value="1" ><b style="color: red;font-size:24px">1</b>';
-									echo '<input type="radio" name="grade" value="2" checked><b style="color: crimson;font-size:24px">2</b>';
-									echo '<input type="radio" name="grade" value="3" ><b style="color: blueviolet;font-size:24px">3</b>';
-									echo '<input type="radio" name="grade" value="4" ><b style="color: slateblue;font-size:24px">4</b>';
-									echo '<input type="radio" name="grade" value="5" ><b style="color: dodgerblue;font-size:24px">5</b>';
+									echo '<input type="radio" name="grade" value="1" ><b style="color: red;font-size:24px">1 </b>';
+									echo '<input type="radio" name="grade" value="2" checked><b style="color: #dc36c1;font-size:24px">2 </b>';
+									echo '<input type="radio" name="grade" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+									echo '<input type="radio" name="grade" value="4" ><b style="color: #4972cb;font-size:24px">4 </b>';
+									echo '<input type="radio" name="grade" value="5" ><b style="color: dodgerblue;font-size:24px">5 </b>';
 								}
 								if($P->grade=="3"){
-									echo '<input type="radio" name="grade" value="1" ><b style="color: red;font-size:24px">1</b>';
-									echo '<input type="radio" name="grade" value="2" ><b style="color: crimson;font-size:24px">2</b>';
-									echo '<input type="radio" name="grade" value="3" checked><b style="color: blueviolet;font-size:24px">3</b>';
-									echo '<input type="radio" name="grade" value="4" ><b style="color: slateblue;font-size:24px">4</b>';
-									echo '<input type="radio" name="grade" value="5" ><b style="color: dodgerblue;font-size:24px">5</b>';
+									echo '<input type="radio" name="grade" value="1" ><b style="color: red;font-size:24px">1  </b>';
+									echo '<input type="radio" name="grade" value="2" ><b style="color: #dc36c1;font-size:24px">2  </b>';
+									echo '<input type="radio" name="grade" value="3" checked><b style="color: blueviolet;font-size:24px">3 </b>';
+									echo '<input type="radio" name="grade" value="4" ><b style="color: #4972cb;font-size:24px">4  </b>';
+									echo '<input type="radio" name="grade" value="5" ><b style="color: dodgerblue;font-size:24px">5  </b>';
 								}
 								if($P->grade=="4"){
-									echo '<input type="radio" name="grade" value="1" ><b style="color: red;font-size:24px">1</b>';
-									echo '<input type="radio" name="grade" value="2" ><b style="color: crimson;font-size:24px">2</b>';
-									echo '<input type="radio" name="grade" value="3" ><b style="color: blueviolet;font-size:24px">3</b>';
-									echo '<input type="radio" name="grade" value="4" checked><b style="color: slateblue;font-size:24px">4</b>';
-									echo '<input type="radio" name="grade" value="5" ><b style="color: dodgerblue;font-size:24px">5</b>';
+									echo '<input type="radio" name="grade" value="1" ><b style="color: red;font-size:24px">1 </b>';
+									echo '<input type="radio" name="grade" value="2" ><b style="color: #dc36c1;font-size:24px">2 </b>';
+									echo '<input type="radio" name="grade" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+									echo '<input type="radio" name="grade" value="4" checked><b style="color: #4972cb;font-size:24px">4 </b>';
+									echo '<input type="radio" name="grade" value="5" ><b style="color: dodgerblue;font-size:24px">5 </b>';
 								}
 								if($P->grade=="5"){
-									echo '<input type="radio" name="grade" value="1" ><b style="color: red;font-size:24px">1</b>';
-									echo '<input type="radio" name="grade" value="2" ><b style="color: crimson;font-size:24px">2</b>';
-									echo '<input type="radio" name="grade" value="3" ><b style="color: blueviolet;font-size:24px">3</b>';
-									echo '<input type="radio" name="grade" value="4" ><b style="color: slateblue;font-size:24px">4</b>';
-									echo '<input type="radio" name="grade" value="5" checked><b style="color: dodgerblue;font-size:24px">5</b>';
+									echo '<input type="radio" name="grade" value="1" ><b style="color: red;font-size:24px">1 </b>';
+									echo '<input type="radio" name="grade" value="2" ><b style="color: #dc36c1;font-size:24px">2 </b>';
+									echo '<input type="radio" name="grade" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+									echo '<input type="radio" name="grade" value="4" ><b style="color: #4972cb;font-size:24px">4 </b>';
+									echo '<input type="radio" name="grade" value="5" checked><b style="color: dodgerblue;font-size:24px">5 </b>';
 								}?>
+                                <br><br>
+                                <label style="font-size: 18px;color: rgb(118,118,118)">Toidule:</label>
+                                <?php if($P->food_rating=="1"){
+                                    echo '<input type="radio" name="food_rating" value="1" checked><b style="color: red;font-size:24px">1 </b>';
+                                    echo '<input type="radio" name="food_rating" value="2" ><b style="color: #dc36c1;font-size:24px">2 </b>';
+                                    echo '<input type="radio" name="food_rating" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="food_rating" value="4" ><b style="color: #4972cb;font-size:24px">4 </b>';
+                                    echo '<input type="radio" name="food_rating" value="5" ><b style="color: dodgerblue;font-size:24px">5 </b>';
+                                }
+                                if($P->food_rating=="2"){
+                                    echo '<input type="radio" name="food_rating" value="1" ><b style="color: red;font-size:24px">1 </b>';
+                                    echo '<input type="radio" name="food_rating" value="2" checked><b style="color: #dc36c1;font-size:24px">2 </b>';
+                                    echo '<input type="radio" name="food_rating" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="food_rating" value="4" ><b style="color: #4972cb;font-size:24px">4 </b>';
+                                    echo '<input type="radio" name="food_rating" value="5" ><b style="color: dodgerblue;font-size:24px">5 </b>';
+                                }
+                                if($P->food_rating=="3"){
+                                    echo '<input type="radio" name="food_rating" value="1" ><b style="color: red;font-size:24px">1  </b>';
+                                    echo '<input type="radio" name="food_rating" value="2" ><b style="color: #dc36c1;font-size:24px">2  </b>';
+                                    echo '<input type="radio" name="food_rating" value="3" checked><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="food_rating" value="4" ><b style="color: #4972cb;font-size:24px">4  </b>';
+                                    echo '<input type="radio" name="food_rating" value="5" ><b style="color: dodgerblue;font-size:24px">5  </b>';
+                                }
+                                if($P->food_rating=="4"){
+                                    echo '<input type="radio" name="food_rating" value="1" ><b style="color: red;font-size:24px">1 </b>';
+                                    echo '<input type="radio" name="food_rating" value="2" ><b style="color: #dc36c1;font-size:24px">2 </b>';
+                                    echo '<input type="radio" name="food_rating" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="food_rating" value="4" checked><b style="color: #4972cb;font-size:24px">4 </b>';
+                                    echo '<input type="radio" name="food_rating" value="5" ><b style="color: dodgerblue;font-size:24px">5 </b>';
+                                }
+                                if($P->food_rating=="5"){
+                                    echo '<input type="radio" name="food_rating" value="1" ><b style="color: red;font-size:24px">1 </b>';
+                                    echo '<input type="radio" name="food_rating" value="2" ><b style="color: #dc36c1;font-size:24px">2 </b>';
+                                    echo '<input type="radio" name="food_rating" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="food_rating" value="4" ><b style="color: #4972cb;font-size:24px">4 </b>';
+                                    echo '<input type="radio" name="food_rating" value="5" checked><b style="color: dodgerblue;font-size:24px">5 </b>';
+                                }?>
+                                <br><br>
+                                <label style="font-size: 18px;color: rgb(118,118,118)">Teenindusele:</label>
+                                <?php if($P->service_rating=="1"){
+                                    echo '<input type="radio" name="service_rating" value="1" checked><b style="color: red;font-size:24px">1 </b>';
+                                    echo '<input type="radio" name="service_rating" value="2" ><b style="color: #dc36c1;font-size:24px">2 </b>';
+                                    echo '<input type="radio" name="service_rating" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="service_rating" value="4" ><b style="color: #4972cb;font-size:24px">4 </b>';
+                                    echo '<input type="radio" name="service_rating" value="5" ><b style="color: dodgerblue;font-size:24px">5 </b>';
+                                }
+                                if($P->service_rating=="2"){
+                                    echo '<input type="radio" name="service_rating" value="1" ><b style="color: red;font-size:24px">1 </b>';
+                                    echo '<input type="radio" name="service_rating" value="2" checked><b style="color: #dc36c1;font-size:24px">2 </b>';
+                                    echo '<input type="radio" name="service_rating" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="service_rating" value="4" ><b style="color: #4972cb;font-size:24px">4 </b>';
+                                    echo '<input type="radio" name="service_rating" value="5" ><b style="color: dodgerblue;font-size:24px">5 </b>';
+                                }
+                                if($P->service_rating=="3"){
+                                    echo '<input type="radio" name="service_rating" value="1" ><b style="color: red;font-size:24px">1  </b>';
+                                    echo '<input type="radio" name="service_rating" value="2" ><b style="color: #dc36c1;font-size:24px">2  </b>';
+                                    echo '<input type="radio" name="service_rating" value="3" checked><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="service_rating" value="4" ><b style="color: #4972cb;font-size:24px">4  </b>';
+                                    echo '<input type="radio" name="service_rating" value="5" ><b style="color: dodgerblue;font-size:24px">5  </b>';
+                                }
+                                if($P->service_rating=="4"){
+                                    echo '<input type="radio" name="service_rating" value="1" ><b style="color: red;font-size:24px">1 </b>';
+                                    echo '<input type="radio" name="service_rating" value="2" ><b style="color: #dc36c1;font-size:24px">2 </b>';
+                                    echo '<input type="radio" name="service_rating" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="service_rating" value="4" checked><b style="color: #4972cb;font-size:24px">4 </b>';
+                                    echo '<input type="radio" name="service_rating" value="5" ><b style="color: dodgerblue;font-size:24px">5 </b>';
+                                }
+                                if($P->service_rating=="5"){
+                                    echo '<input type="radio" name="service_rating" value="1" ><b style="color: red;font-size:24px">1 </b>';
+                                    echo '<input type="radio" name="service_rating" value="2" ><b style="color: #dc36c1;font-size:24px">2 </b>';
+                                    echo '<input type="radio" name="service_rating" value="3" ><b style="color: blueviolet;font-size:24px">3 </b>';
+                                    echo '<input type="radio" name="service_rating" value="4" ><b style="color: #4972cb;font-size:24px">4 </b>';
+                                    echo '<input type="radio" name="service_rating" value="5" checked><b style="color: dodgerblue;font-size:24px">5 </b>';
+                                }?>
 								
 
 								<br><br>
 								<div class="form-group">
 									<label for="comment">Kommentaar:</label>
-									<b><textarea class="form-control" rows="5" id="comment" name="comment"><?=$P->comment;?></textarea></b>
+									<b><textarea style="font-size: 20px" class="form-control" rows="5" id="comment" name="comment"><?=$P->comment;?></textarea></b>
 								</div><br><br>
 
 								<p class="text-center"><button type="submit" name="update" value="Salvesta" class="btn-warning btn-lg " style="width: 150px">
@@ -174,7 +341,7 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
 							<p class="text-center"><a class='btn-danger btn-lg' href="?id=<?=$_GET["id"];?>&delete=true"><span class="glyphicon glyphicon-trash"></span></a></p>
 						  </div>
 						  <div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Sulge</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Tühista</button>
 						  </div>
 						</div>
 					  </div>

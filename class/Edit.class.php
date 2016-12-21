@@ -17,10 +17,10 @@ class Edit
     }
 
     
-    function updateResto($id, $grade, $comment){
+    function updateResto($id, $grade, $food_rating, $service_rating, $comment){
 
-        $stmt = $this->connection->prepare("UPDATE restoranid SET grade=?, comment=? WHERE id=? and deleted is NULL");
-        $stmt->bind_param("isi", $grade, $comment, $id);
+        $stmt = $this->connection->prepare("UPDATE restoranid SET grade=?, food_rating=?, service_rating=?, comment=? WHERE id=? and deleted is NULL");
+        $stmt->bind_param("iiisi", $grade, $food_rating, $service_rating, $comment, $id);
 
         // kas õnnestus salvestada
         if ($stmt->execute()) {
