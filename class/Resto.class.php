@@ -150,68 +150,6 @@ class Resto
 
         return $result;
     }
-	function getSpecificResto($g){}
-	function getSpecificRestoData($RestoName){
-
-		$stmt = $this->connection->prepare("SELECT restoName FROM restoranid WHERE id=? and deleted is NULL");
-				$stmt->bind_param("i", $EditId);
-				$stmt->bind_result($RestoName);
-				$stmt->execute();
-
-				//tekitan objekti
-				$resto = new Stdclass();
-
-				//saime ühe rea andmeid
-				if ($stmt->fetch()) {
-					// saan siin alles kasutada bind_result muutujaid
-					$resto->restoName = $RestoName;
-					
-				} else {
-					// ei saanud rida andmeid kätte
-					// sellist id'd ei ole olemas
-					// see rida võib olla kustutatud
-					echo "Midagi laks valesti:/";
-				   //header("Location: restoFEEDBACK.php");
-					exit();
-				}
-
-				$stmt->close();
-			
-        $stmt = $this->connection->prepare("SELECT grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created FROM restoranid WHERE restoName=? and deleted is NULL");
-        $stmt->bind_param("s", $RestoName);
-        $stmt->bind_result($grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
-        $stmt->execute();
-
-        //tekitan objekti
-        $resto = new Stdclass();
-
-        //saime ühe rea andmeid
-        if ($stmt->fetch()) {
-            // saan siin alles kasutada bind_result muutujaid
-            $resto->restoName = $grade;
-            $resto->grade = $food;
-            $resto->food_rating = $food_rating;
-            $resto->service_rating = $service_rating;
-            $resto->comment = $comment;
-            $resto->customer_sex = $customer_sex;
-            $resto->customer_name = $customer_name;
-            $resto->created = $created;
-			var_dump($grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
-
-        } else {
-			var_dump($grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
-            // ei saanud rida andmeid kätte
-            // sellist id'd ei ole olemas
-            // see rida võib olla kustutatud
-            echo "Midagi laks valesti:/";
-           //header("Location: restoFEEDBACK.php");
-            exit();
-        }
-
-        $stmt->close();
-
-        return $resto;
-	}
 	function getSingleRestoData($edit_id){
 
 
@@ -251,5 +189,35 @@ class Resto
         return $resto;
 
     }
+    function getFact(){
+        $stmt = $this->connection->prepare("
+			SELECT fact from resto_facts ORDER BY RAND() LIMIT 1
+		");
+        echo $this->connection->error;
+
+        $stmt->bind_result($restoFact);
+        $stmt->execute();
+
+
+        //tekitan massiivi
+        $result = array();
+
+        // tee seda seni, kuni on rida andmeid
+        // mis vastab select lausele
+        while ($stmt->fetch()) {
+
+            //tekitan objekti
+            $r = new StdClass();
+            $r->restoFact = $restoFact;
+
+
+            array_push($result, $r);
+        }
+
+        $stmt->close();
+
+        return $result;
+    }
+
 }
 ?>

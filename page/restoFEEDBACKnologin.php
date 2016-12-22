@@ -125,7 +125,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
 					$html .= "</tr>";
 
 				}
-				$html .= "<?Table>";
+				$html .= "</Table>";
 				echo $html;
 
 				?>

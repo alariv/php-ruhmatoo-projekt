@@ -189,7 +189,7 @@ if( empty($signupEmailError)&&
 
     <div class="row">
 
-        <div class="col-sm-6 col-md-5 col-sm-offset-2 col-md-offset-3">
+        <div class="col-sm-6 col-md-6 col-sm-offset-2 col-md-offset-3">
 
         <center><h1><b>Loo kasutaja</b></h1></center>
 
@@ -254,7 +254,7 @@ if( empty($signupEmailError)&&
                     <input class="form-control" placeholder="telefoni number" name="phonenr" type="number">
                 </div>
 
-                <p style="color: lightcoral"><?php echo $signupgenderError; ?></p><a style="color: dodgerblue">
+                <p style="color: lightcoral"><?php echo $signupgenderError; ?></p>
                 <br>
 
                 <div class="container">

@@ -49,7 +49,9 @@
 		$_POST["loginPassword"] = $Helper->cleanInput($_POST["loginPassword"]);
 		//login sisse
 		$error = $User->login($_POST["loginEmail"],$_POST["loginPassword"]);
+
 	}
+	$Fact = $Resto->getFact();
 ?>
 <?php require("../header.php");?>
 <?php require("../CSS.php");?>
@@ -115,12 +117,20 @@
                 </div>
 				<center>Pole kasutajat? <a href="restoSIGNUP.php">Registreeru</a></center>
             </div>
-            <div class="col-sm-4 col-md-3 col-sm-offset-4 col-md-offset-2">
-
-				</div>
 			</div>
 		</div>
 
+
+    <div class="container">
+        <div class="row">
+            <b><center style="font-size: 20px">
+                    <?php
+                    foreach($Fact as $R){
+                     echo $R->restoFact;
+                    } ?>
+            </center></b>
+        </div>
+    </div>
 
 <!--<audio controls autoplay loop >
 						<source src="intro.mp3" type="audio/mpeg"  >;

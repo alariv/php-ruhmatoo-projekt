@@ -81,4 +81,4 @@ if(isset($_GET["logout"])) {
 
 
 
-<?php require("../header.php");?>
+<?php require("../footer.php");?>

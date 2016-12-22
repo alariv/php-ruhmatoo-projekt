@@ -148,7 +148,9 @@ $restos = $Resto->getSingleRestoData($_GET["id"]);
 					$html .= "</tr>";
 
 				}
-				$html .= "<?Table>";
+				$html .= "</Table>";
 				echo $html;
 
 				?>
+
+<?php require("../footer.php");?>

@@ -79,13 +79,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
 	<span style="float: left"> <img src="../fork.jpg" alt="fork" style="width:75px;height:750px;"></span>
 	<span style="float: right" class="img"> <img src="../knife.jpg" alt="knife" style="width:75px;height:750px;"></span>
 	
-	<p style="max-width: 230px" class="center-block">
-	<select class="selectpicker form-control" data-style="btn-danger"  data-live-search="true">
-  <option data="McDonalds">McDonalds</option>
-  <option data="City Marina">City Marina</option>
-  <option data="Noa"">Noa</option>
-  <option data="Noa"> bleh</option>
-</select></p>
+
 <?php
 
 $html = "<table style='width: 20%' class='table table-striped'>";
@@ -151,7 +145,7 @@ foreach($person as $P){
     $html .= "</tr>";
 
 }
-$html .= "<?Table>";
+$html .= "</Table>";
 echo $html;
 
 ?>
