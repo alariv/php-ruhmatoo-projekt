@@ -55,9 +55,6 @@ $restos = $Resto->getSingleRestoData($_GET["id"]);
 			<li class="nav-item">
 				<a class="nav-link" href="restoDATA">Loo uus sissekanne</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="restoRESTO">(lisasin prgu et saaks restoranide lehele)</a>
-			</li>
 		</ul>
 			<div class="collapse navbar-collapse">
 				<form class="form-inline float-xs-right pull-right">

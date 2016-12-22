@@ -35,12 +35,12 @@ table, th, td{
         border-right-width: 0px;
         border-left-width: 0px;
 		border-bottom-width: 1px;
-		border-collapse: collapse;
 		margin-left: -5%;
         border-color: #b2aeae;
 	}
 	th, td{
-		padding: 15px;
+		padding-right: 15px;
+		padding-left: 15px;
         padding-top: 0px;
         padding-bottom: 0px;
     }
@@ -91,12 +91,12 @@ table, th, td{
 
                 <h2>Profiil</h2>
 
-                <center><h3 style="color: dodgerblue"> #<?=$_SESSION["userId"];?></h3></center><br>
-                <text style="color: dodgerblue"> Email :</text><text style="float: right"><?=$_SESSION["email"];?></text><br>
-                <text style="color: dodgerblue"> Eesnimi :</text><text style="float: right"> <?=$_SESSION["name"];?></text><br>
-                <text style="color: dodgerblue"> Perekonnanimi :</text><text style="float: right"> <?=$_SESSION["lname"];?></text><br>
-                <text style="color: dodgerblue"> Vanus :</text><text style="float: right"> <?=$_SESSION["age"];?></text><br>
-                <text style="color: dodgerblue"> Telefoni number :</text><text style="float: right"> <?=$_SESSION["phonenr"];?></text><br>
+                <b><center><text style="color: dodgerblue;font-size: 30px"> #<?=$_SESSION["userId"];?></text></center></b><br>
+                <text style="color: dodgerblue;line-height: 25px"> Email :</text><text style="float: right"><?=$_SESSION["email"];?></text><br>
+                <text style="color: dodgerblue;line-height: 25px"> Eesnimi :</text><text style="float: right"> <?=$_SESSION["name"];?></text><br>
+                <text style="color: dodgerblue;line-height: 25px"> Perekonnanimi :</text><text style="float: right"> <?=$_SESSION["lname"];?></text><br>
+                <text style="color: dodgerblue;line-height: 25px"> Vanus :</text><text style="float: right"> <?=$_SESSION["age"];?></text><br>
+                <text style="color: dodgerblue;line-height: 25px"> Telefoni number :</text><text style="float: right"> <?=$_SESSION["phonenr"];?></text><br>
             </div>
         </div>
 
@@ -110,8 +110,8 @@ table, th, td{
 
                 $html .= "<tr>";
                     //$html .= "<th>restoid</th>";
-                    $html .= "<th style='color: dodgerblue'>Restoran</th>";
-                    $html .= "<th style='color: dodgerblue'>Loodud</th>";
+                    $html .= "<th style='color: dodgerblue;padding-right: 100px'>Restoran</th>";
+                    $html .= "<th style='color: dodgerblue;padding-right: 30px'>Loodud</th>";
                     $html .= "<th style='color: #b60000'>Muuda</th>";
                 $html .= "</tr>";
 

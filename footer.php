@@ -23,7 +23,7 @@
 </style>
 <text class="footer">
 <hr>
-<div class="container" style="margin-bottom: 100px">
+<div class="container">
     <div class="row">
         <div class="col-sm-4 col-md-8 col-sm-offset-2 col-md-offset-2">
             <center><h3 style="color: maroon">Administraatorid</h3></center>
@@ -46,7 +46,7 @@
         </div>
     </div>
 </div>
-
 </text>
+<br><br>
 </body>
 </html>

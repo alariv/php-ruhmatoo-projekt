@@ -236,6 +236,7 @@ if( empty($signupEmailError)&&
                                 </span>
                         <input class="form-control" placeholder="Korda parooli" name="signupPassword2" type="password">
                     </div>
+                </div>
 
 
                 <p style="color: lightcoral"><?php echo $signupageError; ?></p>
