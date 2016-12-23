@@ -15,6 +15,7 @@ if(isset($_GET["logout"])) {
     header("Location: restoSISSELOGIMINE.php");
     exit();
 }
+$Fact = $Resto->getFact();
 
 ?>
 
@@ -76,7 +77,17 @@ if(isset($_GET["logout"])) {
 
 
 
-
+    <div class="container">
+        <div class="row">
+            <b><center><text style="color: maroon;font-size: 20px">Random fact</text></center></b>
+            <b><center style="font-size: 20px">
+                    <?php
+                    foreach($Fact as $R){
+                        echo $R->restoFact;
+                    } ?>
+                </center></b>
+        </div>
+    </div>
 
 
 

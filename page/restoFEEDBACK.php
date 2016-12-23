@@ -62,7 +62,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
                 <a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="restoDATA">Loo uus sissekanne</a>
+                <a class="nav-link" href="restoDATA"><span class="glyphicon glyphicon-plus"></span> Uus sissekanne</a>
             </li>
         </ul>
         <div class="collapse navbar-collapse">
@@ -117,7 +117,7 @@ if(isset($_GET["order"]) && $_GET["order"] == "ASC"){
 //$html .= "<th style=\"background-color: lightskyblue\">
 //						<a href='?q=".$q."&sort=id&order=".$idOrder."'>id</a></th>";
 $html .= "<th>
-						<center><a href='?q=".$q."&sort=restoName&order=".$restoNameOrder."'>restorani nimi</center></th>";
+						<center><a style='font-size: 20px' href='?q=".$q."&sort=restoName&order=".$restoNameOrder."'>Restorani nimi</center></th>";
 //$html .= "<th style=\"background-color: lightskyblue\">
 //						<a href='?q=".$q."&sort=grade&order=".$gradeOrder."'>hinne</th>";
 //$html .= "<th style=\"background-color: lightblue\">

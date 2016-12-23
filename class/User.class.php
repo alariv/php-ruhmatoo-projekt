@@ -19,8 +19,6 @@ class User
 
     function signup ($signupEmail, $signupPassword, $signupName, $signupLName, $signupage, $phonenr, $signupgender){
 
-
-
         //yhendus olemas
         $this->connection = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"],$GLOBALS["serverPassword"],$GLOBALS["database"]);
 
@@ -38,7 +36,7 @@ class User
         if($stmt->execute()){
             echo "kasutaja loomine õnnestus";
         }else {
-            echo"ERROR ".$stmt->error;
+            echo "ERROR ".$stmt->error;
         }
     }
     function login($email, $password){

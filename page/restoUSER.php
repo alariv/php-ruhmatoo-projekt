@@ -56,11 +56,12 @@ table, th, td{
             <a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="restoDATA"><span class="glyphicon glyphicon-plus"></span> Uus sissekanne</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="restoFEEDBACK.php"><span class="glyphicon glyphicon-th-list"></span> Kasutajate Tagasiside</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="restoDATA"><span class="glyphicon glyphicon-plus"></span> Uus sissekanne</a>
+        </li>
+
     </ul>
     <div class="collapse navbar-collapse">
 
@@ -100,7 +101,7 @@ table, th, td{
             </div>
         </div>
 
-        <div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-1">
+        <div class="col-sm-6 col-md-4 col-sm-offset-1 col-md-offset-2">
 
             <div class="account-wall">
 

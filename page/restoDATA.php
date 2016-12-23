@@ -56,7 +56,7 @@
     if (isset ($_POST ["restoName"])) {
         // oli olemas, ehk keegi vajutas nuppu
         if (empty($_POST ["restoName"])) {
-            //oli tõesti tühi
+            //oli tï¿½esti tï¿½hi
             $restoNameError = "Sisesta restorani nimi!";
         } else {
             $restoName = $_POST ["restoName"];
@@ -65,7 +65,7 @@
     if (isset ($_POST ["comment"])) {
         // oli olemas, ehk keegi vajutas nuppu
         if (empty($_POST ["comment"])) {
-            //oli tõesti tühi
+            //oli tï¿½esti tï¿½hi
             $commentError = "Sisesta kommentaar!";
         } else {
             $comment = $_POST ["comment"];
@@ -74,7 +74,7 @@
 	if (isset ($_POST ["serviceRating"])) {
 		// oli olemas, ehk keegi vajutas nuppu
 		if (empty($_POST ["serviceRating"])) {
-			//oli tõesti tühi
+			//oli tï¿½esti tï¿½hi
 			$serviceRatingError = "Vali hinne!";
 		} else {
 			$serviceRating = $_POST ["serviceRating"];
@@ -83,7 +83,7 @@
 	if (isset ($_POST ["foodRating"])) {
 		// oli olemas, ehk keegi vajutas nuppu
 		if (empty($_POST ["foodRating"])) {
-			//oli tõesti tühi
+			//oli tï¿½esti tï¿½hi
 			$foodRatingError = "Vali hinne!";
 		} else {
 			$foodRating = $_POST ["foodRating"];
@@ -92,7 +92,7 @@
 	if (isset ($_POST ["food"])) {
 		// oli olemas, ehk keegi vajutas nuppu
 		if (empty($_POST ["food"])) {
-			//oli tõesti tühi
+			//oli tï¿½esti tï¿½hi
 			$foodError = "Sisesta toit!";
 		} else {
 			$food = $_POST ["food"];
@@ -108,8 +108,11 @@
 	<nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
 		<ul class="nav navbar-nav">
 			<a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
-			<li class="nav-item">
-				<a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
+            <li class="nav-item">
+                <a class="nav-link" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> tagasi</a>
+            </li>
+            <li class="nav-item">
+				<a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi vï¿½lja</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
@@ -146,7 +149,7 @@
 			<br>
 
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
-			<a style="color: dodgerblue"> Üldine hinnang restoranile:</a><br>
+			<a style="color: dodgerblue"> ï¿½ldine hinnang restoranile:</a><br>
 			<div class="stars">
 					<input class="star star-5" id="grade-5" type="radio" value="5" name="grade">
 					<label class="star star-5" for="grade-5"></label>
@@ -159,7 +162,7 @@
 					<input class="star star-1" id="grade-1" type="radio" value="1" name="grade">
 					<label class="star star-1" for="grade-1"></label>
 			</div><br>
-			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Mida sõin?</a>
+			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Mida sï¿½in?</a>
 			<input class="form-control" placeholder="Toit" name="food" type="text">
 			<br>
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
@@ -208,7 +211,7 @@
 <h1 style="color: dodgerblue;margin: 0 auto;max-width: 370px;font-size: 38px">Kasutajate tagasiside</h1><br>
 	<fieldset style="border-width: 0px;margin: 0 auto;max-width: 370px">
 	<form>
-		<input class="form-control" style="color: dodgerblue" name="q"  placeholder="Otsi restoranide, hinnete või kommentaari järgi" value="<?=$q;?>"><br>
+		<input class="form-control" style="color: dodgerblue" name="q"  placeholder="Otsi restoranide, hinnete vï¿½i kommentaari jï¿½rgi" value="<?=$q;?>"><br>
 		<p class="text-center"><button type="submit" class="btn btn-info" style="width: 370px">
 			<span class="glyphicon glyphicon-search"></span> Search
 		</button></p>
