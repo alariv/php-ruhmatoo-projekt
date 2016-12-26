@@ -43,6 +43,32 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
 <?php require("../header.php");?>
 <?php require("../CSS.php");?>
 
+<style>
+    .btn span.glyphicon {
+        opacity: 0;
+    }
+    .btn.active span.glyphicon {
+        opacity: 1;
+        color: white;
+    }
+    .btn-1 {
+        background: rgba(255, 0, 0, 0.7);
+        color: #ffffff;
+    }.btn-2 {
+        background: rgba(220, 54, 193, 0.71);
+        color: #ffffff;
+    }.btn-3 {
+        background: rgba(138, 43, 226, 0.71);
+        color: #ffffff;
+    }.btn-4 {
+        background: rgba(73, 114, 203, 0.71);
+        color: #ffffff;
+    }.btn-5 {
+        background: rgba(30, 144, 255, 0.7);
+        color: #ffffff;
+        }
+</style>
+
     <nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
         <ul class="nav navbar-nav">
             <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
@@ -345,5 +371,8 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
 						  </div>
 						</div>
 					  </div>
-					</div>		
+					</div>
+
+
+
 <?php require("../footer.php");?>
