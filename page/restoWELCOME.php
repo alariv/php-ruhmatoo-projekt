@@ -4,7 +4,7 @@ require("../restoFUNCTIONS.php");
 
 if(!isset ($_SESSION["userId"])) {
 
-    //header("Location: restoSISSELOGIMINE.php");
+    header("Location: restoSISSELOGIMINE.php");
     exit();
 }
 
