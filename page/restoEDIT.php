@@ -112,7 +112,7 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
 <form class="ccenter" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
     <input type="hidden" name="id" value="<?=$_GET["id"];?>" >
     <center><label for="restoName" >Restorani nimi:    </label><br>
-    <b style="font-size:30px;color:dodgerblue"><?php echo $P->restoName;?></b><center><br>
+    <b style="font-size:30px;color:dodgerblue"><?php echo $P->restoName;?></b><br>
 
     <label>Hinne restoranile:</label><br>
     <?php if($P->grade=="1"){
@@ -167,7 +167,7 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
         echo '<b style="color: #9c9898;font-size: 25px">1 2 3 4 <b style="color:dodgerblue;font-size:40px">'.$P->service_rating.'</b></b>';
     }?>
 
-
+    </center>
 <!-- Button trigger modal -->
 					<button type="button" class="btn btn-warning btn-lg btn-block" data-toggle="modal" data-target="#myModal">
 					  Muuda sissekannet  <i class="fa fa-arrow-right" aria-hidden="true"></i>

@@ -63,8 +63,7 @@ class Resto
             $stmt->bind_param("ssssssssss", $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord, $searchWord);
         } else {
             $stmt = $this->connection->prepare("SELECT id, restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created  
-                                                FROM restoranid WHERE deleted is NULL
-                                            ORDER BY $sort $orderBy");
+                                                FROM restoranid WHERE deleted is NULL ORDER BY $sort $orderBy, restoName");
         }
         echo $this->connection->error;
 
@@ -150,11 +149,11 @@ class Resto
 
         return $result;
     }
-	function getSingleRestoData($edit_id){
+	function getSingleRestoData($id){
 
 
         $stmt = $this->connection->prepare("SELECT restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created FROM restoranid WHERE id=? and deleted is NULL");
-        $stmt->bind_param("i", $edit_id);
+        $stmt->bind_param("s", $id);
         $stmt->bind_result($restoName, $grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
         $stmt->execute();
 
@@ -164,29 +163,71 @@ class Resto
         //saime ühe rea andmeid
         if ($stmt->fetch()) {
             // saan siin alles kasutada bind_result muutujaid
-            $resto->restoName = $restoName;
-            $resto->grade = $grade;
-            $resto->food = $food;
-            $resto->food_rating = $food_rating;
-            $resto->service_rating = $service_rating;
-            $resto->comment = $comment;
-            $resto->customer_sex = $customer_sex;
-            $resto->customer_name = $customer_name;
-            $resto->created = $created;
+            $resto->restoName= $restoName;
+            $resto->grade=$grade;
+            $resto->food=$food;
+            $resto->food_rating=$food_rating;
+            $resto->service_rating=$service_rating;
+            $resto->comment=$comment;
+            $resto->customer_sex=$customer_sex;
+            $resto->customer_name=$customer_name;
+            $resto->created=$created;
+            $resto->id=$id;
 
 
         } else {
             // ei saanud rida andmeid kätte
             // sellist id'd ei ole olemas
             // see rida võib olla kustutatud
-            echo "Midagi laks valesti:/";
+
            header("Location: restoFEEDBACK.php");
+           echo "Midagi laks valesti:/";
+           exit();
+        }
+
+        $stmt->close();
+
+        return ($resto);
+
+    }
+    function getSingleRestoName($restoName){
+
+
+        $stmt = $this->connection->prepare("SELECT grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created FROM restoranid WHERE restoName LIKE ? and deleted is NULL");
+        $stmt->bind_param("s", $restoName);
+        $stmt->bind_result($grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
+        $stmt->execute();
+
+        //tekitan objekti
+        $oneresto = new Stdclass();
+
+        //saime ühe rea andmeid
+        if ($stmt->fetch()) {
+            // saan siin alles kasutada bind_result muutujaid
+            $oneresto->grade=$grade;
+            $oneresto->food=$food;
+            $oneresto->food_rating=$food_rating;
+            $oneresto->service_rating=$service_rating;
+            $oneresto->comment=$comment;
+            $oneresto->customer_sex=$customer_sex;
+            $oneresto->customer_name=$customer_name;
+            $oneresto->created=$created;
+
+
+        } else {
+            // ei saanud rida andmeid kätte
+            // sellist restoName'i ei ole olemas
+            // see rida võib olla kustutatud
+
+            //header("Location: restoFEEDBACK.php");
+            echo "Midagi laks valesti:/";
+            var_dump($oneresto);
             exit();
         }
 
         $stmt->close();
 
-        return $resto;
+        return ($oneresto);
 
     }
     function getFact(){

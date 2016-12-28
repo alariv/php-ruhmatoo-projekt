@@ -26,7 +26,7 @@ if(isset($_GET["sort"]) && isset($_GET["order"])){
 
 
 $person = $Resto->getallrestos($q, $sort, $order);
-$restos = $Resto->getSingleRestoData($_GET["id"]);
+$P = $Resto->getSingleRestoName($_GET["name"]);
 ?>
 <?php require("../header.php"); ?>
 <?php require("../CSS.php"); ?>
@@ -71,7 +71,7 @@ $restos = $Resto->getSingleRestoData($_GET["id"]);
 
     <br>
     <p style="color: dodgerblue;font-size: 25px" class="text-center"> Tere <?=$_SESSION["name"];?>!</p>
-    <p style="color: dodgerblue;font-size: 25px" class="text-center"> Oled <b style="color: #1c63ba;font-size: 30px"><?php echo $restos->restoName;?></b> tagasiside lehel</p>
+    <p style="color: dodgerblue;font-size: 25px" class="text-center"> Oled <b style="color: #1c63ba;font-size: 30px"><?php echo $_GET["name"];?></b> tagasiside lehel</p>
 
 	
 <?php
@@ -108,10 +108,10 @@ $restos = $Resto->getSingleRestoData($_GET["id"]);
 					$customer_nameOrder = "DESC";
 				}
 
-				$html .= "<th style=\"background-color: lightskyblue\">
-										<center><a href='?q=".$q."&sort=id&order=".$idOrder."'>id</a></center></th>";
-				$html .= "<th style=\"background-color: lightblue\">
-										<center><a href='?q=".$q."&sort=restoName&order=".$restoNameOrder."'>restorani nimi</a></center></th>";
+				//$html .= "<th style=\"background-color: lightskyblue\">
+									//	<center><a href='?q=".$q."&sort=id&order=".$idOrder."'>id</a></center></th>";
+				//$html .= "<th style=\"background-color: lightblue\">
+				//						<center><a href='?q=".$q."&sort=restoName&order=".$restoNameOrder."'>restorani nimi</a></center></th>";
 				$html .= "<th style='background-color: lightskyblue'>
 										<center><a href='?q=".$q."&sort=grade&order=".$gradeOrder."'>hinne</a></center></th>";
 				$html .= "<th style=\"background-color: lightblue\">
@@ -130,21 +130,21 @@ $restos = $Resto->getSingleRestoData($_GET["id"]);
 										<center><a href='?q=".$q."&sort=created&order=".$createdOrder."'>loodud</a></center></th>";
 				$html .= "</tr>";
 
-				foreach($person as $P){
+
 					$html .= "<tr>";
-					$html .= '<td style="background-color: lightblue">'.$P->id."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->restoName."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->grade."</td>";
+					//$html .= '<td style="background-color: lightblue">'.$r->id."</td>";
+					//$html .= '<td style="background-color: lightskyblue">'.$r->restoName."</td>";
+					$html .= "<td style='background-color: lightblue'>".$P->grade."</td>";
 					$html .= '<td style="background-color: lightskyblue">'.$P->comment."</td>";
 					$html .= '<td style="background-color: lightblue">'.$P->food."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->foodRating."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->serviceRating."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->gender."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->customerName."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.date('Y', strtotime($P->created))."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$P->food_rating."</td>";
+					$html .= '<td style="background-color: lightblue">'.$P->service_rating."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.$P->customer_sex."</td>";
+					$html .= '<td style="background-color: lightblue">'.$P->customer_name."</td>";
+					$html .= '<td style="background-color: lightskyblue">'.date('M Y', strtotime($P->created))."</td>";
 					$html .= "</tr>";
 
-				}
+
 				$html .= "</Table>";
 				echo $html;
 

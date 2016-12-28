@@ -120,7 +120,6 @@ table, th, td{
                 foreach($restos as $R){
 
                     $html .= "<tr>";
-                        //$html .= "<td>".$R->restoId."</td>";
                         $html .= "<td>".$R->restoName."</td>";
                         $html .= "<td>".date('M Y', strtotime($R->created))."</td>";
 						$html .= "<td style='padding: 0px'><center><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$R->restoId. "'>
