@@ -37,6 +37,8 @@ $P = $Resto->getSingleRestoName($_GET["name"]);
         margin: 0 auto;
 		max-width: 1000px;
         }
+    .centered-and-cropped { object-fit: cover }
+
 </style>
 
 

@@ -219,9 +219,9 @@ class Resto
             // sellist restoName'i ei ole olemas
             // see rida võib olla kustutatud
 
-            //header("Location: restoFEEDBACK.php");
+            header("Location: restoFEEDBACK.php");
             echo "Midagi laks valesti:/";
-            var_dump($oneresto);
+            //var_dump($oneresto);
             exit();
         }
 
@@ -259,6 +259,54 @@ class Resto
 
         return $result;
     }
+    function getRestosfordropdown(){
 
+        $stmt = $this->connection->prepare("
+                SELECT id,restoName
+                FROM resto_restos
+            ");
+        echo $this->connection->error;
+
+        $stmt->bind_result($restoId,$restoName);
+        $stmt->execute();
+
+
+        //tekitan massiivi
+        $result = array();
+
+        // tee seda seni, kuni on rida andmeid
+        // mis vastab select lausele
+        while ($stmt->fetch()) {
+
+            //tekitan objekti
+            $d = new StdClass();
+            $d->restoId = $restoId;
+            $d->restoName = $restoName;
+
+            array_push($result, $d);
+        }
+
+        $stmt->close();
+
+        return $result;
+    }
+    function saveRestosfordropdown($restoName){
+
+    echo "siin";
+        //yhendus olemas
+        //kask
+        $stmt = $this->connection->prepare("INSERT INTO resto_restos (restoName) 
+                                            VALUES (?)");
+
+        echo $this->connection->error;
+        $stmt->bind_param("s", $restoName);
+
+        if ($stmt->execute()) {
+            echo "salvestamine onnestus ";
+        } else {
+            echo "ERROR " . $stmt->error;
+        }
+
+    }
 }
 ?>

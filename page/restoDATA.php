@@ -98,9 +98,23 @@
 			$food = $_POST ["food"];
 		}
 	}
-//echo"<pre>";
-		//var_dump($person);
-		//echo"</pre>";
+
+    $dropdownrestos=$Resto->getRestosfordropdown();
+
+if (isset ($_POST["dropdownResto"])) {
+    // oli olemas, ehk keegi vajutas nuppu
+     $restoName = $_POST["dropdownResto"];}
+
+
+if( isset($_POST["dropdownResto"]) &&
+    !empty($_POST["dropdownResto"])
+)	{
+    $Resto->saveRestosfordropdown($_POST["dropdownResto"]);
+    header("Location: restoDATA.php");
+    exit();
+}
+
+
 ?>
 	<?php require("../header.php");?>
 	<?php require("../CSS.php");?>
@@ -112,7 +126,7 @@
                 <a class="nav-link" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> tagasi</a>
             </li>
             <li class="nav-item">
-				<a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi v�lja</a>
+				<a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
@@ -144,9 +158,56 @@
 		<fieldset style="border-bottom-width: 5px;border-top-width: 5px;border-right-width: 0;border-left-width: 0px" class="center">
 		<form  method="POST">
             <p class="errors"><?php echo $restoNameError; ?></p>
-			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Nimi</a>
-			<input class="form-control" placeholder="Restorani nimi" name="restoName" type="text">
-			<br>
+			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Restorani nimi</a>
+
+            <div class="input-group input-group-md">
+                <select name="restoName" type="text" class="form-control">
+                    <?php
+
+                    $listHtml = "";
+
+                    foreach($dropdownrestos as $d){
+
+
+                        $listHtml .= "<option value='".$d->restoName."'>".$d->restoName."</option>";
+
+                    }
+
+                    echo $listHtml;
+
+                    ?>
+                </select>
+
+                    <span class="input-group-addon">
+                        <button type="button" class="btn btn-danger btn-sm center-block" style="padding-bottom: 0px;padding-top: 0px" data-toggle="modal" data-target="#myModal">
+                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                </button>
+                    </span>
+            </div>
+
+                <!-- Modal -->
+                <div style="margin-top: 200px" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <center>RESTOGURU</center>
+                            </div>
+                            <div class="modal-body">
+                                    <span style="color: lightcoral" class="glyphicon glyphicon-asterisk"></span><a style="color: dodgerblue"> Restorani nimi</a>
+                                    <input class="form-control" placeholder="Restorani nimi" name="dropdownResto" type="text">
+                                    <input class='btn btn-success btn-md center-block' style="width: 300px;height: 50px" type="submit">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sulge</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <br>
 
 			<span style="color: lightcoral" class="glyphicon glyphicon-asterisk" "></span>
 			<a style="color: dodgerblue"> �ldine hinnang restoranile:</a><br>
