@@ -44,6 +44,9 @@ table, th, td{
         padding-top: 0px;
         padding-bottom: 0px;
     }
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+        background-color: #c7c3c3;
+    }
 </style>
 
 <nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
@@ -107,7 +110,7 @@ table, th, td{
 
                 <h2>Sinu postitused</h2>
                 <?php
-                $html = "<table>";
+                $html = "<table class='table-hover'>";
 
                 $html .= "<tr>";
                     //$html .= "<th>restoid</th>";
@@ -120,7 +123,7 @@ table, th, td{
                 foreach($restos as $R){
 
                     $html .= "<tr>";
-                        $html .= "<td>".$R->restoName."</td>";
+                        $html .= "<td><a style='color: dodgerblue' href='restoRESTO.php?name=".$R->restoName."'>$R->restoName</a></td>";
                         $html .= "<td>".date('M Y', strtotime($R->created))."</td>";
 						$html .= "<td style='padding: 0px'><center><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$R->restoId. "'>
 						<span style='color:#b60000;' class='glyphicon glyphicon-edit'></span></a></center></td>";

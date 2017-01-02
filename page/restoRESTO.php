@@ -54,9 +54,12 @@ $P = $Resto->getSingleRestoName($_GET["name"]);
 			<li class="nav-item">
 				<a class="nav-link" href="restoUSER.php"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION["name"];?></a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="restoDATA">Loo uus sissekanne</a>
-			</li>
+            <li class="nav-item">
+                <a class="nav-link" href="restoFEEDBACK.php"><span class="glyphicon glyphicon-th-list"></span> Kasutajate Tagasiside</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="restoDATA"><span class="glyphicon glyphicon-plus"></span> Uus sissekanne</a>
+            </li>
 		</ul>
 			<div class="collapse navbar-collapse">
 				<form class="form-inline float-xs-right pull-right">

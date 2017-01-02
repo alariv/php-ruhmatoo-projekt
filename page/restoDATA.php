@@ -181,7 +181,7 @@ if( isset($_POST["dropdownResto"]) &&
                     <span class="input-group-addon">
                         <button type="button" class="btn btn-danger btn-sm center-block" style="padding-bottom: 0px;padding-top: 0px" data-toggle="modal" data-target="#myModal">
                     <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
-                </button>
+                </button> 
                     </span>
             </div>
 

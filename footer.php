@@ -39,7 +39,7 @@
                 <center><h4 style="color: dodgerblue">Siim Hütsi</h4></center>
                 <br><br>
                 <text style="line-height: 25px">telefon:</text><a style="float: right" href="callTo://5036183">5036183</a><br>
-                <text style="line-height: 25px">skype:</text><a style="float: right" href="skype:estsiim?chat">siimhutsi</a><br>
+                <text style="line-height: 25px">skype:</text><a style="float: right" href="skype:estsiim?chat">estsiim</a><br>
                 <text style="line-height: 25px">kirjuta meil:</text><a style="float: right" href="mailto:siimh@tlu.ee">siimh@tlu.ee</a><br>
 
             </div>
