@@ -46,6 +46,9 @@ $person = $Resto->getallrestos($q, $sort, $order);
 	.table-striped>tbody>tr:nth-child(odd)>th {
 	background-color: lightskyblue; // Choose your own color here
  }
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+        background-color: rgb(168, 164, 164);
+    }
 </style>
 
 
@@ -82,7 +85,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
 
 <?php
 
-$html = "<table style='width: 20%' class='table table-striped'>";
+$html = "<table style='width: 20%' class='table table-striped table-hover'>";
 $html .= "<tr>";
 
 
