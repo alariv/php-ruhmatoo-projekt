@@ -27,6 +27,7 @@ if(isset($_GET["sort"]) && isset($_GET["order"])){
 
 $person = $Resto->getallrestos($q, $sort, $order);
 $P = $Resto->getSingleRestoName($_GET["name"]);
+
 ?>
 <?php require("../header.php"); ?>
 <?php require("../CSS.php"); ?>

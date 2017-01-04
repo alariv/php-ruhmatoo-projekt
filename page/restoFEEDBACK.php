@@ -29,7 +29,8 @@ if(isset($_GET["sort"]) && isset($_GET["order"])){
     $order = $_GET["order"];
 }
 
-$person = $Resto->getallrestos($q, $sort, $order);
+$restos = $Resto->getallrestos($q, $sort, $order);
+$distRestoName = $Resto->getdistResto();
 
 
 ?>
@@ -46,9 +47,6 @@ $person = $Resto->getallrestos($q, $sort, $order);
 	.table-striped>tbody>tr:nth-child(odd)>th {
 	background-color: lightskyblue; // Choose your own color here
  }
-    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-        background-color: rgb(168, 164, 164);
-    }
 </style>
 
 
@@ -85,7 +83,7 @@ $person = $Resto->getallrestos($q, $sort, $order);
 
 <?php
 
-$html = "<table style='width: 20%' class='table table-striped table-hover'>";
+$html = "<table style='width: 20%' class='table table-striped'>";
 $html .= "<tr>";
 
 
@@ -98,9 +96,9 @@ $html .= "<th>
 						<center><a style='font-size: 20px' href='?q=".$q."&sort=restoName&order=".$restoNameOrder."'>Restorani nimi</center></th>";
 
 
-foreach($person as $P){
+foreach($distRestoName as $P){
     $html .= "<tr>";
-    $html .= "<td><center><a href='restoRESTO.php?name=".$P->restoName."'>$P->restoName</a></center></td>";
+    $html .= "<td><center><a href='restoRESTO.php?name=".$P->distRestoName."'>$P->distRestoName</a></center></td>";
     $html .= "</tr>";
 
 }

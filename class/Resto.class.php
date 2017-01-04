@@ -308,5 +308,36 @@ class Resto
         }
 
     }
+    function getdistResto(){
+
+        $stmt = $this->connection->prepare("
+			SELECT DISTINCT(restoName)
+			FROM `restoranid` WHERE deleted is NULL 
+		");
+        echo $this->connection->error;
+
+        $stmt->bind_result($distRestoName);
+        $stmt->execute();
+
+
+        //tekitan massiivi
+        $result = array();
+
+        // tee seda seni, kuni on rida andmeid
+        // mis vastab select lausele
+        while ($stmt->fetch()) {
+
+            //tekitan objekti
+            $d = new StdClass();
+            $d->distRestoName = $distRestoName;
+
+            array_push($result, $d);
+        }
+
+        $stmt->close();
+
+        return $result;
+    }
+
 }
 ?>
