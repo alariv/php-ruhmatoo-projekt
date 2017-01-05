@@ -98,7 +98,7 @@ $html .= "<th>
 
 foreach($distRestoName as $P){
     $html .= "<tr>";
-    $html .= "<td><center><a href='restoRESTO.php?name=".$P->distRestoName."'>$P->distRestoName</a></center></td>";
+    $html .= "<td><center><a href='restoRESTO.php?name=".urlencode($P->distRestoName)."'>$P->distRestoName</a></center></td>";
     $html .= "</tr>";
 
 }
