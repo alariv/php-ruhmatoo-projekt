@@ -23,7 +23,7 @@ $userError = "";
             $userError = "
                         <br>
                         <div class='alert alert-success'>
-                        <strong><span class='glyphicon glyphicon-ok' aria-hidden='true'></span> kasutaja loomine õnnestus, võid sisse logida!</strong>
+                        <strong><span class='glyphicon glyphicon-ok' aria-hidden='true'></span> kasutaja loomine õnnestus, võid <a href='restoSISSELOGIMINE.php'>sisse logida!</a></strong>
                         </div>";
         }
     }
