@@ -87,7 +87,7 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
             </li>
         </ul>
         <div class="collapse navbar-collapse">
-            
+
         </div>
     </nav>
 
