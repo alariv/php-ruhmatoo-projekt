@@ -221,7 +221,7 @@ class Resto
 
            //header("Location: restoFEEDBACK.php");
             echo "Midagi laks valesti:/";
-            echo urldecode($_GET["name"]);
+            //echo urldecode($_GET["name"]);
             //var_dump($oneresto);
             exit();
         }

@@ -196,7 +196,7 @@ if( empty($signupEmailError)&&
             <div class="account-wall">
 
             <form method="POST">
-                <p style="color: lightcoral"> Kohustuslikud väljad </p>
+                <p style="color: lightcoral"> Kohustuslikud väljad tähistatud punaselt</p>
 
 
                 <p style="color: lightcoral"><?php echo $signupNameError; ?></p>
@@ -204,7 +204,7 @@ if( empty($signupEmailError)&&
                             <span class="input-group-addon">
                                 <span style="color: lightcoral" class="fa fa-quote-left" ></span>
                             </span>
-                    <input class="form-control" placeholder="Eesnimi" name="signupName" type="text"  value = "<?=$signupName;?>">
+                    <input class="form-control" placeholder="Eesnimi" or <?php echo $signupNameError; ?> name="signupName" type="text"  value = "<?=$signupName;?>">
                 </div>
 
                 <p style="color: lightcoral"><?php echo $signupLNameError; ?></p>
