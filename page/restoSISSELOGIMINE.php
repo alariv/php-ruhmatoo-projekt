@@ -36,7 +36,7 @@
 			$loginemailError = "Sisesta e-mail!";
 		}
 	}
-	if ($loginemailError=="" and $loginpasswordError = ""){
+	if ($loginemailError=="" and $loginpasswordError ==""){
         if (empty($_GET["passwd"])) {
             if (isset($_GET["passwd"])) {
                 $userError = "
@@ -47,7 +47,7 @@
             }
         }
     }
-    if ($loginemailError=="" and $loginpasswordError = "") {
+    if ($loginemailError=="" and $loginpasswordError =="") {
         if (empty($_GET["email"])) {
             if (isset($_GET["email"])) {
                 $userError = "
