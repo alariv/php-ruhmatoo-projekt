@@ -50,7 +50,7 @@ $distRestoName = $Resto->getdistResto();
 </style>
 
 
-    <nav class="navbar navbar-light bg-faded" style="background-color: rgba(30, 144, 255, 0.33)">
+    <nav class="navbar navbar-light bg-faded navbar-fixed-top" style="background-color: rgba(30, 144, 255, 0.33)">
         <ul class="nav navbar-nav">
             <a href="#" class="navbar-left"><img src="../logonavbar.jpg" style="width: 175px;px;height:50px;"></a>
             <li class="nav-item">
@@ -68,9 +68,6 @@ $distRestoName = $Resto->getdistResto();
         </ul>
         <div class="collapse navbar-collapse">
 
-            <form class="form-inline float-xs-right pull-right">
-                <input class="form-control" style="height: 50px" type="text" placeholder="Otsing" name="q" value="<?=$q;?>">
-                <button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
 
 
             </form>

@@ -68,12 +68,7 @@ table, th, td{
     </ul>
     <div class="collapse navbar-collapse">
 
-        <form class="form-inline float-xs-right pull-right">
-            <input class="form-control" style="height: 50px" type="text" placeholder="Otsing">
-            <button class="btn btn-primary" style="height: 50px" type="submit"><span class="glyphicon glyphicon-search"></span> Otsi</button>
 
-
-        </form>
     </div>
 </nav>
 
