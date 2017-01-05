@@ -267,19 +267,15 @@ if( isset($_POST["dropdownResto"]) &&
 			<input class='btn btn-success btn-lg' style="width: 300px;height: 50px" type="submit">
 		</form>
 		</fieldset><br>
-<h1 style="color: dodgerblue;margin: 0 auto;max-width: 370px;font-size: 38px">Kasutajate tagasiside</h1><br>
+
 	<fieldset style="border-width: 0px;margin: 0 auto;max-width: 370px">
 	<form>
-		<input class="form-control" style="color: dodgerblue" name="q"  placeholder="Otsi restoranide, hinnete v�i kommentaari j�rgi" value="<?=$q;?>"><br>
-		<p class="text-center"><button type="submit" class="btn btn-info" style="width: 370px">
-			<span class="glyphicon glyphicon-search"></span> Search
-		</button></p>
 	</form>
 	</fieldset>
 	<br><br>
 	<fieldset style="border-bottom-width: 15px;border-top-width: 15px;border-right-width: 0;border-left-width: 0px">
 <?php
-	foreach($person as $P){
+	/* foreach($person as $P){
 			if($P->grade=="1"){
 				echo '<h3 class="feedback" style="color:red;font-size: 22px">'.$P->restoName.'</h3>';
 			}
@@ -296,8 +292,8 @@ if( isset($_POST["dropdownResto"]) &&
 				echo '<h3 class="feedback" style="color:dodgerblue;font-size: 42px">'.$P->restoName.'</h3>';
 		}
 		
-	}
-?></fieldset><br><br><br><br><br><br><br><br><br><br><br><br>
+	} */
+?> </fieldset><br><br><br><br><br><br><br><br><br><br><br><br>
 <!--<audio controls autoplay loop >
     <source src="firstrain.mp3" type="audio/mpeg"  >;
 </audio>-->
