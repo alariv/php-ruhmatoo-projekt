@@ -45,5 +45,20 @@ class Edit
         $stmt->close();
 
     }
+    function deleteRestofromdropdown($deleted){
+
+        $stmt = $this->connection->prepare("UPDATE resto_restos SET deleted=NOW() WHERE restoName LIKE? and deleted is NULL");
+        $stmt->bind_param("s", $deleted);
+
+        // kas õnnestus eemaldada
+        if ($stmt->execute()) {
+            // õnnestus
+            echo "eemaldamine õnnestus!";
+            echo urldecode($_GET["name"]);
+        }
+
+        $stmt->close();
+
+    }
 }
 ?>

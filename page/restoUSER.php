@@ -125,7 +125,7 @@ table, th, td{
                     $html .= "<tr>";
                         $html .= "<td><a style='color: dodgerblue' href='restoRESTO.php?name=".$R->restoName."'>$R->restoName</a></td>";
                         $html .= "<td>".date('M Y', strtotime($R->created))."</td>";
-						$html .= "<td style='padding: 0px'><center><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$R->restoId. "'>
+						$html .= "<td style='padding: 0px'><center><a class='btn btn-outline-danger btn-md' href='restoEDIT.php?id=".$R->restoId."&name=".urlencode($R->restoName)."'>
 						<span style='color:#b60000;' class='glyphicon glyphicon-edit'></span></a></center></td>";
 					
 						

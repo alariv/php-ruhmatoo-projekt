@@ -11,6 +11,7 @@ if(isset($_GET["delete"])){
 
 
     $Edit->deleteResto($Helper->cleanInput($_GET["id"]));
+    $Edit->deleteRestofromdropdown(urldecode($_GET["name"]));
     header("Location: restoUSER.php");
 
     exit();
@@ -173,7 +174,7 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
 					  Muuda sissekannet  <i class="fa fa-arrow-right" aria-hidden="true"></i>
 					</button>
 <br><br>
-<p class="text-center"><a class='btn-danger btn-lg' href="?id=<?=$_GET["id"];?>&delete=true"><span class="glyphicon glyphicon-trash"></span></a></p>
+<p class="text-center"><a class='btn-danger btn-lg' href="?id=<?=$_GET["id"];?>&name=<?=urlencode($_GET["name"]);?>&delete=true"><span class="glyphicon glyphicon-trash"></span></a></p>
 <!-- Modal -->
 					<div  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">
@@ -364,7 +365,7 @@ $P = $Resto->getSingleRestoData($_GET["id"]);
 							</form>
 
 							<br><br>
-							<p class="text-center"><a class='btn-danger btn-lg' href="?id=<?=$_GET["id"];?>&delete=true"><span class="glyphicon glyphicon-trash"></span></a></p>
+							<p class="text-center"><a class='btn-danger btn-lg' href="?id=<?=$_GET["id"];?>&name=<?=urlencode($_GET["name"]);?>&delete=true"><span class="glyphicon glyphicon-trash"></span></a></p>
 						  </div>
 						  <div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Tühista</button>

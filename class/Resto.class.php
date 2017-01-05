@@ -265,6 +265,7 @@ class Resto
         $stmt = $this->connection->prepare("
                 SELECT id,restoName
                 FROM resto_restos
+                WHERE deleted is NULL
             ");
         echo $this->connection->error;
 
