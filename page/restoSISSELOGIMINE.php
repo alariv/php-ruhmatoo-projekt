@@ -21,6 +21,7 @@
 	$loginpasswordError = "";
 	$loginEmail = "";
 	$loginemailError = "";
+    $userError = "";
 	if (isset($_POST["loginPassword"])){
 		
 		if (empty($_POST["loginPassword"])){
@@ -35,6 +36,28 @@
 			$loginemailError = "Sisesta e-mail!";
 		}
 	}
+	if ($loginemailError=="" and $loginpasswordError = ""){
+        if (empty($_GET["passwd"])) {
+            if (isset($_GET["passwd"])) {
+                $userError = "
+                        <br>
+                        <div class='alert alert-danger'>
+                        <strong><i class='fa fa-exclamation-circle' aria-hidden='true'></i> Parool vale</strong>
+                        </div>";
+            }
+        }
+    }
+    if ($loginemailError=="" and $loginpasswordError = "") {
+        if (empty($_GET["email"])) {
+            if (isset($_GET["email"])) {
+                $userError = "
+                            <br>
+                            <div class='alert alert-danger'>
+                            <strong><i class='fa fa-exclamation-circle' aria-hidden='true'></i> Sellise e-mailiga kasutajat ei leitud</strong>
+                            </div>";
+            }
+        }
+    }
 
 	$error= "";
 	//kontrollin et kasutaja taitis valjad ja voib sisse logida
@@ -82,6 +105,7 @@
 
 				<center><h2><b>Logi sisse</b></h2></center>
                 <div class="account-wall">
+                    <?php echo $userError; ?>
                     <p style="color: lightcoral"><?=$error;?></p>
                     <form method="POST">
                         <p style="color: lightcoral"><?php echo $loginemailError; ?></p>
@@ -127,7 +151,4 @@
         </div>
     </div>
 
-<!--<audio controls autoplay loop >
-						<source src="intro.mp3" type="audio/mpeg"  >;
-					</audio>-->
 <?php require("../footer.php");?>

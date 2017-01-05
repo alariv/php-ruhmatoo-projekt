@@ -52,9 +52,15 @@ $distRestoName = $Resto->getdistResto();
 			<li class="nav-item">
 				<a class="nav-link" onclick="goBack()"><span class="glyphicon glyphicon-chevron-left"></span> tagasi</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="?logout=1" style="color: maroon"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a>
-			</li>
+            <li class="nav-item active">
+                <a class="nav-link" href="restoSISSELOGIMINE.php" style="color: maroon"><span class="glyphicon glyphicon-log-in"></span> Logi sisse</a>
+            </li>
+            <li class="disabled">
+                <a class="nav-link""><span class="glyphicon glyphicon-user"></span> Profiil</a>
+            </li>
+            <li class="disabled">
+                <a class="nav-link"><span class="glyphicon glyphicon-plus"></span> Uus sissekanne</a>
+            </li>
 		</ul>
 		<div class="collapse navbar-collapse">
 
@@ -85,7 +91,7 @@ $html .= "<th>
 
 foreach($distRestoName as $P){
 	$html .= "<tr>";
-	$html .= "<td><center><a href='restoRESTO.php?name=".urlencode($P->distRestoName)."'>$P->distRestoName</a></center></td>";
+	$html .= "<td><center><a href='restoRESTOnologin.php?name=".urlencode($P->distRestoName)."'>$P->distRestoName</a></center></td>";
 	$html .= "</tr>";
 
 }

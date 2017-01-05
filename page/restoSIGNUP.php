@@ -15,6 +15,30 @@ $signupName = "";
 $signupNameError = "";
 $signupLName = "";
 $signupLNameError = "";
+$userError = "";
+
+
+    if (empty($_GET["email"])) {
+        if (isset($_GET["passed"])) {
+            $userError = "
+                        <br>
+                        <div class='alert alert-success'>
+                        <strong><span class='glyphicon glyphicon-ok' aria-hidden='true'></span> kasutaja loomine õnnestus, võid sisse logida!</strong>
+                        </div>";
+        }
+    }
+
+
+    if (empty($_GET["email"])) {
+        if (isset($_GET["failed"])) {
+            $userError = "
+                        <br>
+                        <div class='alert alert-danger'>
+                        <strong><i class='fa fa-exclamation-circle' aria-hidden='true'></i> Email juba kasutusel</strong>
+                        </div>";
+        }
+    }
+
 
 //kas on üldse olemas
 if (isset ($_POST ["signupEmail"])) {
@@ -188,7 +212,7 @@ if( empty($signupEmailError)&&
         <center><h1><b>Loo kasutaja</b></h1></center>
 
             <div class="account-wall">
-
+                <?php echo $userError; ?>
             <form method="POST">
                 <p style="color: lightcoral"> Kohustuslikud väljad tähistatud punaselt</p>
 

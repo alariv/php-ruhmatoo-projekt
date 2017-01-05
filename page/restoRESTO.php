@@ -3,6 +3,11 @@
 require("../restoFUNCTIONS.php");
 require("../restoEDITFUNCTIONS.php");
 
+if(!isset ($_SESSION["userId"])) {
+
+    header("Location: restoSISSELOGIMINE.php");
+    exit();
+}
 if (isset($_GET["logout"])) {
 
     session_destroy();

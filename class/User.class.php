@@ -34,9 +34,11 @@ class User
         $stmt->bind_param("sssssis", $signupEmail, $signupPassword, $signupName, $signupLName, $signupage, $phonenr, $signupgender);
 
         if($stmt->execute()){
-            echo "kasutaja loomine õnnestus";
+            header("Location:?passed");
+            exit();
         }else {
-            echo "ERROR ".$stmt->error;
+            header("Location:?failed");
+            exit();
         }
     }
     function login($email, $password){
@@ -84,13 +86,13 @@ class User
 
 
             }else {
-                $error = "Parool vale";
+                header("Location:?passwd");
+                exit();
             }
 
         }else {
-            //ei olnud
-            $error = "Sellise emailiga ".$email." kasutajat ei ole";
-
+            header("Location:?email");
+            exit();
         }
 
         return $error;
