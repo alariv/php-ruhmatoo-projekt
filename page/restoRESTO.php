@@ -30,8 +30,10 @@ if(isset($_GET["sort"]) && isset($_GET["order"])){
 }
 
 
-$person = $Resto->getallrestos($q, $sort, $order);
-$P = $Resto->getSingleRestoName(urldecode($_GET["name"]));
+$person = $Resto->getSingleRestoData(urldecode($_GET["name"]));
+$R = $Resto->getSingleRestoName(urldecode($_GET["name"]));
+
+var_dump($person)
 
 ?>
 <?php require("../header.php"); ?>
@@ -137,23 +139,23 @@ $P = $Resto->getSingleRestoName(urldecode($_GET["name"]));
 										<center><a href='?q=".$q."&sort=created&order=".$createdOrder."'>loodud</a></center></th>";
 				$html .= "</tr>";
 
-
+				foreach($person as $P) {
 					$html .= "<tr>";
 					//$html .= '<td style="background-color: lightblue">'.$r->id."</td>";
 					//$html .= '<td style="background-color: lightskyblue">'.$r->restoName."</td>";
-					$html .= "<td style='background-color: lightblue'>".$P->grade."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->comment."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->food."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->food_rating."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->service_rating."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.$P->customer_sex."</td>";
-					$html .= '<td style="background-color: lightblue">'.$P->customer_name."</td>";
-					$html .= '<td style="background-color: lightskyblue">'.date('M Y', strtotime($P->created))."</td>";
+					$html .= "<td style='background-color: lightblue'>" . $P->grade . "</td>";
+					$html .= '<td style="background-color: lightskyblue">' . $P->comment . "</td>";
+					$html .= '<td style="background-color: lightblue">' . $P->food . "</td>";
+					$html .= '<td style="background-color: lightskyblue">' . $P->food_rating . "</td>";
+					$html .= '<td style="background-color: lightblue">' . $P->service_rating . "</td>";
+					$html .= '<td style="background-color: lightskyblue">' . $P->customer_sex . "</td>";
+					$html .= '<td style="background-color: lightblue">' . $P->customer_name . "</td>";
+					$html .= '<td style="background-color: lightskyblue">' . date('M Y', strtotime($P->created)) . "</td>";
 					$html .= "</tr>";
 
-
-				$html .= "</Table>";
-				echo $html;
+				}
+					$html .= "</Table>";
+					echo $html;
 
 				?>
 

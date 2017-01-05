@@ -149,21 +149,21 @@ class Resto
 
         return $result;
     }
-	function getSingleRestoData($id){
+	function getSingleRestoData($restoName){
 
 
-        $stmt = $this->connection->prepare("SELECT restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created FROM restoranid WHERE id=? and deleted is NULL");
-        $stmt->bind_param("s", $id);
-        $stmt->bind_result($restoName, $grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
+        $stmt = $this->connection->prepare("SELECT grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created FROM restoranid WHERE restoName LIKE? and deleted is NULL");
+        $stmt->bind_param("s", $restoName);
+        $stmt->bind_result($grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
         $stmt->execute();
 
         //tekitan objekti
-        $resto = new Stdclass();
+        $result = array();
 
         //saime ühe rea andmeid
-        if ($stmt->fetch()) {
+        while ($stmt->fetch()) {
             // saan siin alles kasutada bind_result muutujaid
-            $resto->restoName= $restoName;
+            $resto = new StdClass();
             $resto->grade=$grade;
             $resto->food=$food;
             $resto->food_rating=$food_rating;
@@ -172,10 +172,11 @@ class Resto
             $resto->customer_sex=$customer_sex;
             $resto->customer_name=$customer_name;
             $resto->created=$created;
-            $resto->id=$id;
+            var_dump($resto);
 
 
-        } else {
+
+        }/* else {
             // ei saanud rida andmeid kätte
             // sellist id'd ei ole olemas
             // see rida võib olla kustutatud
@@ -183,11 +184,11 @@ class Resto
            header("Location: restoFEEDBACK.php");
            echo "Midagi laks valesti:/";
            exit();
-        }
+        }*/
 
         $stmt->close();
 
-        return ($resto);
+        return $result;
 
     }
     function getSingleRestoName($restoName){
