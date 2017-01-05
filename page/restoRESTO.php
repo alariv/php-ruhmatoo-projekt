@@ -33,7 +33,6 @@ if(isset($_GET["sort"]) && isset($_GET["order"])){
 $person = $Resto->getSingleRestoData(urldecode($_GET["name"]));
 $R = $Resto->getSingleRestoName(urldecode($_GET["name"]));
 
-var_dump($person)
 
 ?>
 <?php require("../header.php"); ?>

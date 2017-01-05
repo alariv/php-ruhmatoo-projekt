@@ -268,33 +268,5 @@ if( isset($_POST["dropdownResto"]) &&
 		</form>
 		</fieldset><br>
 
-	<fieldset style="border-width: 0px;margin: 0 auto;max-width: 370px">
-	<form>
-	</form>
-	</fieldset>
-	<br><br>
-	<fieldset style="border-bottom-width: 15px;border-top-width: 15px;border-right-width: 0;border-left-width: 0px">
-<?php
-	/* foreach($person as $P){
-			if($P->grade=="1"){
-				echo '<h3 class="feedback" style="color:red;font-size: 22px">'.$P->restoName.'</h3>';
-			}
-			if($P->grade=="2"){
-				echo '<h3 class="feedback" style="color:crimson;font-size: 27px">'.$P->restoName.'</h3>';
-			}
-			if($P->grade=="3"){
-				echo '<h3 class="feedback" style="color:blueviolet;font-size: 32px">'.$P->restoName.'</h3>';
-			}
-			if($P->grade=="4"){
-				echo '<h3 class="feedback" style="color:slateblue;font-size: 37px">'.$P->restoName.'</h3>';
-			}
-			if($P->grade=="5"){
-				echo '<h3 class="feedback" style="color:dodgerblue;font-size: 42px">'.$P->restoName.'</h3>';
-		}
-		
-	} */
-?> </fieldset><br><br><br><br><br><br><br><br><br><br><br><br>
-<!--<audio controls autoplay loop >
-    <source src="firstrain.mp3" type="audio/mpeg"  >;
-</audio>-->
+
 <?php require("../footer.php");?>

@@ -172,7 +172,7 @@ class Resto
             $resto->customer_sex=$customer_sex;
             $resto->customer_name=$customer_name;
             $resto->created=$created;
-            var_dump($resto);
+            array_push($result, $resto);
 
 
 
