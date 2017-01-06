@@ -341,6 +341,49 @@ class Resto
 
         return $result;
     }
+    function getSingleRestoEdit($id){
+
+
+        $stmt = $this->connection->prepare("SELECT restoName, grade, food, food_rating, service_rating, comment, customer_sex, customer_name, created FROM restoranid WHERE id=? and deleted is NULL");
+        $stmt->bind_param("s", $id);
+        $stmt->bind_result($restoName, $grade, $food, $food_rating, $service_rating, $comment, $customer_sex, $customer_name, $created);
+        $stmt->execute();
+
+        //tekitan objekti
+        $resto = new StdClass();
+
+        //saime ühe rea andmeid
+        if ($stmt->fetch()) {
+            // saan siin alles kasutada bind_result muutujaid
+
+            $resto->restoName=$restoName;
+            $resto->grade=$grade;
+            $resto->food=$food;
+            $resto->food_rating=$food_rating;
+            $resto->service_rating=$service_rating;
+            $resto->comment=$comment;
+            $resto->customer_sex=$customer_sex;
+            $resto->customer_name=$customer_name;
+            $resto->created=$created;
+            $resto->id=$id;
+
+
+
+        } else {
+            // ei saanud rida andmeid kätte
+            // sellist id'd ei ole olemas
+            // see rida võib olla kustutatud
+
+           header("Location: restoFEEDBACK.php");
+           echo "Midagi laks valesti:/";
+           exit();
+        }
+
+        $stmt->close();
+
+        return $resto;
+
+    }
 
 }
 ?>

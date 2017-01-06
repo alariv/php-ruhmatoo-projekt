@@ -37,7 +37,7 @@ if(isset($_GET["logout"])) {
 }
 
 //saadan kaasa id
-$P = $Resto->getSingleRestoData($_GET["id"]);
+$P = $Resto->getSingleRestoEdit($_GET["id"]);
 //var_dump($P);
 
 ?>
